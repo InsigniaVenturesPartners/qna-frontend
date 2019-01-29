@@ -1,0 +1,13 @@
+export const APP_INIT = 'app_init'
+export const APP_INIT_SUCCESS = 'app_init_success'
+export const APP_INIT_FAILURE = 'app_failure'
+export const USER_LOGIN = 'user_login'
+export const USER_LOGIN_ERROR = 'user_login_error'
+export const USER_LOGIN_SUCCESS = 'user_login_success'
+export const USER_LOG_OUT = 'user_log_out'
+
+export const USER_GET_ALL = 'user_get_all'
+export const USER_GET_ALL_STATISTICS = 'user_get_all_statistics'
+export const USER_GET_ALL_FAIL = 'user_get_all_fail'
+export const USER_GET_ALL_SUCCESS = 'user_get_all_success'
+export const USER_GET_STATISTICS = 'user_get_statistics'
