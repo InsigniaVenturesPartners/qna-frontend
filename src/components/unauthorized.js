@@ -29,7 +29,7 @@ class Unauthorized extends Component {
                                 <p>Click to refresh</p>
                                 <Icon link name='refresh' size='massive'
                                       onClick={() => {
-                                          this.props.actionConfAndInit();
+                                          '';
                                       }}
                                 />
                             </Header.Subheader>
@@ -43,7 +43,7 @@ class Unauthorized extends Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        current_user: "",
+        current_user: state.auth.currentUser,
     };
 }
 
