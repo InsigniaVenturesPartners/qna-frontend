@@ -34,11 +34,9 @@ class GoogleAuthContainer extends React.Component {
     }
 
     render () {
-        if (this.props.isLoggedIn) {
+        if (this.props.isLoggedIn || sessionStorage.getItem('access_token')) {
             return this.props.children
         } else {
-
-
             return (
                 <div className="login-container d-flex justify-content-center align-items-center">
                     <div className="login-form">

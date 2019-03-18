@@ -79,7 +79,7 @@ export function logOut () {
 
     auth2.signOut().then(function () { // Log out of Rafael app
         sessionStorage.removeItem('access_token')
-        window.location = 'https://mail.google.com/mail/u/0/?logout&hl=en' // Log out of Google
+        window.location = ENV.WEB_ROOT_URL // Log out of Google
     })
 }
 

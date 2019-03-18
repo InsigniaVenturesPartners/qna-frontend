@@ -18,6 +18,7 @@ class NavBar extends React.Component {
     this.setQuestion = this.setQuestion.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSuccessfulSubmit = this.handleSuccessfulSubmit.bind(this);
+        this.handleSignOut = this.handleSignOut.bind(this)
 
     this.openModal = this.openModal.bind(this);
     // this.afterOpenModal = this.afterOpenModal.bind(this);
@@ -59,6 +60,11 @@ class NavBar extends React.Component {
     this.closeModal("create");
     this.setState({asked_question: question, question: ""})
     this.openModal("success")
+  }
+
+  handleSignOut(e) {
+    e.preventDefault()
+    this.props.logOut()
   }
 
   render() {
@@ -111,13 +117,7 @@ class NavBar extends React.Component {
 
 
           <li id="nav-sign-out">
-            <form name="sign-out" method="POST" action="/users/sign_out">
-              <input type="hidden" name="_method" value="delete"/>
-              <label>
-                <input name="submit2" type="submit" id="submit2" value="Sign out" />
-              </label>
-            </form>
-
+            <button id="sign-out" onClick={this.handleSignOut}>Sign Out</button>
             </li>
         </ul>
         <Modal
