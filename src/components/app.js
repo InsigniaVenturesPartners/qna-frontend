@@ -3,6 +3,8 @@ import { Container } from 'semantic-ui-react'
 
 import { connect } from 'react-redux'
 
+import '../static/css/style.css';
+
 const App = (props) => {
     return (
         <div>

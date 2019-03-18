@@ -6,7 +6,7 @@ import { createQuestion } from '../../actions/question_actions';
 // Actions
 
 const mapStateToProps = (state, ownProps) => ({
-  user: state.session.currentUser
+  // user: state.session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({

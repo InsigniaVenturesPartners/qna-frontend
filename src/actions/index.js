@@ -63,23 +63,7 @@ export function configAndInitialize () {
         }
         script.onload = () => {
             gapi.load('auth2', () => {
-                gapi.auth2.init({
-                    'clientId': ENV.GOOGLE_CLIENT_ID,
-                    'scope': [
-                        'email',
-                        'profile'
-                    ].join(' '),
-                    'ux_mode': 'redirect',
-                    'redirect_uri': ENV.WEB_ROOT_URL
-                }).then((googleAuth) => {
-                    // If user is not signed, then redirect
-                    if (googleAuth.isSignedIn.get() === false) {
-                        logIn()
-                        return
-                    }
-                }).catch((error) => {
-                        dispatch({ type: APP_INIT_FAILURE })
-                })
+                loggedIn()(dispatch)
             })
         }
         document.body.appendChild(script)
@@ -111,68 +95,45 @@ export function loggedIn () {
             let idToken = currentUser.getAuthResponse().id_token
             sessionStorage.setItem('access_token', currentUser.getAuthResponse().access_token)
 
-            AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-                IdentityPoolId: ENV.COGNITO_IDENTITY_POOL_ID,
-                Logins: {
-                    'accounts.google.com': idToken
-                }
-            }, {
-                region: ENV.AWS_REGION
-            })
-
-            AWS.config.credentials.getPromise()
-                .then(function (data) {
-                    // Send a request to create or update the user data
-                    const url = API_URL.CREATE_UPDATE_USER
-                    const request = getPostRequest({
-                        method: 'post',
-                        data: {
-                            user: {
-                                google_id: currentUser.getId(),
-                                name: currentUserProfile.getName(),
-                                email: currentUserProfile.getEmail(),
-                                given_name: currentUserProfile.getGivenName(),
-                                last_name: currentUserProfile.getFamilyName(),
-                                profile_img: currentUserProfile.getImageUrl(),
-                                access_token: currentUser.getAuthResponse().access_token
-                            }
-                        },
-                        url
-                    })
-
-                    return request
-                })
-                .then(function (response) {
-                    dispatch({ type: USER_LOGIN_SUCCESS, payload: response })
-
-                    getRequest(API_URL.GET_ALL_USER)
-                        .then((users) => {
-                            dispatch({ type: USER_GET_ALL, payload: users })
-                            dispatch({ type: APP_INIT_SUCCESS, payload: users })
-                        })
-                        .catch((error) => {
-                            dispatch({ type: APP_INIT_FAILURE })
-                        })
-
-                    let user = response.data
-                    if (!user.has_offline_access) {
-                        return gapi.auth2.getAuthInstance().grantOfflineAccess({ prompt: 'consent' })
-                            .then((auth) => {
-                                const url = API_URL.GOOGLE_USER_AUTH
-                                return getPostRequest({
-                                    method: 'post',
-                                    data: {
-                                        code: auth.code
-                                    },
-                                    url
-                                })
-                            })
+            const url = API_URL.CREATE_USER_SESSION
+            const request = getPostRequest({
+                method: 'post',
+                data: {
+                    user: {
+                        google_id: currentUser.getId(),
+                        name: currentUserProfile.getName(),
+                        email: currentUserProfile.getEmail(),
+                        given_name: currentUserProfile.getGivenName(),
+                        last_name: currentUserProfile.getFamilyName(),
+                        pro_pic_url: currentUserProfile.getImageUrl(),
+                        access_token: currentUser.getAuthResponse().access_token
                     }
-                })
-                .catch(function (err) {
-                    console.log(err)
-                    dispatch({ type: USER_LOGIN_ERROR, payload: {} })
-                })
+                },
+                url
+            })
+            .then(function (response) {
+                dispatch({ type: USER_LOGIN_SUCCESS, payload: response })
+
+                let user = response.data
+                if (!user.has_offline_access) {
+                    return gapi.auth2.getAuthInstance().grantOfflineAccess({ prompt: 'consent' })
+                        .then((auth) => {
+                            const url = API_URL.GOOGLE_USER_AUTH
+                            return getPostRequest({
+                                method: 'post',
+                                data: {
+                                    code: auth.code
+                                },
+                                url
+                            })
+                        })
+                }
+
+            })
+            .catch(function (err) {
+                console.log(err)
+                dispatch({ type: USER_LOGIN_ERROR, payload: {} })
+            })
         }
     }
 }
