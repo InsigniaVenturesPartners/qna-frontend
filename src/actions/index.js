@@ -53,25 +53,8 @@ function getRequest (url) {
 export function configAndInitialize () {
     return function (dispatch) {
         dispatch({ type: APP_INIT })
-
-        // TODO(chris): Move Google Load to a Promise
-        const script = document.createElement('script')
-        script.src = 'https://apis.google.com/js/api.js'
-
-        script.onerror = () => {
-            dispatch({ type: APP_INIT_FAILURE })
-        }
-        script.onload = () => {
-            gapi.load('auth2', () => {
-                loggedIn()(dispatch)
-            })
-        }
-        document.body.appendChild(script)
+        loggedIn()(dispatch)
     }
-}
-
-export function logIn () {
-    gapi.auth2.getAuthInstance().signIn()
 }
 
 export function logOut () {

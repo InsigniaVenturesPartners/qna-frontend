@@ -6,9 +6,9 @@ import { logOut } from '../../actions';
 
 // Actions
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => ({
 	user: state.auth.currentUser
-};
+});
 
 const mapDispatchToProps = dispatch => ({
   createQuestion: (body) => dispatch(createQuestion(body)),
