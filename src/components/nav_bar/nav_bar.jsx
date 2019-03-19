@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Modal from 'react-modal';
-// import { Link } from 'react-router-dom';
-import { customStyles, cancelStyles } from '../create_question_form/create_question_form';
-import QuestionSearchContainer from '../question_search/question_search_container';
+import React from 'react'
+import Modal from 'react-modal'
+import { Link } from 'react-router'
+import { customStyles, cancelStyles } from '../create_question_form/create_question_form'
+import QuestionSearchContainer from '../question_search/question_search_container'
+import '../../static/css/nav_bar.css';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -68,38 +68,22 @@ class NavBar extends React.Component {
   }
 
   render() {
+    debugger;
     const {user} = this.props
     return(
       <div className="nav-bar">
         <ul className="nav-bar-items">
-          <li id="nav-logo">
-            {/*
-            TODO
-
-
-            <Link to={`/`}>
-              Insignia Community
-            </Link>
-            */}
-            </li>
-
           <li id="nav-home" className={"nav-link " + (this.props.location.pathname == "/" ? "highlighted" : "")} >
-          {/*
             <Link to={`/`}>
               <i className="fa fa-home"></i>
               Home
             </Link>
-            */}
           </li>
 
-
-
           <li id="nav-answer" className={"nav-link " + (this.props.location.pathname == "/questions" ? "highlighted" : "")}>
-            {/*
             <Link to={`/questions`}>
               <i className="fa fa-pencil-square-o"></i>
               Answer</Link>
-              */}
           </li>
 
           <li id="nav-search">
@@ -107,12 +91,13 @@ class NavBar extends React.Component {
             </li>
 
           <li id="nav-pro-pic">
+          {/*
+            <Link to={`/profile`}>
+              <img src={user.pro_pic_url} alt={`${user.name}'s picture`}  className="nav-pro-pic" />
+            </Link>
 
-            <img src="" alt=""  className="nav-pro-pic" />
-          }
+            */}
           </li>
-
-
           <li id="nav-ask-question"><button onClick={()=>this.openModal("create")}>Ask Question</button></li>
 
 

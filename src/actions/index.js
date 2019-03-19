@@ -4,12 +4,8 @@ import _ from 'lodash'
 import axios from 'axios'
 import { browserHistory } from 'react-router'
 
-import AWS from 'aws-sdk'
-
 import {
     APP_INIT,
-    APP_INIT_SUCCESS,
-    APP_INIT_FAILURE,
     USER_LOGIN,
     USER_LOGIN_ERROR,
     USER_LOGIN_SUCCESS,
@@ -50,13 +46,6 @@ function getRequest (url) {
         })
 }
 
-export function configAndInitialize () {
-    return function (dispatch) {
-        dispatch({ type: APP_INIT })
-        loggedIn()(dispatch)
-    }
-}
-
 export function logOut () {
     var auth2 = gapi.auth2.getAuthInstance()
 
@@ -66,11 +55,10 @@ export function logOut () {
     })
 }
 
-export function loggedIn () {
+export function loggedIn (currentUser) {
     return function (dispatch) {
         let googleAuth = gapi.auth2.getAuthInstance()
         if (googleAuth.isSignedIn.get() === true) {
-            let currentUser = googleAuth.currentUser.get()
             let currentUserProfile = currentUser.getBasicProfile()
 
             let idToken = currentUser.getAuthResponse().id_token

@@ -13,6 +13,10 @@ class AuthContainer extends React.Component {
         this.handleSuccess = this.handleSuccess.bind(this);
     }
 
+    // componentDidMount() {
+    //     this.props.actionConfAndInit()
+    // }
+
     componentWillUpdate () {
         if (this.props.isLoggedIn) {
             let gaUserId = this.props.currentUser.name.split(' ').join('') + '-' + this.props.currentUser.id
@@ -25,11 +29,11 @@ class AuthContainer extends React.Component {
         event.preventDefault();
     }
 
-    handleSuccess() {
-      this.props.actionConfAndInit()
+    handleSuccess(response) {
+      this.props.loggedIn(response)
     }
 
-    onFailure(response) {
+    handleFailure(response) {
       console.log(response);
     }
 
@@ -50,7 +54,7 @@ class AuthContainer extends React.Component {
                                 buttonText="Continue with Google"
                                 className="google-button"
                                 onSuccess={this.handleSuccess}
-                                onFailure={this.onFailure}
+                                onFailure={this.handleFailure}
                             />
 
                         </div>
@@ -71,6 +75,6 @@ function mapStateToProps (state, ownProps) {
 }
 
 export default connect(mapStateToProps, {
-    actionConfAndInit: actions.configAndInitialize
+    loggedIn: actions.loggedIn
 })(AuthContainer)
 

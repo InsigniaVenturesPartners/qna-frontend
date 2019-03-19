@@ -48,5 +48,4 @@ function mapStateToProps(state, ownProps) {
 }
 
 export default connect(mapStateToProps, {
-    actionConfAndInit: actions.configAndInitialize,
 })(Unauthorized)

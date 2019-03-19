@@ -1,6 +1,4 @@
 export const APP_INIT = 'app_init'
-export const APP_INIT_SUCCESS = 'app_init_success'
-export const APP_INIT_FAILURE = 'app_failure'
 export const USER_LOGIN = 'user_login'
 export const USER_LOGIN_ERROR = 'user_login_error'
 export const USER_LOGIN_SUCCESS = 'user_login_success'

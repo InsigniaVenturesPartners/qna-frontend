@@ -4,8 +4,6 @@ import NavBar from './nav_bar';
 import { createQuestion } from '../../actions/question_actions';
 import { logOut } from '../../actions';
 
-// Actions
-
 const mapStateToProps = (state) => ({
 	user: state.auth.currentUser
 });

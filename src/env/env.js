@@ -9,8 +9,8 @@ switch (stage) {
             GOOGLE_ANALYTICS_TRACKING_ID: '',
             GOOGLE_CLIENT_ID: '1088352541792-g3gme4e9ol8akmus0qj5do2nb9fql373.apps.googleusercontent.com',
             AWS_REGION: 'ap-southeast-1',
-            API_ROOT_URL: 'http://qna.api.insignia.vc',
-            WEB_ROOT_URL: ' '
+            API_ROOT_URL: 'http://qna.insignia.vc:2000',
+            WEB_ROOT_URL: 'http://qna-stage.insignia.vc/'
         }
         break
     case 'test':
