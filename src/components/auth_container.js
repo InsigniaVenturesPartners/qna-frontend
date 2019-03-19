@@ -6,7 +6,7 @@ import ReactGA from 'react-ga'
 import { GoogleLogin } from 'react-google-login'
 import { ENV } from '../env/env'
 
-class GoogleAuthContainer extends React.Component {
+class AuthContainer extends React.Component {
     constructor(props) {
         super(props);
         this.onSave = this.onSave.bind(this);
@@ -48,6 +48,7 @@ class GoogleAuthContainer extends React.Component {
                             <GoogleLogin
                                 clientId={ENV.GOOGLE_CLIENT_ID}
                                 buttonText="Continue with Google"
+                                className="google-button"
                                 onSuccess={this.handleSuccess}
                                 onFailure={this.onFailure}
                             />
@@ -71,5 +72,5 @@ function mapStateToProps (state, ownProps) {
 
 export default connect(mapStateToProps, {
     actionConfAndInit: actions.configAndInitialize
-})(GoogleAuthContainer)
+})(AuthContainer)
 

@@ -8,8 +8,7 @@ import { createAnswer } from '../../actions/answer_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   questionId: ownProps.questionId,
-  current_user: state.session.currentUser
-
+  current_user: state.auth.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({

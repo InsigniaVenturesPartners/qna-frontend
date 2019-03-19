@@ -85,8 +85,6 @@ export function logOut () {
 
 export function loggedIn () {
     return function (dispatch) {
-        dispatch({ type: USER_LOGIN })
-
         let googleAuth = gapi.auth2.getAuthInstance()
         if (googleAuth.isSignedIn.get() === true) {
             let currentUser = googleAuth.currentUser.get()
@@ -113,7 +111,6 @@ export function loggedIn () {
             })
             .then(function (response) {
                 dispatch({ type: USER_LOGIN_SUCCESS, payload: response })
-
                 let user = response.data
                 if (!user.has_offline_access) {
                     return gapi.auth2.getAuthInstance().grantOfflineAccess({ prompt: 'consent' })
@@ -128,7 +125,6 @@ export function loggedIn () {
                             })
                         })
                 }
-
             })
             .catch(function (err) {
                 console.log(err)
