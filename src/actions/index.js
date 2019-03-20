@@ -4,12 +4,8 @@ import _ from 'lodash'
 import axios from 'axios'
 import { browserHistory } from 'react-router'
 
-import AWS from 'aws-sdk'
-
 import {
     APP_INIT,
-    APP_INIT_SUCCESS,
-    APP_INIT_FAILURE,
     USER_LOGIN,
     USER_LOGIN_ERROR,
     USER_LOGIN_SUCCESS,
@@ -50,30 +46,6 @@ function getRequest (url) {
         })
 }
 
-export function configAndInitialize () {
-    return function (dispatch) {
-        dispatch({ type: APP_INIT })
-
-        // TODO(chris): Move Google Load to a Promise
-        const script = document.createElement('script')
-        script.src = 'https://apis.google.com/js/api.js'
-
-        script.onerror = () => {
-            dispatch({ type: APP_INIT_FAILURE })
-        }
-        script.onload = () => {
-            gapi.load('auth2', () => {
-                loggedIn()(dispatch)
-            })
-        }
-        document.body.appendChild(script)
-    }
-}
-
-export function logIn () {
-    gapi.auth2.getAuthInstance().signIn()
-}
-
 export function logOut () {
     var auth2 = gapi.auth2.getAuthInstance()
 
@@ -83,13 +55,10 @@ export function logOut () {
     })
 }
 
-export function loggedIn () {
+export function loggedIn (currentUser) {
     return function (dispatch) {
-        dispatch({ type: USER_LOGIN })
-
         let googleAuth = gapi.auth2.getAuthInstance()
         if (googleAuth.isSignedIn.get() === true) {
-            let currentUser = googleAuth.currentUser.get()
             let currentUserProfile = currentUser.getBasicProfile()
 
             let idToken = currentUser.getAuthResponse().id_token
@@ -113,7 +82,6 @@ export function loggedIn () {
             })
             .then(function (response) {
                 dispatch({ type: USER_LOGIN_SUCCESS, payload: response })
-
                 let user = response.data
                 if (!user.has_offline_access) {
                     return gapi.auth2.getAuthInstance().grantOfflineAccess({ prompt: 'consent' })
@@ -128,7 +96,6 @@ export function loggedIn () {
                             })
                         })
                 }
-
             })
             .catch(function (err) {
                 console.log(err)

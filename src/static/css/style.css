@@ -58,6 +58,12 @@ body {
     text-align: center;
 }
 
+.google-button {
+    background: #df4930 !important;
+    color: #ffffff !important;
+    border-radius: 3px !important;
+}
+
 .element.style {
     width: 100%;
 }

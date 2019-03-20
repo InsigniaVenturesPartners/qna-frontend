@@ -6,7 +6,7 @@ import SessionForm from './session_form';
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: Boolean(state.session.currentUser),
+    loggedIn: Boolean(state.auth.currentUser),
     errors: state.errors.session
   }
 };

@@ -7,7 +7,7 @@ import { createQuestion } from '../../actions/question_actions';
 
 const mapStateToProps = (state) => {
   return {
-    user: state.session.currentUser
+    user: state.auth.currentUser
   }
 };
 
