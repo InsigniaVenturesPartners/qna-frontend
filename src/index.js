@@ -8,8 +8,10 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
 import App from './components/app';
 import reducers from './reducers'
-import GoogleAuthContainer from './components/google_auth_container'
+import GoogleAuthContainer from './components/auth_container'
 import Unauthorized from './components/unauthorized'
+
+import NavBarContainer from './components/nav_bar/nav_bar_container';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise, ReduxThunk)(createStore)
 
@@ -20,9 +22,10 @@ ReactDOM.render(
                 <Route path='/unauthorized'>
                     <IndexRoute component={Unauthorized} />
                 </Route>
+                <Route path="/" component={NavBarContainer} />
                 <Route path='/' component={App}>
 
                 </Route>
             </Route>
         </Router>
-    </Provider>, document.getElementById('root'));
+    </Provider>, document.querySelector('.container'));

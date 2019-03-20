@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 
 export const customStyles = {
     overlay : {
@@ -144,7 +144,10 @@ class CreateQuestionForm extends React.Component {
             style={cancelStyles}
             contentLabel="Example Modal"
           >
-          <p>You asked: <Link onClick={()=>this.closeModal("success")} to={`/questions/${this.state.asked_question.id}`}>{this.state.asked_question.body}</Link>
+          <p>You asked: 
+            {/*
+            <Link onClick={()=>this.closeModal("success")} to={`/questions/${this.state.asked_question.id}`}>{this.state.asked_question.body}</Link>
+            */}
           </p>
             <i className="fa fa-times" onClick={()=>this.closeModal("success")}/>
 

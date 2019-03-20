@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { customStyles, cancelStyles } from '../create_question_form/create_question_form';
 import QuestionSearchContainer from '../question_search/question_search_container';
 
 class NavBar extends React.Component {
   constructor(props) {
     super(props)
-
     this.state = {
       createModalIsOpen: false,
       successModalIsOpen: false,
@@ -19,6 +18,7 @@ class NavBar extends React.Component {
     this.setQuestion = this.setQuestion.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSuccessfulSubmit = this.handleSuccessfulSubmit.bind(this);
+        this.handleSignOut = this.handleSignOut.bind(this)
 
     this.openModal = this.openModal.bind(this);
     // this.afterOpenModal = this.afterOpenModal.bind(this);
@@ -62,6 +62,11 @@ class NavBar extends React.Component {
     this.openModal("success")
   }
 
+  handleSignOut(e) {
+    e.preventDefault()
+    this.props.logOut()
+  }
+
   render() {
     const {user} = this.props
     return(
@@ -69,9 +74,9 @@ class NavBar extends React.Component {
         <ul className="nav-bar-items">
           <li id="nav-logo">
             {/*
-            TODO 
+            TODO
 
-           
+
             <Link to={`/`}>
               Insignia Community
             </Link>
@@ -79,18 +84,22 @@ class NavBar extends React.Component {
             </li>
 
           <li id="nav-home" className={"nav-link " + (this.props.location.pathname == "/" ? "highlighted" : "")} >
+          {/*
             <Link to={`/`}>
               <i className="fa fa-home"></i>
               Home
             </Link>
+            */}
           </li>
 
 
 
           <li id="nav-answer" className={"nav-link " + (this.props.location.pathname == "/questions" ? "highlighted" : "")}>
+            {/*
             <Link to={`/questions`}>
               <i className="fa fa-pencil-square-o"></i>
               Answer</Link>
+              */}
           </li>
 
           <li id="nav-search">
@@ -98,7 +107,9 @@ class NavBar extends React.Component {
             </li>
 
           <li id="nav-pro-pic">
-            <img src={user.pro_pic_url} alt={`${user.name}'s picture`}  className="nav-pro-pic" />
+
+            <img src="" alt=""  className="nav-pro-pic" />
+          }
           </li>
 
 
@@ -106,13 +117,7 @@ class NavBar extends React.Component {
 
 
           <li id="nav-sign-out">
-            <form name="sign-out" method="POST" action="/users/sign_out">
-              <input type="hidden" name="_method" value="delete"/>
-              <label>
-                <input name="submit2" type="submit" id="submit2" value="Sign out" />
-              </label>
-            </form>
-
+            <button id="sign-out" onClick={this.handleSignOut}>Sign Out</button>
             </li>
         </ul>
         <Modal
@@ -124,8 +129,8 @@ class NavBar extends React.Component {
         >
 
         <div className="question-modal-header">
-          <img src={user.pro_pic_url} alt={`${user.name}'s picture`}  className="user-pro-pic" />
-          <span id="modal-username">{user.name} asks</span>
+          <img src="" alt=""  className="user-pro-pic" />
+          <span id="modal-username">User asks</span>
         </div>
 
 
@@ -147,7 +152,10 @@ class NavBar extends React.Component {
             style={cancelStyles}
             contentLabel="Example Modal"
           >
-          <p>You asked: <Link onClick={()=>this.closeModal("success")} to={`/questions/${this.state.asked_question.id}`}>{this.state.asked_question.body}</Link>
+          <p>You asked:
+          {/*
+            <Link onClick={()=>this.closeModal("success")} to={`/questions/${this.state.asked_question.id}`}>{this.state.asked_question.body}</Link>
+          */}
           </p>
             <i className="fa fa-times" onClick={()=>this.closeModal("success")}/>
 

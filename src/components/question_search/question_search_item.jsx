@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
 
 
@@ -41,7 +41,8 @@ const QuestionSearchItem = ({ question, handleChange, updateFilter, query}) => {
     const boldedBody = body.split(" ").map((word)=>processWord(word,keywords)).join(" ");
     return (
       <li className="question-list-item">
-        <Link to={`/questions/${question.id}`}  onClick={()=>updateFilter("query", "")}>{ReactHtmlParser(boldedBody)}</Link>
+        {/*<Link to={`/questions/${question.id}`}  onClick={()=>updateFilter("query", "")}>{ReactHtmlParser(boldedBody)}</Link>*/
+        }
         <i className="fa fa-angle-right" ></i>
       </li>
     );
