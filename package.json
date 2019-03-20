@@ -31,6 +31,8 @@
     "react-ga": "^2.5.6",
     "react-google-login": "^5.0.2",
     "react-google-picker": "^0.0.8",
+    "react-html-parser": "^2.0.2",
+    "react-modal": "^3.8.1",
     "react-moment": "^0.6.9",
     "react-redux": "^5.1.1",
     "react-render-html": "^0.6.0",
