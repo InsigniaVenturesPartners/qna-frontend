@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   requestComments: (type, commentableId) => dispatch(fetchComments(type, commentableId)),
-  voteOnComment: (id, type) => dispatch(voteOnComment(id, type))
+  // voteOnComment: (id, type) => dispatch(voteOnComment(id, type))
 });
 
 export default connect(

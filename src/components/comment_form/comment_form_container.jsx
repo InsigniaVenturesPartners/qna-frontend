@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import CommentForm from './comment_form';
 
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 // Actions
 import { createComment } from '../../actions/comment_actions';
