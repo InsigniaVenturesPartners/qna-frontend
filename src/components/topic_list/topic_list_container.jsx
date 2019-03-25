@@ -9,7 +9,7 @@ import { fetchAnswers } from '../../actions/answer_actions';
 import { voteOnAnswer } from '../../actions/answer_actions';
 
 const mapStateToProps = state => ({
-  topics: allTopics(state),
+  // topics: allTopics(state),
   questions: allQuestions(state),
   errors: state.errors
 });

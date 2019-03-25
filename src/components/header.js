@@ -9,6 +9,7 @@ import { Link } from 'react-router'
 import { customStyles, cancelStyles } from './create_question_form/create_question_form'
 import QuestionSearchContainer from './question_search/question_search_container'
 
+
 class Header extends React.Component {
   constructor(props) {
     super(props)
@@ -83,8 +84,8 @@ class Header extends React.Component {
             </Link>
           </li>
 
-          <li id="nav-answer" className={"nav-link " + (this.props.path == "/questions" ? "highlighted" : "")}>
-            <Link to={`/questions`}>
+          <li id="nav-answer" className={"nav-link " + (this.props.path == "/answer" ? "highlighted" : "")}>
+            <Link to={`/answer`}>
               <i className="fa fa-pencil-square-o"></i>
               Answer</Link>
           </li>

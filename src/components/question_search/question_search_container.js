@@ -5,7 +5,7 @@ import { asSortedArray } from '../../reducers/selectors';
 import QuestionSearch from './question_search';
 
 const mapStateToProps = state => ({
-  // questions: asSortedArray(state),
+  questions: state.questions,
   // query: state.filters.query
 });
 

@@ -1,34 +1,37 @@
+import { sendRequest } from './request_util'
+import { API_URL } from './constant'
+
 export const fetchTopics = data => {
-  // $.ajax({
-  //   method: 'GET',
-  //   url: 'api/topics',
-  //   data
-  // })
+  return sendRequest({
+    method: 'GET',
+    url: API_URL.GET_TOPICS,
+    data
+  })
 }
 
 export const fetchTopic = (id) => {
-  // $.ajax({
-  //   method: 'GET',
-  //   url: `api/topics/${id}`,
-  // })
+  return sendRequest({
+    method: 'GET',
+    url: `${API_URL.GET_TOPICS}/${id}`,
+  })
 }
 
 export const followTopic = (id) => {
-  // $.ajax({
-  //   method: 'POST',
-  //   url: `api/topics/follow`,
-  //   data: {
-  //     topic_id: id,
-  //   }
-  // })
+  return sendRequest({
+    method: 'POST',
+    url: API_URL.FOLLOW_TOPIC,
+    data: {
+      topic_id: id,
+    }
+  })
 }
 
 export const unfollowTopic = (id) => {
-  // $.ajax({
-  //   method: 'POST',
-  //   url: `api/topics/unfollow`,
-  //   data: {
-  //     topic_id: id,
-  //   }
-  // })
+  return sendRequest({
+    method: 'POST',
+    url: API_URL.UNFOLLOW_TOPIC,
+    data: {
+      topic_id: id,
+    }
+  })
 }
