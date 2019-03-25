@@ -1,12 +1,15 @@
+import { connect } from 'react-redux';
+
+import { createQuestion } from '../actions/question_actions';
+import { logOut } from '../actions';
+
 import React from 'react'
 import Modal from 'react-modal'
 import { Link } from 'react-router'
-import { customStyles, cancelStyles } from '../create_question_form/create_question_form'
-import QuestionSearchContainer from '../question_search/question_search_container'
-import '../../static/css/nav_bar.css';
-import { Dropdown, Menu, Container, Icon, Image } from 'semantic-ui-react'
+import { customStyles, cancelStyles } from './create_question_form/create_question_form'
+import QuestionSearchContainer from './question_search/question_search_container'
 
-class NavBar extends React.Component {
+class Header extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -92,7 +95,7 @@ class NavBar extends React.Component {
 
           <li id="nav-pro-pic">
             <Link to={`/profile`}>
-              <Image avatar src={user.pro_pic_url} />
+              <img src={user.pro_pic_url} alt={`${user.name}'s picture`}  className="nav-pro-pic" />
             </Link>
 
           </li>
@@ -149,4 +152,16 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+const mapStateToProps = (state) => ({
+	user: state.auth.currentUser
+});
+
+const mapDispatchToProps = dispatch => ({
+  createQuestion: (body) => dispatch(createQuestion(body)),
+  logOut: () => dispatch(logOut())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);

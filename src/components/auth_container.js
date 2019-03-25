@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
-import ReactGA from 'react-ga'
 // import { GOOGLE_ANALYTICS_TRACKING_ID } from '../util/constant'
 import { GoogleLogin } from 'react-google-login'
 import { ENV } from '../env/env'
@@ -13,15 +12,9 @@ class AuthContainer extends React.Component {
         this.handleSuccess = this.handleSuccess.bind(this);
     }
 
-    // componentDidMount() {
-    //     this.props.actionConfAndInit()
-    // }
-
-    componentWillUpdate () {
-        if (this.props.isLoggedIn) {
-            let gaUserId = this.props.currentUser.name.split(' ').join('') + '-' + this.props.currentUser.id
-            ReactGA.set({ userId: gaUserId })
-            ReactGA.pageview(window.location.pathname + window.location.search)
+    componentDidMount() {
+        if(!this.props.isLoggedIn) {
+            this.props.actionConfAndInit()
         }
     }
 
@@ -29,8 +22,8 @@ class AuthContainer extends React.Component {
         event.preventDefault();
     }
 
-    handleSuccess(response) {
-      this.props.loggedIn(response)
+    handleSuccess() {
+      this.props.loggedIn()
     }
 
     handleFailure(response) {
@@ -38,8 +31,10 @@ class AuthContainer extends React.Component {
     }
 
     render () {
-        if (this.props.isLoggedIn || sessionStorage.getItem('access_token')) {
+        if (this.props.isLoggedIn) {
             return this.props.children
+        } else if(sessionStorage.getItem('access_token')) {
+            return null;
         } else {
             return (
                 <div className="login-container d-flex justify-content-center align-items-center">
@@ -75,6 +70,7 @@ function mapStateToProps (state, ownProps) {
 }
 
 export default connect(mapStateToProps, {
-    loggedIn: actions.loggedIn
+    loggedIn: actions.loggedIn,
+    actionConfAndInit: actions.configAndInitialize
 })(AuthContainer)
 

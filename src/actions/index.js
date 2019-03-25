@@ -6,6 +6,7 @@ import { browserHistory } from 'react-router'
 
 import {
     APP_INIT,
+    APP_INIT_FAILURE,
     USER_LOGIN,
     USER_LOGIN_ERROR,
     USER_LOGIN_SUCCESS,
@@ -15,6 +16,42 @@ import {
 import { ENV } from '../env/env'
 import { API_URL } from '../util/constant'
 
+
+export function configAndInitialize () {
+  return function (dispatch) {
+    if(sessionStorage.getItem('access_token')) {
+
+      const script = document.createElement('script')
+      script.src = 'https://apis.google.com/js/api.js'
+
+      script.onerror = () => {
+        dispatch({ type: APP_INIT_FAILURE })
+      }
+      script.onload = () => {
+        gapi.load('auth2', () => {
+          gapi.auth2.init({
+            'clientId': ENV.GOOGLE_CLIENT_ID,
+            'scope': [
+              'email',
+              'profile',
+              'https://www.googleapis.com/auth/gmail.readonly',
+              'https://www.googleapis.com/auth/contacts.readonly',
+            ].join(' '),
+            'hosted_domain': 'insignia.vc',
+            'ux_mode': 'redirect',
+            'redirect_uri': ENV.WEB_ROOT_URL
+          }).then((googleAuth) => {
+            loggedIn()(dispatch)
+          })
+            .catch((error) => {
+              dispatch({ type: APP_INIT_FAILURE })
+            })
+        })
+      }
+      document.body.appendChild(script)
+    }
+  }
+}
 
 function getPostRequest (extra_params) {
     let params = {
@@ -55,10 +92,11 @@ export function logOut () {
     })
 }
 
-export function loggedIn (currentUser) {
+export function loggedIn () {
     return function (dispatch) {
         let googleAuth = gapi.auth2.getAuthInstance()
         if (googleAuth.isSignedIn.get() === true) {
+            let currentUser = googleAuth.currentUser.get()
             let currentUserProfile = currentUser.getBasicProfile()
 
             let idToken = currentUser.getAuthResponse().id_token
@@ -82,6 +120,7 @@ export function loggedIn (currentUser) {
             })
             .then(function (response) {
                 dispatch({ type: USER_LOGIN_SUCCESS, payload: response })
+
                 let user = response.data
                 if (!user.has_offline_access) {
                     return gapi.auth2.getAuthInstance().grantOfflineAccess({ prompt: 'consent' })
