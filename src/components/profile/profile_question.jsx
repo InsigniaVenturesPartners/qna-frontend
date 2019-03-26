@@ -8,6 +8,7 @@ import FollowTopicButtonContainer from '../follow_topic_button/follow_topic_butt
 import QuestionListItem from '../question_list/question_list_item'
 
 import { Container, Header } from 'semantic-ui-react';
+import ProfilePageContainer from './profile_page_container';
 
 class ProfileQuestion extends React.Component {
   constructor(props) {
@@ -20,9 +21,8 @@ class ProfileQuestion extends React.Component {
 
   render () {
     const { questions } = this.props;
-
     const questionItems = questions.map( question => (
-      <QuestionListItem key={ "question-" + question.id } question={question}/>
+      <QuestionListItem key={ "profile-question-" + question.id } question={question}/>
       )).reverse();
 
     const singleOrPluralText = questions.length <= 1 ? "Question" : "Questions"
@@ -33,6 +33,8 @@ class ProfileQuestion extends React.Component {
     }
 
     return (
+      <div>
+        <ProfilePageContainer/>
         <div id="questions-container">
           <Header as='h1'>{headerText}</Header>
 
@@ -40,6 +42,8 @@ class ProfileQuestion extends React.Component {
             {questionItems}
           </ul>
         </div>
+
+      </div>
     );
   }
 }

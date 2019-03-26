@@ -8,6 +8,7 @@ import TopicSearchContainer from '../topic_search/topic_search_container'
 import FollowTopicButtonContainer from '../follow_topic_button/follow_topic_button_container'
 
 import QuestionItemContainer from '../question/question_item_container'
+import ProfilePageContainer from './profile_page_container';
 
 
 class ProfileAnswer extends React.Component {
@@ -39,12 +40,15 @@ class ProfileAnswer extends React.Component {
     }
 
     return (
+      <div>
+        <ProfilePageContainer/>
       <div id="answers-container">
         <Header as='h1'>{headerText}</Header>
 
         <ul className="question-list">
           {questionItems}
         </ul>
+      </div>
       </div>
     );
   }

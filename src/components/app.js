@@ -14,6 +14,7 @@ const App = (props) => {
             <Header path={props.currentURL}/>
           </div>
           <FeedSidebarContainer/>
+
           <Container className='body'>
             {props.children}
           </Container>

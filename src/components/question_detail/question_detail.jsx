@@ -8,14 +8,14 @@ class QuestionDetail extends React.Component {
   }
 
   componentWillMount() {
-    this.props.requestQuestion(this.props.questionId);
+    this.props.requestQuestion(this.props.params.id);
     window.scrollTo(0, 0);
   }
 
   //need this to reload  questions if the search bar question link is clicked
   componentWillUpdate(nextProps) {
-    if (nextProps.questionId && this.props.questionId != nextProps.questionId) {
-      nextProps.requestQuestion(nextProps.questionId);
+    if (nextProps.question_id && this.props.question_id != nextProps.question_id) {
+      nextProps.requestQuestion(nextProps.question_id);
       window.scrollTo(0, 0);
     }
   }
@@ -23,7 +23,7 @@ class QuestionDetail extends React.Component {
 
 
   render() {
-    const {question, questionId, voteOnQuestion, followQuestion, unfollowQuestion} = this.props;
+    const {question, voteOnQuestion, followQuestion, unfollowQuestion} = this.props;
 
     if (Object.keys(question).length === 0) {
       return (<img src="https://image.ibb.co/iYo1yw/Screen_Shot_2017_09_28_at_6_43_28_PM.png" alt={`loading-image`}  className="loading-image" />)

@@ -5,12 +5,11 @@ import QuestionDetail from './question_detail';
 // Actions
 import { fetchQuestion, voteOnQuestion, followQuestion, unfollowQuestion } from '../../actions/question_actions';
 
-const mapStateToProps = (state, {match}) => {
-  const questionId = parseInt(match.params.questionId);
-  const question = selectQuestion(state, match.params.questionId);
+const mapStateToProps = (state, ownProps) => {
+  const question_id = parseInt(ownProps.params.id);
+  const question = selectQuestion(state, question_id);
   const tags = question.tags;
   return {
-    questionId,
     question,
     tags
   }
