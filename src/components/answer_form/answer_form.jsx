@@ -21,7 +21,7 @@ class AnswerForm extends React.Component {
  }
 
  submitAnswer() {
-   this.props.createAnswer(this.state.text, this.props.questionId).then(
+   this.props.createAnswer(this.state.text, this.props.question_id).then(
      this.successfulSubmit
    );
   }

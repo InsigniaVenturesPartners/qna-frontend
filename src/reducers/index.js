@@ -3,13 +3,17 @@ import { reducer as form } from 'redux-form'
 
 import app from './app_reducer'
 import auth from './auth_reducer'
+import topics from './topics_reducer'
 import questions from './questions_reducer'
+import answers from './answers_reducer'
 
 const rootReducer = combineReducers({
     app,
     form,
     auth,
-    questions
+    topics,
+    questions,
+    answers
 })
 
 export default rootReducer

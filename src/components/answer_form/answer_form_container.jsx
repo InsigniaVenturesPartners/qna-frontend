@@ -7,12 +7,12 @@ import { withRouter } from 'react-router';
 import { createAnswer } from '../../actions/answer_actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  questionId: ownProps.questionId,
+  question_id: ownProps.question_id,
   current_user: state.auth.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({
-  createAnswer: (body, questionId) => dispatch(createAnswer(body, questionId))
+  createAnswer: (body, question_id) => dispatch(createAnswer(body, question_id))
 });
 
 export default withRouter(connect(

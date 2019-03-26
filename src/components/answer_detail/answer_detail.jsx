@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 import AnswerVoteButtonContainer from '../answer_vote_button/answer_vote_button_container';
 

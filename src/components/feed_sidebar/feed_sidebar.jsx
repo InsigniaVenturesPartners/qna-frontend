@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link} from 'react-router';
 import TopicSearchContainer from '../topic_search/topic_search_container';
 
 
@@ -37,7 +37,7 @@ class FeedSidebar extends React.Component {
       ));
     return(
         <div className="feed-sidebar">
-          
+
           {/*
           <div className="feed-sidebar-header">
             <div className= "feed-sidebar-fixed">
@@ -47,7 +47,7 @@ class FeedSidebar extends React.Component {
             {this.topicSearch()}
           </div>
 
-          
+
 
           <ul className="sidebar-topic-list">
             {topicItems}

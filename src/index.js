@@ -14,7 +14,7 @@ import AuthContainer from './components/auth_container'
 import Unauthorized from './components/unauthorized'
 
 import NavBarContainer from './components/nav_bar/nav_bar_container';
-import TopicListContainer from './components/topic_list/topic_list_container';
+import HomeContainer from './components/home/home_container';
 import QuestionListContainer from './components/question_list/question_list_container';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise, ReduxThunk)(createStore)
@@ -27,7 +27,7 @@ ReactDOM.render(
                     <IndexRoute component={Unauthorized} />
                 </Route>
                 <Route path='/' component={App}>
-                <Route exact path="/" component={TopicListContainer} />
+                <IndexRoute component={HomeContainer} />
                 <Route exact path="/answer" component={QuestionListContainer} />
                 </Route>
             </Route>
