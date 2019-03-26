@@ -5,9 +5,9 @@ import AnswerDetail from './answer_detail';
 // Actions
 import { fetchAnswer, voteOnAnswer } from '../../actions/answer_actions';
 
-const mapStateToProps = (state, {match}) => {
-  const id = parseInt(match.params.answerId);
-  const answer = selectAnswer(state, match.params.answerId);
+const mapStateToProps = (state, ownProps) => {
+  const id = parseInt(ownProps.params.id);
+  const answer = selectAnswer(state, id);
   return {
     id,
     answer

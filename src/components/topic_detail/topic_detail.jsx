@@ -20,7 +20,6 @@ class TopicDetail extends React.Component {
   }
 
   render() {
-    debugger
     const {topic, topic_id} = this.props;
     if (Object.keys(topic).length === 0) {
       return (

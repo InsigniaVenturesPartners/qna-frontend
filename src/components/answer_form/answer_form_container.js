@@ -7,7 +7,7 @@ import { withRouter } from 'react-router';
 import { createAnswer } from '../../actions/answer_actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  question_id: ownProps.question_id,
+  questionId: ownProps.questionId,
   current_user: state.auth.currentUser
 });
 

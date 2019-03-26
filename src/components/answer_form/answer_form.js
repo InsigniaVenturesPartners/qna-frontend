@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ReactQuill from 'react-quill';
-
+import { browserHistory } from 'react-router'
 
 class AnswerForm extends React.Component {
   constructor(props) {
@@ -13,17 +13,17 @@ class AnswerForm extends React.Component {
   }
 
   handleChange(value) {
-   this.setState({ text: value })
- }
+    this.setState({ text: value })
+  }
 
- successfulSubmit({answer}) {
-   this.props.history.push(`/answers/${answer.id}`);
- }
+  successfulSubmit({answer}) {
+    browserHistory.push(`/answers/${answer.data.id}`);
+  }
 
- submitAnswer() {
-   this.props.createAnswer(this.state.text, this.props.question_id).then(
-     this.successfulSubmit
-   );
+  submitAnswer() {
+    this.props.createAnswer(this.state.text, this.props.questionId).then(
+      this.successfulSubmit
+    );
   }
 
   render () {
