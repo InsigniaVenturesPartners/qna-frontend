@@ -16,11 +16,22 @@ export const allQuestions = ({ questions }) => {
    return returnQuestions;
 };
 
+export const allProfileQuestions = ({ profile }) => {
+  if(!profile.hasOwnProperty("questions")) return []
+  const returnQuestions = Object.values(profile.questions) || [];
+  return returnQuestions;
+};
+
 export const allAnswers = ({ answers }) => {
    const returnAnswers = Object.values(answers) || [];
    return returnAnswers;
 };
 
+export const allProfileAnswers = ({ profile }) => {
+  if(!profile.hasOwnProperty("answers")) return []
+  const returnQuestions = Object.values(profile.answers) || [];
+  return returnQuestions;
+};
 
 export const selectQuestion = ({ questions }, id) => {
    const question = questions[id] || {};

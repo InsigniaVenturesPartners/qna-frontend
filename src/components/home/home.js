@@ -17,6 +17,7 @@ class Home extends React.Component {
 
     return(
       <div id="topics-container">
+
         <ul className="topic-list">
           {homeItems}
         </ul>

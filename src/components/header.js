@@ -9,6 +9,7 @@ import { Link } from 'react-router'
 import { customStyles, cancelStyles } from './create_question_form/create_question_form'
 import QuestionSearchContainer from './question_search/question_search_container'
 
+import '../static/css/nav_bar.css';
 
 class Header extends React.Component {
   constructor(props) {

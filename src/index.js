@@ -13,9 +13,12 @@ import reducers from './reducers'
 import AuthContainer from './components/auth_container'
 import Unauthorized from './components/unauthorized'
 
-import NavBarContainer from './components/nav_bar/nav_bar_container';
 import HomeContainer from './components/home/home_container';
 import QuestionListContainer from './components/question_list/question_list_container';
+import ProfilePageContainer from './components/profile/profile_page_container';
+import ProfileTopicContainer from './components/profile/profile_topic_container';
+import ProfileQuestionContainer from './components/profile/profile_question_container';
+import ProfileAnswerContainer from './components/profile/profile_answer_container';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise, ReduxThunk)(createStore)
 
@@ -29,6 +32,12 @@ ReactDOM.render(
                 <Route path='/' component={App}>
                 <IndexRoute component={HomeContainer} />
                 <Route exact path="/answer" component={QuestionListContainer} />
+                <Route path="/profile" component={ProfilePageContainer} />
+                <Route exact path="/profile" component={ProfileTopicContainer} />
+                <Route exact path="/profile/topics" component={ProfileTopicContainer} />
+                <Route exact path="/profile/questions" component={ProfileQuestionContainer} />
+                <Route exact path="/profile/answers" component={ProfileAnswerContainer} />
+
                 </Route>
             </Route>
         </Router>
