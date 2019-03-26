@@ -8,23 +8,20 @@ class TopicDetail extends React.Component {
   }
 
   componentWillMount() {
-    this.props.requestTopic(this.props.topicId);
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
   }
 
   //need this to reload if the topic sidebar link is clicked
   componentWillUpdate(nextProps) {
-    if (nextProps.topicId && this.props.topicId != nextProps.topicId) {
-      nextProps.requestTopic(nextProps.topicId);
+    if (nextProps.topic_id && this.props.topic_id != nextProps.topic_id) {
+      nextProps.requestTopic(nextProps.topic_id);
       window.scrollTo(0, 0);
     }
   }
 
-
-
-
   render() {
-    const {topic, topicId} = this.props;
+    debugger
+    const {topic, topic_id} = this.props;
     if (Object.keys(topic).length === 0) {
       return (
         <div id="topic-detail">
@@ -37,7 +34,7 @@ class TopicDetail extends React.Component {
           <div className="topic-detail-header">
           </div>
           <ul className="topic-detail-questions">
-            <TopicDetailItem key={ "topic-" + topic.id } topic={topic}/ >
+            <TopicDetailItem key={ "topic-" + topic.id } topic={topic}/>
           </ul>
         </div>
       );

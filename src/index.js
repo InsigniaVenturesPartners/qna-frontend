@@ -14,6 +14,7 @@ import AuthContainer from './components/auth_container'
 import Unauthorized from './components/unauthorized'
 
 import HomeContainer from './components/home/home_container';
+import TopicDetailContainer from './components/topic_detail/topic_detail_container';
 import QuestionListContainer from './components/question_list/question_list_container';
 import QuestionDetailContainer from './components/question_detail/question_detail_container';
 import ProfilePageContainer from './components/profile/profile_page_container';
@@ -34,7 +35,8 @@ ReactDOM.render(
                   <IndexRoute component={HomeContainer} />
                   <Route path="/answer" component={QuestionListContainer} />
 
-                  <Route path="/questions/:id" component={QuestionDetailContainer} />
+                  <Route path="topics/:id" component={TopicDetailContainer} />
+                  <Route path="questions/:id" component={QuestionDetailContainer} />
 
                   <Route path="profile">
                     <IndexRoute component={ProfileTopicContainer} />

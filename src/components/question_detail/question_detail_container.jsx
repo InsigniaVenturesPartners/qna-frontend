@@ -10,6 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   const question = selectQuestion(state, question_id);
   const tags = question.tags;
   return {
+    question_id,
     question,
     tags
   }
