@@ -1,7 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import {Link} from 'react-router';
 
 export const customStyles = {
     overlay : {
@@ -110,7 +108,7 @@ class CreateQuestionForm extends React.Component {
     return (
       <div className="greeting">
         <div className="greeting-header">
-          <img src={user.pro_pic_url} alt={`${user.name}'s picture`}  className="user-pro-pic" />
+          <img src={user.pro_pic_url} alt={`${user.name}`}  className="user-pro-pic" />
           <span>{user.name}</span>
         </div>
 
@@ -125,7 +123,7 @@ class CreateQuestionForm extends React.Component {
         >
 
         <div className="question-modal-header">
-          <img src={user.pro_pic_url} alt={`${user.name}'s picture`}  className="user-pro-pic" />
+          <img src={user.pro_pic_url} alt={`${user.name}`}  className="user-pro-pic" />
           <span id="modal-username">{user.name} asks</span>
         </div>
 

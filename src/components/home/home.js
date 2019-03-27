@@ -3,10 +3,6 @@ import React from 'react';
 import HomeItem from './home_item'
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentWillMount() {
     this.props.requestQuestions();
   }

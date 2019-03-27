@@ -102,7 +102,7 @@ class Header extends React.Component {
 
           <li id="nav-pro-pic">
             <Link to={`/profile`}>
-              <img src={user.pro_pic_url} alt={`${user.name}'s picture`}  className="nav-pro-pic" />
+              <img src={user.pro_pic_url} alt={`${user.name}'s`}  className="nav-pro-pic" />
             </Link>
 
           </li>

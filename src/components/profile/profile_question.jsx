@@ -1,20 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router'
-
-import AnswerItemContainer from '../answer_list/answer_item_container'
-import TopicSearchContainer from '../topic_search/topic_search_container'
-import FollowTopicButtonContainer from '../follow_topic_button/follow_topic_button_container'
 
 import QuestionListItem from '../question_list/question_list_item'
 
-import { Container, Header } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react';
 import ProfilePageContainer from './profile_page_container';
 
 class ProfileQuestion extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentWillMount() {
     this.props.requestQuestions();
   }

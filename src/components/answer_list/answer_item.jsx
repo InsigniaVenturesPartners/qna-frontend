@@ -19,7 +19,6 @@ class AnswerItem extends React.Component {
     this.props.requestAnswer(this.props.id);
   }
 
-
   componentWillReceiveProps(nextProps) {
     if(this.props.comments != nextProps.comments) {
       this.props.requestAnswer(this.props.id);

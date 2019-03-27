@@ -1,12 +1,7 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router';
-import TopicSearchContainer from '../topic_search/topic_search_container';
 
 class FeedSidebar extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentWillMount() {
     this.props.requestTopics();
   }
@@ -20,7 +15,7 @@ class FeedSidebar extends React.Component {
           <li key={ "topic-" + topic.id }>
             <Link to={`/topics/${topic.id}`}>
               <div className="feed-sidebar-topic-pic">
-                <img src={topic.pic_url} />
+                <img src={topic.pic_url} alt="topic-pic-url"/>
               </div>
               <div className="feed-sidebar-topic-label">
                 {topic.name}

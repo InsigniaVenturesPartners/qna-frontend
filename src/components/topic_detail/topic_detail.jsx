@@ -24,7 +24,7 @@ class TopicDetail extends React.Component {
     if (Object.keys(topic).length === 0) {
       return (
         <div id="topic-detail">
-          <img src="https://image.ibb.co/iYo1yw/Screen_Shot_2017_09_28_at_6_43_28_PM.png" className="loading-image" />
+          <img src="https://image.ibb.co/iYo1yw/Screen_Shot_2017_09_28_at_6_43_28_PM.png" alt="topic-detail" className="loading" />
         </div>
       )
     } else {

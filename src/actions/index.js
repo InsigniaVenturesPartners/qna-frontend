@@ -1,8 +1,5 @@
 /* global gapi */
 
-import _ from 'lodash'
-import axios from 'axios'
-
 import {
     APP_INIT_FAILURE,
     USER_LOGIN_ERROR,
@@ -65,11 +62,11 @@ export function loggedIn () {
             let currentUser = googleAuth.currentUser.get()
             let currentUserProfile = currentUser.getBasicProfile()
 
-            let idToken = currentUser.getAuthResponse().id_token
             sessionStorage.setItem('access_token', currentUser.getAuthResponse().access_token)
 
             const url = API_URL.CREATE_USER_SESSION
-            const request = sendRequest({
+
+            sendRequest({
                 method: 'post',
                 data: {
                     user: {
