@@ -82,6 +82,11 @@ export function loggedIn () {
                 url
             })
             .then(function (response) {
+                if(response.status === 403) {
+                  logOut ()
+                  return
+                }
+
                 dispatch({ type: USER_LOGIN_SUCCESS, payload: response })
 
                 let user = response.data
