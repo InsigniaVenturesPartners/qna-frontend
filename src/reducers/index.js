@@ -9,6 +9,8 @@ import answers from './answers_reducer'
 import comments from './comments_reducer'
 import profile from './profile_reducer'
 import detailTopic from './detail_topic_reducer'
+import filters from './filters_reducer'
+import searchQuestions from './search_questions_reducer'
 
 const rootReducer = combineReducers({
     app,
@@ -19,7 +21,9 @@ const rootReducer = combineReducers({
     questions,
     answers,
     comments,
-    profile
+    profile,
+    filters,
+    searchQuestions
 })
 
 export default rootReducer

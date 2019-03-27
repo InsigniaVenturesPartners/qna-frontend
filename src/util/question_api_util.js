@@ -5,7 +5,7 @@ export const fetchQuestions = (data) => {
   return sendRequest({
     method: 'GET',
     url: API_URL.GET_QUESTIONS,
-    data: data
+    params: data
   })
 }
 
@@ -27,7 +27,7 @@ export const createQuestion = (body, topics) => {
   return sendRequest({
     method: 'POST',
     url: API_URL.CREATE_QUESTION,
-    data: {
+    params: {
       question: {
         topics: topics,
         body
@@ -40,7 +40,7 @@ export const editQuestion = (body, question_id) => {
   return sendRequest({
     method: 'PATCH',
     url: `${API_URL.UPDATE_QUESTION}/${question_id}`,
-    data: {
+    params: {
       question: {
         body
       }
@@ -52,7 +52,7 @@ export const voteOnQuestion = (id, type) => {
   return sendRequest({
     method: 'POST',
     url: API_URL.VOTE_QUESTION,
-    data: {
+    params: {
       question_id: id,
       type
     }
@@ -63,7 +63,7 @@ export const followQuestion = (id) => {
   return sendRequest({
     method: 'POST',
     url: API_URL.FOLLOW_QUESTION,
-    data: {
+    params: {
       question_id: id,
     }
   })

@@ -13,11 +13,10 @@ class QuestionSearch extends React.Component{
   render() {
     const {questions, query, updateFilter} = this.props
     //fetch only 10 search results
-    // const fewerQuestions = questions.slice(0,10);
-
-    // fewerQuestions.map(question => (
-    //   <QuestionSearchItem question={question} updateFilter={updateFilter} query={query}/>
-    // ));
+    const fewerQuestions = questions.slice(0,10);
+    const QuestionItems = fewerQuestions.map(question => (
+      <QuestionSearchItem key={"question-search-item-" + question.id} question={question} updateFilter={updateFilter} query={query}/>
+    ));
 
     return (
       <div className="question-search">
@@ -28,12 +27,13 @@ class QuestionSearch extends React.Component{
         />
 
         <ul className="question-search-list">
-
+           {QuestionItems}
         </ul>
       </div>
     );
 
   }
 }
+
 
 export default QuestionSearch;

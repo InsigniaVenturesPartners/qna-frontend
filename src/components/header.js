@@ -5,10 +5,9 @@ import { Link } from 'react-router'
 
 import Checkbox from 'muicss/lib/react/checkbox';
 
-import { createQuestion } from '../actions/question_actions';
+import { createQuestion, fetchQuestions } from '../actions/question_actions';
 import { logOut } from '../actions';
-
-import { allTopics } from '../reducers/selectors';
+import { allTopics, allQuestions } from '../reducers/selectors';
 
 import { customStyles, cancelStyles } from './create_question_form/create_question_form'
 import QuestionSearchContainer from './question_search/question_search_container'
@@ -39,6 +38,7 @@ class Header extends React.Component {
 
 
   componentWillMount() {
+    this.props.requestQuestions();
     Modal.setAppElement('body');
   }
 
@@ -114,7 +114,7 @@ class Header extends React.Component {
 
           <li id="nav-search">
             <QuestionSearchContainer />
-            </li>
+          </li>
 
           <li id="nav-pro-pic">
             <Link to={`/profile`}>
@@ -185,11 +185,13 @@ class Header extends React.Component {
 
 const mapStateToProps = (state) => ({
 	topics: allTopics(state),
+  questions: allQuestions(state),
   user: state.auth.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({
   createQuestion: (body, topics) => dispatch(createQuestion(body, topics)),
+  requestQuestions: () => dispatch(fetchQuestions()),
   logOut: () => dispatch(logOut())
 });
 
