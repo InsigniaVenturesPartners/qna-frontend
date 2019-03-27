@@ -14,7 +14,7 @@ const TopicsReducer = (state = defaultState, action) => {
       return merge({},state,{[action.topic.data.id]: action.topic.data});
     case UPDATE_TOPIC:
       let oldState = merge({}, state);
-      oldState[action.topic.id] = action.topic;
+      oldState[action.topic.data.id] = action.topic.data;
       return oldState;
     default:
       return state;

@@ -6,7 +6,7 @@ import FollowTopicButtonContainer from '../follow_topic_button/follow_topic_butt
 class TopicDetailItem extends React.Component {
   render () {
     const { topic } = this.props;
-    const { id, name, description, num_followers, questionIds, followerIds, followed, pic_url} = topic;
+    const { id, name, description, questionIds, followerIds, followed, pic_url} = topic;
 
     let questionItems = questionIds.map(id => (
       <QuestionItemContainer
@@ -24,7 +24,7 @@ class TopicDetailItem extends React.Component {
       <div className="topic-detail-item">
         <div className="topic-header">
           <div className="topic-header-pic">
-            <img src={pic_url} alt={`${topic.name}'s picture`}  className="user-pro-pic" />
+            <img src={pic_url} alt={`${topic.name}`}  className="user-pro-pic" />
           </div>
           <h1>{name}</h1>
           <FollowTopicButtonContainer id={id} followerIds={followerIds} followed={followed}/>
