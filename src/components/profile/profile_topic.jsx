@@ -18,7 +18,7 @@ class ProfileTopic extends React.Component {
           <img src={topic.pic_url} alt="topic-pic-url"/>
         </div>
         <Link to={`/topics/${topic.id}`}>{topic.name}</Link>
-        <FollowTopicButtonContainer id={topic.id} followerIds={topic.follower_ids} followed={topic.followed}/>
+        <FollowTopicButtonContainer id={topic.id} followerIds={topic.followerIds} followed={topic.followed}/>
       </li>
     ));
 

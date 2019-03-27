@@ -1,13 +1,8 @@
 import React from 'react'
-import {Link} from 'react-router'
 
 import QuestionItemContainer from '../question/question_item_container'
 
 class HomeItem extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render () {
     const { questions } = this.props;
 
@@ -31,16 +26,7 @@ class HomeItem extends React.Component {
 
     return (
       <li className="topic-list-item">
-        {/*
-          TODO
-        <h2 className="topic-header"><Link to={`/topics/${topic.id}`} >{name}</Link></h2>
-        */}
         <ul className="question-list">{questionItems}</ul>
-        {/*
-        <footer className="topic-list-item-footer">
-          <Link to={`/topics/${topic.id}`} >View All</Link>
-        </footer>
-        */}
       </li>
     );
 

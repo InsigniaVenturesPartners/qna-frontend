@@ -10,9 +10,9 @@ class TopicDetailItem extends React.Component {
 
   render () {
     const { topic } = this.props;
-    const { id, name, description, num_followers, question_ids, follower_ids, followed} = topic;
+    const { id, name, description, num_followers, questionIds, followerIds, followed, pic_url} = topic;
 
-    let questionItems = question_ids.map(id => (
+    let questionItems = questionIds.map(id => (
       <QuestionItemContainer
         key={ "question-" + id }
         id={ id }
@@ -27,11 +27,12 @@ class TopicDetailItem extends React.Component {
     return (
       <div className="topic-detail-item">
         <div className="topic-header">
-          <h1>{name}</h1>
-          <h2>{description}</h2>
-
-          <FollowTopicButtonContainer id={id} followerIds={follower_ids} followed={followed}/>
+          <div className="topic-header-pic">
+            <img src={pic_url} alt={`${topic.name}'s picture`}  className="user-pro-pic" />
           </div>
+          <h1>{name}</h1>
+          <FollowTopicButtonContainer id={id} followerIds={followerIds} followed={followed}/>
+        </div>
 
         <ul className="question-list">{questionItems}</ul>
       </div>

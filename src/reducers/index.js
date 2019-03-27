@@ -8,12 +8,14 @@ import questions from './questions_reducer'
 import answers from './answers_reducer'
 import comments from './comments_reducer'
 import profile from './profile_reducer'
+import detailTopic from './detail_topic_reducer'
 
 const rootReducer = combineReducers({
     app,
     form,
     auth,
     topics,
+    detailTopic,
     questions,
     answers,
     comments,
@@ -21,19 +23,3 @@ const rootReducer = combineReducers({
 })
 
 export default rootReducer
-
-
-
-// const RootReducer = combineReducers({
-//   session: SessionReducer,
-//   auth: AuthReducer,
-//   errors: ErrorsReducer,
-//   topics: TopicsReducer,
-//   detailTopic: DetailTopicReducer,
-//   questions: QuestionsReducer,
-//   answers: AnswersReducer,
-//   filters: FiltersReducer,
-//   searchQuestions: SearchQuestionsReducer,
-//   searchTopics: SearchTopicsReducer,
-//   comments: CommentsReducer,
-// });

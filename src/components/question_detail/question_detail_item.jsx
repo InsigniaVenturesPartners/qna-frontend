@@ -14,7 +14,7 @@ class QuestionDetailItem extends React.Component {
 
   render () {
     const { question, voteOnQuestion } = this.props;
-    const { id, body, follower_ids, answer_ids, tags, followed, downvoted} = question;
+    const { id, body, followerIds, answer_ids, tags, followed, downvoted} = question;
     const answerItems = answer_ids.map(id => (
       <AnswerItemContainer
         key={ "answer-" + id }
@@ -38,7 +38,7 @@ class QuestionDetailItem extends React.Component {
           <ul className="tags">
             {tagItems}
           </ul>
-            <QuestionButtonsContainer id={id} followerIds={follower_ids} followed={followed} downvoted={downvoted}/>
+            <QuestionButtonsContainer id={id} followerIds={followerIds} followed={followed} downvoted={downvoted}/>
 
           <ul className="answer-list">{answerItems}</ul>
         </div>

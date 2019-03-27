@@ -1,6 +1,7 @@
 import React from 'react';
 
 import HomeItem from './home_item'
+import CreateQuestionFormContainer from '../create_question_form/create_question_form_container';
 
 class Home extends React.Component {
   componentWillMount() {
@@ -12,10 +13,13 @@ class Home extends React.Component {
     const homeItems = <HomeItem key={ "question-1" } questions={questions}/>
 
     return(
+      <div>
+      <CreateQuestionFormContainer/>
       <div id="topics-container">
         <ul className="topic-list">
           {homeItems}
         </ul>
+      </div>
       </div>
     );
   }
