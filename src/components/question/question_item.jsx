@@ -20,9 +20,9 @@ class QuestionItem extends React.Component {
       return(<img src="https://image.ibb.co/iYo1yw/Screen_Shot_2017_09_28_at_6_43_28_PM.png" alt={`loading-image`}  className="loading-image" />);
     } else {
 
-      const { id, body, author, answer_ids} = question;
+      const { id, body, author, answerIds} = question;
 
-      const answerItems = answer_ids.map( id => (
+      const answerItems = answerIds.map( id => (
         <AnswerItemContainer key={ "answer-" + id } id={id}/>
       ));
 

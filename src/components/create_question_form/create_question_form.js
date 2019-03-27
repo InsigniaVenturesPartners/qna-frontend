@@ -58,7 +58,7 @@ class CreateQuestionForm extends React.Component {
       createModalIsOpen: false,
       successModalIsOpen: false,
       question: "",
-      asked_question: {},
+      askedQuestion: {},
       checkedTopics: new Map()
     };
 
@@ -102,13 +102,13 @@ class CreateQuestionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createQuestion(this.state.question, Array.from(this.state.checkedTopics.keys())).then(
-      question => this.handleSuccessfulSubmit(question.question)
+      question => this.handleSuccessfulSubmit(question.question.data)
     );
   }
 
   handleSuccessfulSubmit(question) {
     this.closeModal("create");
-    this.setState({asked_question: question, question: "", checkedTopics: new Map()})
+    this.setState({askedQuestion: question, question: "", checkedTopics: new Map()})
     this.openModal("success")
   }
 
@@ -177,7 +177,7 @@ class CreateQuestionForm extends React.Component {
             style={cancelStyles}
             contentLabel="Example Modal"
           >
-          <p>You asked: <Link onClick={()=>this.closeModal("success")} to={`/questions/${this.state.asked_question.id}`}>{this.state.asked_question.body}</Link>
+          <p>You asked: <Link onClick={()=>this.closeModal("success")} to={`/questions/${this.state.askedQuestion.id}`}>{this.state.askedQuestion.body}</Link>
           </p>
             <i className="fa fa-times" onClick={()=>this.closeModal("success")}/>
 

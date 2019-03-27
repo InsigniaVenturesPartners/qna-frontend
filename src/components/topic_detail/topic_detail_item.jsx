@@ -4,10 +4,6 @@ import QuestionItemContainer from '../question/question_item_container';
 import FollowTopicButtonContainer from '../follow_topic_button/follow_topic_button_container'
 
 class TopicDetailItem extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render () {
     const { topic } = this.props;
     const { id, name, description, num_followers, questionIds, followerIds, followed, pic_url} = topic;

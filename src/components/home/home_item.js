@@ -7,8 +7,8 @@ class HomeItem extends React.Component {
     const { questions } = this.props;
 
     const questionItems = questions.sort(function(a, b) {
-      const answerCount1 =  a.answer_ids.length;
-      const answerCount2 =  b.answer_ids.length;
+      const answerCount1 =  a.answerIds.length;
+      const answerCount2 =  b.answerIds.length;
 
       if((answerCount1>0 && answerCount2>0) || (answerCount1===0 && answerCount2===0)) {
         return new Date(b.updated_at) - new Date(a.updated_at);

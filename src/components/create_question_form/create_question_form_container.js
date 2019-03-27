@@ -5,12 +5,10 @@ import QuestionForm from './create_question_form';
 // Actions
 import { createQuestion } from '../../actions/question_actions';
 
-const mapStateToProps = (state) => {
-  return {
+const mapStateToProps = (state) => ({
     topics: allTopics(state),
     user: state.auth.currentUser
-  }
-};
+});
 
 const mapDispatchToProps = dispatch => ({
   createQuestion: (body, topics) => dispatch(createQuestion(body, topics))

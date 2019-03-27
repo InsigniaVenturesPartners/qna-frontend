@@ -14,8 +14,8 @@ class QuestionDetailItem extends React.Component {
 
   render () {
     const { question, voteOnQuestion } = this.props;
-    const { id, body, followerIds, answer_ids, tags, followed, downvoted} = question;
-    const answerItems = answer_ids.map(id => (
+    const { id, body, followerIds, answerIds, tags, followed, downvoted} = question;
+    const answerItems = answerIds.map(id => (
       <AnswerItemContainer
         key={ "answer-" + id }
         id={id}
