@@ -12,7 +12,6 @@ class QuestionDetailItem extends React.Component {
     super(props)
   }
 
-
   render () {
     const { question, voteOnQuestion } = this.props;
     const { id, body, follower_ids, answer_ids, tags, followed, downvoted} = question;
@@ -32,7 +31,7 @@ class QuestionDetailItem extends React.Component {
         </div>
       );
     } else {
-      const tagItems = tags.map(tag => <Link to={`/topics/${tag[0]}`} >{tag[1]}</Link>);
+      const tagItems = tags.map(tag => <Link key={ "topic-tag-" + tag[0] } to={`/topics/${tag[0]}`} >{tag[1]}</Link>);
       return (
         <div className="question-detail-item">
           <h2 className="question-header">{body}</h2>

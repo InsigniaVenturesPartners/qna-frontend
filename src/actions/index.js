@@ -2,7 +2,6 @@
 
 import _ from 'lodash'
 import axios from 'axios'
-import { browserHistory } from 'react-router'
 
 import {
     APP_INIT_FAILURE,

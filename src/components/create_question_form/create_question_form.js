@@ -65,6 +65,10 @@ class CreateQuestionForm extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
+  componentWillMount() {
+    Modal.setAppElement('body');
+  }
+
   openModal(modalName) {
     let desiredState = {};
     desiredState[modalName+"ModalIsOpen"] = true;

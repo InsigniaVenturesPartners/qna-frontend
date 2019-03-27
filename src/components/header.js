@@ -31,6 +31,11 @@ class Header extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
+
+  componentWillMount() {
+    Modal.setAppElement('body');
+  }
+
   openModal(modalName) {
     let desiredState = {question: ""};
     desiredState[modalName+"ModalIsOpen"] = true;

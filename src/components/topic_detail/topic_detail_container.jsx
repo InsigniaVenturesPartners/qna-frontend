@@ -9,7 +9,6 @@ const mapStateToProps = (state, ownProps) => {
   const topicId = parseInt(ownProps.params.id, 10);
   const topic = selectTopic(state, topicId);
   return {
-    topicId,
     topic
   }
 };

@@ -13,18 +13,18 @@ class TopicDetail extends React.Component {
 
   //need this to reload if the topic sidebar link is clicked
   componentWillUpdate(nextProps) {
-    if (nextProps.topicId && this.props.topicId != nextProps.topicId) {
+    if (nextProps.topicId && this.props.topicId !== nextProps.topicId) {
       nextProps.requestTopic(nextProps.topicId);
       window.scrollTo(0, 0);
     }
   }
 
   render() {
-    const {topic, topicId} = this.props;
+    const {topic} = this.props;
     if (Object.keys(topic).length === 0) {
       return (
         <div id="topic-detail">
-          <img src="https://image.ibb.co/iYo1yw/Screen_Shot_2017_09_28_at_6_43_28_PM.png" alt={`loading-image`}  className="loading-image" />
+          <img src="https://image.ibb.co/iYo1yw/Screen_Shot_2017_09_28_at_6_43_28_PM.png" className="loading-image" />
         </div>
       )
     } else {
