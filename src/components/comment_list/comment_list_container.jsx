@@ -3,7 +3,7 @@ import { selectComments } from '../../reducers/selectors';
 import CommentList from './comment_list';
 
 // Actions
-import { fetchComments } from '../../actions/comment_actions';
+import { fetchComments, voteOnComment } from '../../actions/comment_actions';
 
 
 const mapStateToProps = (state, ownProps) => ({
@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   requestComments: (type, commentableId) => dispatch(fetchComments(type, commentableId)),
-  // voteOnComment: (id, type) => dispatch(voteOnComment(id, type))
+  voteOnComment: (id, type) => dispatch(voteOnComment(id, type))
 });
 
 export default connect(

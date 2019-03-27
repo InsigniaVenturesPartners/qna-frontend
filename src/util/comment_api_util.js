@@ -1,13 +1,11 @@
-import { sendRequest } from './request_util'
+import { sendRequest, fetchRequest } from './request_util'
 import { API_URL } from './constant'
 
 export const fetchComments = (id, type) => {
-  return sendRequest({
-    method: 'GET',
-    url: API_URL.GET_COMMENTS,
-    data: {
-      id,
-      type
+  return fetchRequest(API_URL.GET_COMMENTS, {
+    params: {
+      id: id,
+      type: type
     }
   })
 };

@@ -2,11 +2,11 @@ import _ from 'lodash'
 import axios from 'axios'
 import { browserHistory } from 'react-router'
 
-export function sendRequest (extra_params) {
-    let params = {
+export function sendRequest (params) {
+    let headers = {
         headers: { 'Authorization': `Bearer ${sessionStorage.getItem('access_token')}` }
     }
-    return axios(_.merge(params, extra_params))
+    return axios(_.merge(headers, params))
         .catch((err) => {
             if (err.response && err.response.status === 401) {
                 browserHistory.push('/unauthorized')
@@ -23,6 +23,19 @@ export function sendRequest (extra_params) {
 
 export function getRequest (url) {
     return axios.get(url, { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('access_token')}` } })
+        .catch((err) => {
+            if (err.response && err.response.status === 401) {
+                browserHistory.push('/unauthorized')
+            }
+            throw err
+        })
+}
+
+export function fetchRequest (url, params) {
+    let headers = {
+        headers: { 'Authorization': `Bearer ${sessionStorage.getItem('access_token')}` }
+    }
+    return axios.get(url, _.merge(headers, params))
         .catch((err) => {
             if (err.response && err.response.status === 401) {
                 browserHistory.push('/unauthorized')

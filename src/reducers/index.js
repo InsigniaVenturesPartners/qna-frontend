@@ -6,6 +6,7 @@ import auth from './auth_reducer'
 import topics from './topics_reducer'
 import questions from './questions_reducer'
 import answers from './answers_reducer'
+import comments from './comments_reducer'
 import profile from './profile_reducer'
 
 const rootReducer = combineReducers({
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     topics,
     questions,
     answers,
+    comments,
     profile
 })
 

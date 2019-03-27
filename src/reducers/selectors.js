@@ -44,10 +44,10 @@ export const selectAnswer = ({ answers }, id) => {
 };
 
 export const selectComments = ({ comments }, commentIds) => {
-   // const allComments = Object.values(getState().comments)
-   // const selectComments = allComments.filter((comment)=>commentIds.includes(comment.id))
+   const allComments = Object.values(comments)
+   const selectComments = allComments.filter((comment)=>commentIds.includes(comment.id))
 
-   // return selectComments
+   return selectComments
 };
 
 //I filter here, since I might not have the query elsewhere
