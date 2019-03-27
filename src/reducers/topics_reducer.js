@@ -5,12 +5,13 @@ import {RECEIVE_TOPICS, RECEIVE_TOPIC, UPDATE_TOPIC} from '../actions/topic_acti
 const defaultState = {};
 
 const TopicsReducer = (state = defaultState, action) => {
+
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_TOPICS:
-      return action.topics;
+      return action.topics.data;
     case RECEIVE_TOPIC:
-      return merge({},state,{[action.topic.id]: action.topic});
+      return merge({},state,{[action.topic.data.id]: action.topic.data});
     case UPDATE_TOPIC:
       let oldState = merge({}, state);
       oldState[action.topic.id] = action.topic;

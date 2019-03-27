@@ -1,16 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { Container } from 'semantic-ui-react'
 
-import { connect } from 'react-redux'
+import Header from './header'
+import FeedSidebarContainer from './feed_sidebar/feed_sidebar_container';
 
-import '../static/css/style.css';
+import '../static/css/style.css'
 
 const App = (props) => {
     return (
         <div>
-            <Container className='body'>
-                {props.children}
-            </Container>
+          <div className='top-header'>
+            <Header path={props.currentURL}/>
+          </div>
+          <FeedSidebarContainer/>
+
+          <Container className='body'>
+            {props.children}
+          </Container>
         </div>
     );
 };

@@ -1,15 +1,14 @@
-//fetches comments for different types of entities
+import { sendRequest, fetchRequest } from './request_util'
+import { API_URL } from './constant'
 
-export const fetchComments = (id, type) => (
-  $.ajax({
-    method: 'GET',
-    url: 'api/comments',
-    data: {
-      id,
-      type
+export const fetchComments = (id, type) => {
+  return fetchRequest(API_URL.GET_COMMENTS, {
+    params: {
+      id: id,
+      type: type
     }
   })
-);
+};
 
 // export const fetchQuestionComments = (question_id) => (
 //   $.ajax({
@@ -42,33 +41,33 @@ export const fetchComments = (id, type) => (
 //   })
 // );
 
-export const fetchComment = (id) => (
-  $.ajax({
+export const fetchComment = (id) => {
+  return sendRequest({
     method: 'GET',
-    url: `api/comments/${id}`,
+    url: `${API_URL.GET_COMMENTS}/${id}`,
   })
-);
+};
 
 
-export const voteOnComment = (id, type) => (
-  $.ajax({
+export const voteOnComment = (id, type) => {
+  return sendRequest({
     method: 'POST',
-    url: `api/comments/vote`,
+    url: API_URL.VOTE_COMMENT,
     data: {
       comment_id: id,
       type
     }
   })
-);
+};
 
-export const createComment = (commentableClass, commentableId, body) => (
-  $.ajax({
+export const createComment = (commentableClass, commentableId, body) => {
+  return sendRequest({
     method: 'POST',
-    url: `api/comments`,
+    url: API_URL.CREATE_COMMENT,
     data: {
       commentableClass,
       commentableId,
       body
     }
   })
-);
+};

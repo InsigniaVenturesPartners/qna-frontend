@@ -1,6 +1,6 @@
 import React from 'react';
 import AnswerItemContainer from '../answer_list/answer_item_container';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 class QuestionItem extends React.Component {
   constructor(props) {

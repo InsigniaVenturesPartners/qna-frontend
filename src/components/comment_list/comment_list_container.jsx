@@ -3,7 +3,7 @@ import { selectComments } from '../../reducers/selectors';
 import CommentList from './comment_list';
 
 // Actions
-import { fetchComments } from '../../actions/comment_actions';
+import { fetchComments, voteOnComment } from '../../actions/comment_actions';
 
 
 const mapStateToProps = (state, ownProps) => ({

@@ -14,7 +14,6 @@ class QuestionSearch extends React.Component{
     const {questions, query, updateFilter} = this.props
     //fetch only 10 search results
     // const fewerQuestions = questions.slice(0,10);
-    // const QuestionItems;
 
     // fewerQuestions.map(question => (
     //   <QuestionSearchItem question={question} updateFilter={updateFilter} query={query}/>
@@ -36,6 +35,5 @@ class QuestionSearch extends React.Component{
 
   }
 }
-
 
 export default QuestionSearch;

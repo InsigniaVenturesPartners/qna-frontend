@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import AnswerForm from './answer_form';
 
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 // Actions
 import { createAnswer } from '../../actions/answer_actions';
@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createAnswer: (body, questionId) => dispatch(createAnswer(body, questionId))
+  createAnswer: (body, question_id) => dispatch(createAnswer(body, question_id))
 });
 
 export default withRouter(connect(

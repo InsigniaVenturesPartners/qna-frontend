@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link} from 'react-router';
 
 import AnswerItemContainer from '../answer_list/answer_item_container';
 import AnswerFormContainer from '../answer_form/answer_form_container';

@@ -1,11 +1,17 @@
+import { connect } from 'react-redux';
+
+import { createQuestion } from '../actions/question_actions';
+import { logOut } from '../actions';
+
 import React from 'react'
 import Modal from 'react-modal'
 import { Link } from 'react-router'
-import { customStyles, cancelStyles } from '../create_question_form/create_question_form'
-import QuestionSearchContainer from '../question_search/question_search_container'
-import '../../static/css/nav_bar.css';
+import { customStyles, cancelStyles } from './create_question_form/create_question_form'
+import QuestionSearchContainer from './question_search/question_search_container'
 
-class NavBar extends React.Component {
+import '../static/css/nav_bar.css';
+
+class Header extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -68,20 +74,19 @@ class NavBar extends React.Component {
   }
 
   render() {
-    debugger;
     const {user} = this.props
     return(
       <div className="nav-bar">
         <ul className="nav-bar-items">
-          <li id="nav-home" className={"nav-link " + (this.props.location.pathname == "/" ? "highlighted" : "")} >
+          <li id="nav-home" className={"nav-link " + (this.props.path == "/" ? "highlighted" : "")} >
             <Link to={`/`}>
               <i className="fa fa-home"></i>
               Home
             </Link>
           </li>
 
-          <li id="nav-answer" className={"nav-link " + (this.props.location.pathname == "/questions" ? "highlighted" : "")}>
-            <Link to={`/questions`}>
+          <li id="nav-answer" className={"nav-link " + (this.props.path == "/answer" ? "highlighted" : "")}>
+            <Link to={`/answer`}>
               <i className="fa fa-pencil-square-o"></i>
               Answer</Link>
           </li>
@@ -91,12 +96,10 @@ class NavBar extends React.Component {
             </li>
 
           <li id="nav-pro-pic">
-          {/*
             <Link to={`/profile`}>
               <img src={user.pro_pic_url} alt={`${user.name}'s picture`}  className="nav-pro-pic" />
             </Link>
 
-            */}
           </li>
           <li id="nav-ask-question"><button onClick={()=>this.openModal("create")}>Ask Question</button></li>
 
@@ -151,4 +154,16 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+const mapStateToProps = (state) => ({
+	user: state.auth.currentUser
+});
+
+const mapDispatchToProps = dispatch => ({
+  createQuestion: (body) => dispatch(createQuestion(body)),
+  logOut: () => dispatch(logOut())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);

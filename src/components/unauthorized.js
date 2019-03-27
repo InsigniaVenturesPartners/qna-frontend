@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import { Container, Grid, Header, Icon,} from 'semantic-ui-react';
+import React, { Component } from 'react'
+import { Container, Grid, Header, Icon,} from 'semantic-ui-react'
 import {connect} from 'react-redux'
-import * as actions from '../actions';
-import {browserHistory} from 'react-router';
+import {browserHistory} from 'react-router'
 
 
 class Unauthorized extends Component {

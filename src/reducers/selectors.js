@@ -16,11 +16,22 @@ export const allQuestions = ({ questions }) => {
    return returnQuestions;
 };
 
+export const allProfileQuestions = ({ profile }) => {
+  if(!profile.hasOwnProperty("questions")) return []
+  const returnQuestions = Object.values(profile.questions) || [];
+  return returnQuestions;
+};
+
 export const allAnswers = ({ answers }) => {
    const returnAnswers = Object.values(answers) || [];
    return returnAnswers;
 };
 
+export const allProfileAnswers = ({ profile }) => {
+  if(!profile.hasOwnProperty("answers")) return []
+  const returnQuestions = Object.values(profile.answers) || [];
+  return returnQuestions;
+};
 
 export const selectQuestion = ({ questions }, id) => {
    const question = questions[id] || {};
@@ -33,10 +44,10 @@ export const selectAnswer = ({ answers }, id) => {
 };
 
 export const selectComments = ({ comments }, commentIds) => {
-   // const allComments = Object.values(getState().comments)
-   // const selectComments = allComments.filter((comment)=>commentIds.includes(comment.id))
+   const allComments = Object.values(comments)
+   const selectComments = allComments.filter((comment)=>commentIds.includes(comment.id))
 
-   // return selectComments
+   return selectComments
 };
 
 //I filter here, since I might not have the query elsewhere
