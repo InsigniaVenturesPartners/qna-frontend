@@ -42,7 +42,7 @@ class AnswerItem extends React.Component {
     if (Object.keys(answer).length === 0) {
       return(<img src="https://image.ibb.co/iYo1yw/Screen_Shot_2017_09_28_at_6_43_28_PM.png" alt={`loading-image`}  className="loading-image" />);
     } else {
-      const {id, body, author, time_posted_ago, upvoter_ids, upvoted, downvoted, comment_ids} = answer;
+      const {id, body, author, time_posted_ago, upvoterIds, upvoted, downvoted, commentIds} = answer;
       let answerBody;
 
       if(downvoted) {
@@ -50,7 +50,6 @@ class AnswerItem extends React.Component {
       } else {
         answerBody = ReactHtmlParser(body)
       }
-
 
       return (
         <li className="answer-item">
@@ -63,10 +62,10 @@ class AnswerItem extends React.Component {
           </div>
           <div className="answer-body">{answerBody}</div>
           <div className="answer-buttons">
-            <AnswerVoteButtonContainer id={id} upvoterIds={upvoter_ids} upvoted={upvoted} downvoted={downvoted}/>
-            <button className="comments-button" onClick={()=>this.setState({commentOpen: !this.state.commentOpen})}>Comments {comment_ids.length}</button>
+            <AnswerVoteButtonContainer id={id} upvoterIds={upvoterIds} upvoted={upvoted} downvoted={downvoted}/>
+            <button className="comments-button" onClick={()=>this.setState({commentOpen: !this.state.commentOpen})}>Comments {commentIds.length}</button>
           </div>
-          {this.comments(id, comment_ids)}
+          {this.comments(id, commentIds)}
         </li>
       );
     }

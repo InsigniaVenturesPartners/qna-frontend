@@ -1,5 +1,3 @@
-import merge from 'lodash/merge';
-
 import {RECEIVE_PROFILE_QUESTIONS, RECEIVE_PROFILE_ANSWERS} from '../actions/profile_actions.js'
 
 const defaultState = {};

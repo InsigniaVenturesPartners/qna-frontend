@@ -6,10 +6,10 @@ import TopicDetail from './topic_detail';
 import { fetchTopic } from '../../actions/topic_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  const topic_id = parseInt(ownProps.params.id);
-  const topic = selectTopic(state, topic_id);
+  const topicId = parseInt(ownProps.params.id, 10);
+  const topic = selectTopic(state, topicId);
   return {
-    topic_id,
+    topicId,
     topic
   }
 };

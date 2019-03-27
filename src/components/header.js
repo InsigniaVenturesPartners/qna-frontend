@@ -78,14 +78,14 @@ class Header extends React.Component {
     return(
       <div className="nav-bar">
         <ul className="nav-bar-items">
-          <li id="nav-home" className={"nav-link " + (this.props.path == "/" ? "highlighted" : "")} >
+          <li id="nav-home" className={"nav-link " + (this.props.path === "/" ? "highlighted" : "")} >
             <Link to={`/`}>
               <i className="fa fa-home"></i>
               Home
             </Link>
           </li>
 
-          <li id="nav-answer" className={"nav-link " + (this.props.path == "/answer" ? "highlighted" : "")}>
+          <li id="nav-answer" className={"nav-link " + (this.props.path === "/answer" ? "highlighted" : "")}>
             <Link to={`/answer`}>
               <i className="fa fa-pencil-square-o"></i>
               Answer</Link>

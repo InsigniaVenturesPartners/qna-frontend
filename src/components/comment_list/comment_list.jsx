@@ -16,7 +16,8 @@ class CommentList extends React.Component {
 
     const commentItems = comments.map( comment => (
       <CommentListItem key={ "comment-" + comment.id } comment={comment} voteOnComment={voteOnComment} />
-      ))
+    ))
+
     return(
       <div id="comments-container">
         <ul className="comment-list">

@@ -21,10 +21,8 @@ class TopicDetailItem extends React.Component {
     );
 
     if(questionItems.length === 0) {
-      questionItems = [<div className="no-topic-questions">No questions have been written for this topic yet </div>];
+      questionItems = <div className="no-topic-questions">No questions have been written for this topic yet </div>;
     }
-
-
 
     return (
       <div className="topic-detail-item">

@@ -40,8 +40,6 @@ class AnswerVoteButton extends React.Component {
     }
   }
 
-
-
   render() {
     let upvoteText = 'Upvote';
     let downvoteText = 'Downvote';

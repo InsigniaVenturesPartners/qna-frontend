@@ -14,7 +14,7 @@ const AnswersReducer = (state = defaultState, action) => {
       return merge({},state,{[action.answer.data.id]: action.answer.data});
     case UPDATE_ANSWER:
       let oldState = merge({}, state);
-      oldState[action.answer.id] = action.answer;
+      oldState[action.answer.data.id] = action.answer.data;
       return oldState;
     default:
       return state;

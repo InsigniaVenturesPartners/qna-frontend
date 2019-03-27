@@ -13,7 +13,7 @@ const CommentsReducer = (state = defaultState, action) => {
       return merge({},state,{[action.comment.data.id]: action.comment.data});
     case UPDATE_COMMENT:
       let oldState = merge({}, state);
-      oldState[action.comment.id] = action.comment;
+      oldState[action.comment.data.id] = action.comment.data;
       return oldState;
     default:
       return state;

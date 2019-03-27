@@ -5,17 +5,14 @@ import axios from 'axios'
 import { browserHistory } from 'react-router'
 
 import {
-    APP_INIT,
     APP_INIT_FAILURE,
-    USER_LOGIN,
     USER_LOGIN_ERROR,
-    USER_LOGIN_SUCCESS,
-    USER_GET_ALL
+    USER_LOGIN_SUCCESS
 } from './types'
 
 import { ENV } from '../env/env'
 import { API_URL } from '../util/constant'
-
+import { sendRequest } from '../util/request_util'
 
 export function configAndInitialize () {
   return function (dispatch) {
@@ -53,36 +50,6 @@ export function configAndInitialize () {
   }
 }
 
-function getPostRequest (extra_params) {
-    let params = {
-        method: 'post',
-        headers: { 'Authorization': `Bearer ${sessionStorage.getItem('access_token')}` }
-    }
-    return axios(_.merge(params, extra_params))
-        .catch((err) => {
-            if (err.response && err.response.status === 401) {
-                browserHistory.push('/unauthorized')
-            }
-            if (err.response && err.response.status === 400) {
-                return { status: err.response.status, data: err.response.data }
-            }
-            if (err.response) {
-                return { status: err.response.status, data: { 'content': [err.response.data] } }
-            }
-            return { status: 0, data: { 'content': ['Unknown Error'] } }
-        })
-}
-
-function getRequest (url) {
-    return axios.get(url, { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('access_token')}` } })
-        .catch((err) => {
-            if (err.response && err.response.status === 401) {
-                browserHistory.push('/unauthorized')
-            }
-            throw err
-        })
-}
-
 export function logOut () {
     var auth2 = gapi.auth2.getAuthInstance()
 
@@ -103,7 +70,7 @@ export function loggedIn () {
             sessionStorage.setItem('access_token', currentUser.getAuthResponse().access_token)
 
             const url = API_URL.CREATE_USER_SESSION
-            const request = getPostRequest({
+            const request = sendRequest({
                 method: 'post',
                 data: {
                     user: {
@@ -126,7 +93,7 @@ export function loggedIn () {
                     return gapi.auth2.getAuthInstance().grantOfflineAccess({ prompt: 'consent' })
                         .then((auth) => {
                             const url = API_URL.GOOGLE_USER_AUTH
-                            return getPostRequest({
+                            return sendRequest({
                                 method: 'post',
                                 data: {
                                     code: auth.code

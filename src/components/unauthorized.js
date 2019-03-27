@@ -7,7 +7,7 @@ import {browserHistory} from 'react-router'
 class Unauthorized extends Component {
 
     shouldComponentUpdate(nextProps, nextState){
-        if (this.props.current_user.access_token !== nextProps.current_user.access_token) {
+        if (this.props.currentUser.access_token !== nextProps.currentUser.access_token) {
             browserHistory.goBack();
             return true;
         }
@@ -42,7 +42,7 @@ class Unauthorized extends Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        current_user: state.auth.currentUser,
+        currentUser: state.auth.currentUser,
     };
 }
 
