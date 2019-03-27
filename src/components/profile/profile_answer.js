@@ -1,7 +1,6 @@
 import React from 'react'
 import { Header } from 'semantic-ui-react';
 
-import FollowTopicButtonContainer from '../follow_topic_button/follow_topic_button_container'
 import QuestionItemContainer from '../question/question_item_container'
 import ProfilePageContainer from './profile_page_container';
 

@@ -46,8 +46,8 @@ class QuestionButtons extends React.Component {
 
 
   render() {
-    let followText = this.state.followed ? "Follow" : "Following Question";
-    let downvoteText = this.state.downvoted ? "Downvote" : "Downvoted";
+    let followText = this.state.followed ? "Following Question" : "Follow";
+    let downvoteText = this.state.downvoted ? "Downvoted" : "Downvote";
 
     return(
       <div className="question-buttons">

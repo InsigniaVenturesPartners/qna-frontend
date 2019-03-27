@@ -3,10 +3,6 @@ import React from 'react';
 import TopicDetailItem from './topic_detail_item'
 
 class TopicDetail extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentWillMount() {
     this.props.requestTopic(this.props.topicId);
     window.scrollTo(0, 0)

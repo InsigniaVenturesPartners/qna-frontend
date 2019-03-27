@@ -8,12 +8,8 @@ import QuestionButtonsContainer from '../question_buttons/question_buttons_conta
 
 
 class QuestionDetailItem extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render () {
-    const { question, voteOnQuestion } = this.props;
+    const { question } = this.props;
     const { id, body, followerIds, answerIds, tags, followed, downvoted} = question;
     const answerItems = answerIds.map(id => (
       <AnswerItemContainer

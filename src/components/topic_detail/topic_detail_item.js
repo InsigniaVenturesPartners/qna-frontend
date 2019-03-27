@@ -6,7 +6,7 @@ import FollowTopicButtonContainer from '../follow_topic_button/follow_topic_butt
 class TopicDetailItem extends React.Component {
   render () {
     const { topic } = this.props;
-    const { id, name, description, questionIds, followerIds, followed, pic_url} = topic;
+    const { id, name, questionIds, followerIds, followed, pic_url} = topic;
 
     let questionItems = questionIds.map(id => (
       <QuestionItemContainer
