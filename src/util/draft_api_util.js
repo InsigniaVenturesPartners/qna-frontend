@@ -15,7 +15,7 @@ export const saveDraft = (body, question_id) => (
   return sendRequest({
     method: 'POST',
     url: API_URL.CREATE_DRAFT,
-    params: {
+    data: {
       draft: {
         body
       },

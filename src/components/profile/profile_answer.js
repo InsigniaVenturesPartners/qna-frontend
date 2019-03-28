@@ -23,11 +23,6 @@ class ProfileAnswer extends React.Component {
     const singleOrPluralText = answers.length <= 1 ? "Answer" : `Answers`
     const headerText = `${answers.length} ${singleOrPluralText}`
 
-
-    if(answers.length === 0) {
-       return null
-    }
-
     return (
       <div>
         <ProfilePageContainer/>

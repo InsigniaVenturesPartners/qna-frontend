@@ -1,9 +1,9 @@
 import React from 'react';
 
-
 import QuestionSearchInput from './question_search_input';
 import QuestionSearchItem from './question_search_item';
 
+import '../../static/css/question_search.css';
 
 class QuestionSearch extends React.Component{
   constructor(props) {

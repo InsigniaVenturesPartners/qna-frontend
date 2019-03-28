@@ -1,11 +1,11 @@
 import { sendRequest } from './request_util'
 import { API_URL } from './constant'
 
-export const fetchQuestions = (data) => {
+export const fetchQuestions = (params) => {
   return sendRequest({
     method: 'GET',
     url: API_URL.GET_QUESTIONS,
-    params: data
+    params
   })
 }
 
@@ -27,7 +27,7 @@ export const createQuestion = (body, topics) => {
   return sendRequest({
     method: 'POST',
     url: API_URL.CREATE_QUESTION,
-    params: {
+    data: {
       question: {
         topics: topics,
         body
@@ -40,7 +40,7 @@ export const editQuestion = (body, question_id) => {
   return sendRequest({
     method: 'PATCH',
     url: `${API_URL.UPDATE_QUESTION}/${question_id}`,
-    params: {
+    data: {
       question: {
         body
       }
@@ -52,7 +52,7 @@ export const voteOnQuestion = (id, type) => {
   return sendRequest({
     method: 'POST',
     url: API_URL.VOTE_QUESTION,
-    params: {
+    data: {
       question_id: id,
       type
     }
@@ -63,7 +63,7 @@ export const followQuestion = (id) => {
   return sendRequest({
     method: 'POST',
     url: API_URL.FOLLOW_QUESTION,
-    params: {
+    data: {
       question_id: id,
     }
   })

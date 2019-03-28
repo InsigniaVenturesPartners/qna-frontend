@@ -19,10 +19,6 @@ class ProfileQuestion extends React.Component {
     const singleOrPluralText = questions.length <= 1 ? "Question" : "Questions"
     const headerText = `${questions.length} ${singleOrPluralText}`
 
-    if(questions.length === 0) {
-      return null
-    }
-
     return (
       <div>
         <ProfilePageContainer/>

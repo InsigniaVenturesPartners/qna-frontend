@@ -10,6 +10,7 @@ import '../static/css/style.css'
 const App = (props) => {
     return (
         <div>
+          <div className="ribbon ribbon-main">BETA</div>
           <div className='top-header'>
             <Header path={props.currentURL}/>
           </div>

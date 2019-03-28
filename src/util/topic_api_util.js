@@ -20,7 +20,7 @@ export const followTopic = (id) => {
   return sendRequest({
     method: 'POST',
     url: API_URL.FOLLOW_TOPIC,
-    params: {
+    data: {
       topic_id: id,
     }
   })
@@ -30,7 +30,7 @@ export const unfollowTopic = (id) => {
   return sendRequest({
     method: 'POST',
     url: API_URL.UNFOLLOW_TOPIC,
-    params: {
+    data: {
       topic_id: id,
     }
   })

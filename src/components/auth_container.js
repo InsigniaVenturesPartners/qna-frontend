@@ -37,6 +37,7 @@ class AuthContainer extends React.Component {
     } else {
       return (
         <div className="login-container d-flex justify-content-center align-items-center">
+          <div className="ribbon ribbon-main">BETA</div>
           <div className="login-form">
             <div className="login-header">
               <h1>Insignia Community</h1>

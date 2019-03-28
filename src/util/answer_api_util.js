@@ -29,7 +29,7 @@ export const voteOnAnswer = (id, type) => {
   return sendRequest({
     method: 'POST',
     url: API_URL.VOTE_ANSWER,
-    params: {
+    data: {
       answer_id: id,
       type
     }
@@ -40,7 +40,7 @@ export const createAnswer = (body, question_id) => {
   return sendRequest({
     method: 'POST',
     url: API_URL.CREATE_ANSWER,
-    params: {
+    data: {
       answer: {
         body
       },
