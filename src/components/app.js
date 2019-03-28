@@ -9,14 +9,13 @@ import '../static/css/style.css'
 
 const App = (props) => {
     return (
-        <div>
+        <div className="app-container">
           <div className="ribbon ribbon-main">BETA</div>
-          <div className='top-header'>
-            <Header path={props.currentURL}/>
-          </div>
+
+          <Header path={props.currentURL}/>
           <FeedSidebarContainer/>
 
-          <Container className='body'>
+          <Container className="body">
             {props.children}
           </Container>
         </div>

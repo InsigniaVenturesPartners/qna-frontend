@@ -2,6 +2,11 @@ import React from 'react';
 
 import QuestionListItem from './question_list_item'
 
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import '../../static/css/question_list.css';
+
 class QuestionList extends React.Component {
   componentWillMount() {
     this.props.requestQuestions();
@@ -16,8 +21,11 @@ class QuestionList extends React.Component {
         <QuestionListItem key={ "question-" + question.id } question={question}/>
       )).reverse();
       return(
-        <div id="questions-container">
-          <h1><i className="fa fa-star" ></i> Top Questions for You</h1>
+        <div className="questions-container">
+          <h1>
+            <FontAwesomeIcon icon={faStar} className="highlight"  />
+            Top Questions for You
+          </h1>
           <ul className="question-list">
             {questionItems}
           </ul>
