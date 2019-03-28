@@ -1,20 +1,20 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import React from 'react'
 import Modal from 'react-modal'
 import { Link } from 'react-router'
 
-import Checkbox from 'muicss/lib/react/checkbox';
+import Checkbox from 'muicss/lib/react/checkbox'
 import { Button } from 'semantic-ui-react'
 
-import { createQuestion, fetchQuestions } from '../actions/question_actions';
+import { createQuestion, fetchQuestions } from '../actions/question_actions'
 import { logOut } from '../actions';
-import { allTopics, allQuestions } from '../reducers/selectors';
+import { allTopics, allQuestions } from '../reducers/selectors'
 
 import { customStyles, cancelStyles } from './create_question_form/create_question_form'
 import QuestionSearchContainer from './question_search/question_search_container'
 
-import { faHome, faEdit, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faEdit, faTimes } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import '../static/css/header.css';
 

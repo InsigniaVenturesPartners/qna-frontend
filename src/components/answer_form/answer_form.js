@@ -1,19 +1,56 @@
-import React from 'react';
-
-import ReactQuill from 'react-quill';
+import React from 'react'
 import { browserHistory } from 'react-router'
+import { connect } from 'react-redux'
+import ReactQuill from 'react-quill'
+import Autolinker from 'autolinker'
+
+import QuestionEditContainer from '../question/question_edit_form_container';
+import { Button } from 'semantic-ui-react'
 
 class AnswerForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { text: '', open: false };
+    this.state = { text: '', open: false, isDraft: props.isDraft, timePostedAgo: '' };
     this.handleChange = this.handleChange.bind(this);
     this.submitAnswer = this.submitAnswer.bind(this);
     this.successfulSubmit = this.successfulSubmit.bind(this);
+    this.customLinkReplace = this.customLinkReplace.bind(this)
+    this.openAnswerForm = this.openAnswerForm.bind(this)
+  }
+
+  componentWillMount() {
+
+  }
+
+  getDraft() {
+    if(this.props.isDraft) {
+      this.props.fetchQuestionDraft(this.props.questionId).then(response => {
+        const draft = response.draft
+        this.setState({ text: draft.body, timePostedAgo: draft.time_posted_ago })
+      });
+    }
   }
 
   handleChange(value) {
-    this.setState({ text: value })
+   const newValue = Autolinker.link(value, {
+    stripPrefix: false,
+    stripTrailingSlash: false,
+    replaceFn: this.customLinkReplace.bind(this, value)
+   })
+   this.setState({ text: newValue, })
+  }
+
+  customLinkReplace (value, match) {
+    const offset = match.getOffset()
+    const length = match.getAnchorText().length
+    const whitespaceIdx = value[offset + length]
+    // Generate link when user adds space after typing the URL
+    return (/\s+/.test(whitespaceIdx))
+  }
+
+  openAnswerForm() {
+    this.getDraft()
+    this.setState({open: true})
   }
 
   successfulSubmit({answer}) {
@@ -26,15 +63,32 @@ class AnswerForm extends React.Component {
     );
   }
 
+  submitDraft() {
+    this.props.saveDraft(this.state.text, this.props.questionId)
+    this.setState({open: false, isDraft: true})
+  }
+
   render () {
+    const { questionId, body, authorId, isDraft } = this.props
+    const author = this.props.currentUser;
+    const editButton = authorId === author.id ? <QuestionEditContainer questionId={questionId} body={body}/> : null;
+    const answerButtonText = this.state.isDraft ? "Edit Draft" : "Answer";
+    const lastSavedDraft = this.state.isDraft ? <p className="draft-time-posted">(Last saved {this.state.timePostedAgo})</p>  : '';
+
     if (this.state.open) {
-      const author = this.props.currentUser;
       return (
         <div className="answer-form-container">
-          <button className="write-answer-button" onClick={()=>this.setState({open: true})}>Answer</button>
+          {/* TODO
+          <div className="answer-form-button">
+            <Button basic color="orange"  onClick={()=>this.setState({open: true})}>
+              {answerButtonText}
+            </Button>
+            {editButton}
+          </div>
+          */}
           <div className="answer-form">
             <div className="answer-header">
-              <img src={author.pro_pic_url} alt={`${author.name}`}  className="answerer-pro-pic" />
+              <img src={author.pro_pic_url} alt={`${author.name}'s picture`}  className="answerer-pro-pic" />
               <div className="answer-details">
                 <h1>{author.name}</h1>
               </div>
@@ -45,7 +99,14 @@ class AnswerForm extends React.Component {
                         placeholder={"Write your answer"}/>
 
             <div className="answer-form-footer">
-              <button className="submit-button" onClick={()=>this.submitAnswer()}>Submit</button>
+              <Button color="orange" className="submit-button" onClick={()=>this.submitAnswer()}>
+                Submit
+              </Button>
+              {/* TODO
+                <button id="answer-save-draft" className="draft-link-button" onClick={()=>this.submitDraft()}>Save Draft</button>
+
+              */}
+              {lastSavedDraft}
             </div>
           </div>
         </div>
@@ -53,14 +114,20 @@ class AnswerForm extends React.Component {
       );
     } else {
       return (
-        <button className="write-answer-button" onClick={()=>this.setState({open: true})}>Answer</button>
+        <div className="answer-form-button">
+
+          <Button basic color="orange" className="write-answer-button" onClick={this.openAnswerForm}>
+            {answerButtonText}
+          </Button>
+
+
+          {editButton}
+        </div>
+
       );
     }
-
   }
-
 }
-
 
 const modules = {
   toolbar: [
@@ -70,5 +137,6 @@ const modules = {
     ["image", "link"] // misc
   ]
 };
+
 
 export default AnswerForm;

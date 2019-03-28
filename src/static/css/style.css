@@ -39,7 +39,7 @@ h5 {
     font-size: 18px;
 }
 a {
-    color: #0099ff;
+    color: #444444;
     margin: 0;
     padding: 0;
     vertical-align: baseline;
@@ -270,4 +270,9 @@ div.well {
       display: initial;
     }
   }
+}
+
+.upvote-button:hover, .write-answer-button:hover, .submit-button:hover, .follow-button:hover, .edit-answer-button:hover {
+  border: 1px solid #f2711c;
+  color: #f2711c;
 }

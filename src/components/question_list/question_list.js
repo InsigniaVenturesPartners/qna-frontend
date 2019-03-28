@@ -26,9 +26,9 @@ class QuestionList extends React.Component {
             <FontAwesomeIcon icon={faStar} className="highlight"  />
             Top Questions for You
           </h1>
-          <ul className="question-list">
+          <div className="question-list">
             {questionItems}
-          </ul>
+          </div>
         </div>
       );
 
