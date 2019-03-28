@@ -2,11 +2,11 @@ import _ from 'lodash'
 import axios from 'axios'
 import { browserHistory } from 'react-router'
 
-export function sendRequest (params) {
-    let headers = {
+export function sendRequest (extra_params) {
+    let params = {
         headers: { 'Authorization': `Bearer ${sessionStorage.getItem('access_token')}` }
     }
-    return axios(_.merge(headers, params))
+    return axios(_.merge(params, extra_params))
         .catch((err) => {
             if (err.response && err.response.status === 401) {
                 browserHistory.push('/unauthorized')

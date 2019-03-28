@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
-import { selectTopic } from '../../reducers/selectors';
+import { selectDetailTopic } from '../../reducers/selectors';
 import TopicDetail from './topic_detail';
 
 // Actions
 import { fetchTopic } from '../../actions/topic_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  const topic_id = parseInt(ownProps.params.id);
-  const topic = selectTopic(state, topic_id);
+  const topicId = parseInt(ownProps.params.id, 10);
+  const topic = selectDetailTopic(state, topicId);
   return {
-    topic_id,
+    topicId,
     topic
   }
 };

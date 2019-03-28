@@ -8,15 +8,10 @@ import QuestionButtonsContainer from '../question_buttons/question_buttons_conta
 
 
 class QuestionDetailItem extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-
   render () {
-    const { question, voteOnQuestion } = this.props;
-    const { id, body, follower_ids, answer_ids, tags, followed, downvoted} = question;
-    const answerItems = answer_ids.map(id => (
+    const { question } = this.props;
+    const { id, body, followerIds, answerIds, tags, followed, downvoted} = question;
+    const answerItems = answerIds.map(id => (
       <AnswerItemContainer
         key={ "answer-" + id }
         id={id}
@@ -32,14 +27,14 @@ class QuestionDetailItem extends React.Component {
         </div>
       );
     } else {
-      const tagItems = tags.map(tag => <Link to={`/topics/${tag[0]}`} >{tag[1]}</Link>);
+      const tagItems = tags.map(tag => <Link key={ "topic-tag-" + tag[0] } to={`/topics/${tag[0]}`} >{tag[1]}</Link>);
       return (
         <div className="question-detail-item">
           <h2 className="question-header">{body}</h2>
           <ul className="tags">
             {tagItems}
           </ul>
-            <QuestionButtonsContainer id={id} followerIds={follower_ids} followed={followed} downvoted={downvoted}/>
+            <QuestionButtonsContainer id={id} followerIds={followerIds} followed={followed} downvoted={downvoted}/>
 
           <ul className="answer-list">{answerItems}</ul>
         </div>

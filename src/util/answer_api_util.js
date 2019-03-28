@@ -5,7 +5,7 @@ export const fetchQuestionAnswers = (question_id) => {
   return sendRequest({
     method: 'GET',
     url: API_URL.GET_ANSWERS,
-    data: {
+    params: {
       question_id
     }
   })
@@ -29,7 +29,7 @@ export const voteOnAnswer = (id, type) => {
   return sendRequest({
     method: 'POST',
     url: API_URL.VOTE_ANSWER,
-    data: {
+    params: {
       answer_id: id,
       type
     }
@@ -40,7 +40,7 @@ export const createAnswer = (body, question_id) => {
   return sendRequest({
     method: 'POST',
     url: API_URL.CREATE_ANSWER,
-    data: {
+    params: {
       answer: {
         body
       },

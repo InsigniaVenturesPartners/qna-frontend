@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import {USER_LOGIN_SUCCESS} from '../actions/types';
 
 export default function (state = { isLoggedIn: false, currentUser: {} }, action) {

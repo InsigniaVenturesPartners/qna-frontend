@@ -25,7 +25,7 @@ export const API_URL = {
     VOTE_ANSWER: `${ROOT_API}/api/v1/answers/vote`,
 
     GET_COMMENTS: `${ROOT_API}/api/v1/comments`,
-    CREATE_COMMENT: `${ROOT_API}/api/v1/answers`,
+    CREATE_COMMENT: `${ROOT_API}/api/v1/comments`,
     VOTE_COMMENT: `${ROOT_API}/api/v1/comments/vote`,
 
     GET_DRAFTS: `${ROOT_API}/api/v1/drafts`,

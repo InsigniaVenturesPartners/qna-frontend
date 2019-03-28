@@ -1,34 +1,45 @@
 import { connect } from 'react-redux';
-
-import { createQuestion } from '../actions/question_actions';
-import { logOut } from '../actions';
-
 import React from 'react'
 import Modal from 'react-modal'
 import { Link } from 'react-router'
+
+import Checkbox from 'muicss/lib/react/checkbox';
+
+import { createQuestion, fetchQuestions } from '../actions/question_actions';
+import { logOut } from '../actions';
+import { allTopics, allQuestions } from '../reducers/selectors';
+
 import { customStyles, cancelStyles } from './create_question_form/create_question_form'
 import QuestionSearchContainer from './question_search/question_search_container'
 
 import '../static/css/nav_bar.css';
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       createModalIsOpen: false,
       successModalIsOpen: false,
       question: "",
-      asked_question: {}
+      askedQuestion: {},
+      checkedTopics: new Map()
     };
 
     this.setQuestion = this.setQuestion.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSuccessfulSubmit = this.handleSuccessfulSubmit.bind(this);
-        this.handleSignOut = this.handleSignOut.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSignOut = this.handleSignOut.bind(this)
 
     this.openModal = this.openModal.bind(this);
-    // this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+  }
+
+
+  componentWillMount() {
+    this.props.requestQuestions();
+    Modal.setAppElement('body');
   }
 
   openModal(modalName) {
@@ -57,15 +68,21 @@ class Header extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createQuestion(this.state.question).then(
-      question => this.handleSuccessfulSubmit(question.question)
+    this.props.createQuestion(this.state.question, Array.from(this.state.checkedTopics.keys())).then(
+      question => this.handleSuccessfulSubmit(question.question.data)
     );
   }
 
   handleSuccessfulSubmit(question) {
     this.closeModal("create");
-    this.setState({asked_question: question, question: ""})
+    this.setState({askedQuestion: question, question: "", checkedTopics: new Map()})
     this.openModal("success")
+  }
+
+  handleChange(e) {
+    const item = e.target.name;
+    const isChecked = e.target.checked;
+    this.setState(prevState => ({ checkedItems: prevState.checkedTopics.set(item, isChecked) }));
   }
 
   handleSignOut(e) {
@@ -74,18 +91,22 @@ class Header extends React.Component {
   }
 
   render() {
-    const {user} = this.props
+    const {user, topics} = this.props
+    const topicItems = topics.map( topic => (
+          <Checkbox key={"checkbox-topic-" + topic.id} name={topic.name} label={topic.name} checked={this.state.checkedTopics.get(topic.name)} onChange={this.handleChange}/>
+        ));
+
     return(
       <div className="nav-bar">
         <ul className="nav-bar-items">
-          <li id="nav-home" className={"nav-link " + (this.props.path == "/" ? "highlighted" : "")} >
+          <li id="nav-home" className={"nav-link " + (this.props.path === "/" ? "highlighted" : "")} >
             <Link to={`/`}>
               <i className="fa fa-home"></i>
               Home
             </Link>
           </li>
 
-          <li id="nav-answer" className={"nav-link " + (this.props.path == "/answer" ? "highlighted" : "")}>
+          <li id="nav-answer" className={"nav-link " + (this.props.path === "/answer" ? "highlighted" : "")}>
             <Link to={`/answer`}>
               <i className="fa fa-pencil-square-o"></i>
               Answer</Link>
@@ -93,11 +114,11 @@ class Header extends React.Component {
 
           <li id="nav-search">
             <QuestionSearchContainer />
-            </li>
+          </li>
 
           <li id="nav-pro-pic">
             <Link to={`/profile`}>
-              <img src={user.pro_pic_url} alt={`${user.name}'s picture`}  className="nav-pro-pic" />
+              <img src={user.pro_pic_url} alt={`${user.name}'s`}  className="nav-pro-pic" />
             </Link>
 
           </li>
@@ -116,18 +137,29 @@ class Header extends React.Component {
           contentLabel="Example Modal"
         >
 
-        <div className="question-modal-header">
-          <img src="" alt=""  className="user-pro-pic" />
-          <span id="modal-username">User asks</span>
-        </div>
+          <div className="question-modal-header">
+            <img src={user.pro_pic_url} alt={`${user.name}`}  className="user-pro-pic" />
+            <span id="modal-username">{user.name} asks</span>
+          </div>
 
 
-        <input onChange={this.setQuestion} placeholder="What is your question?" value={this.state.question}/>
+          <input onChange={this.setQuestion} placeholder="What is your question?" value={this.state.question} autoFocus={true}/>
+          <div className="topic-modal">
+            <div className="topic-modal-header">
+              <h1>Select any topics that describe your question</h1>
+            </div>
 
-        <div className="question-modal-footer">
-          <button id="cancel-button" onClick={()=>this.closeModal("create")}>Cancel</button>
-          <button id="ask-question-button" onClick={this.handleSubmit}>Ask Question</button>
-        </div>
+            <div className="topic-modal-list">
+              <div className="question-form-topic-list">
+                {topicItems}
+              </div>
+            </div>
+          </div>
+
+          <div className="question-modal-footer">
+            <button id="cancel-button" onClick={()=>this.closeModal("create")}>Cancel</button>
+            <button id="ask-question-button" onClick={this.handleSubmit}>Ask Question</button>
+          </div>
         </Modal>
 
 
@@ -140,10 +172,7 @@ class Header extends React.Component {
             style={cancelStyles}
             contentLabel="Example Modal"
           >
-          <p>You asked:
-          {/*
-            <Link onClick={()=>this.closeModal("success")} to={`/questions/${this.state.asked_question.id}`}>{this.state.asked_question.body}</Link>
-          */}
+          <p>You asked: <Link onClick={()=>this.closeModal("success")} to={`/questions/${this.state.askedQuestion.id}`}>{this.state.askedQuestion.body}</Link>
           </p>
             <i className="fa fa-times" onClick={()=>this.closeModal("success")}/>
 
@@ -155,11 +184,14 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-	user: state.auth.currentUser
+	topics: allTopics(state),
+  questions: allQuestions(state),
+  user: state.auth.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({
-  createQuestion: (body) => dispatch(createQuestion(body)),
+  createQuestion: (body, topics) => dispatch(createQuestion(body, topics)),
+  requestQuestions: () => dispatch(fetchQuestions()),
   logOut: () => dispatch(logOut())
 });
 

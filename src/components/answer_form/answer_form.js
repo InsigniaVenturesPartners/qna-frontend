@@ -28,13 +28,13 @@ class AnswerForm extends React.Component {
 
   render () {
     if (this.state.open) {
-      const author = this.props.current_user;
+      const author = this.props.currentUser;
       return (
         <div className="answer-form-container">
           <button className="write-answer-button" onClick={()=>this.setState({open: true})}>Answer</button>
           <div className="answer-form">
             <div className="answer-header">
-              <img src={author.pro_pic_url} alt={`${author.name}'s picture`}  className="answerer-pro-pic" />
+              <img src={author.pro_pic_url} alt={`${author.name}`}  className="answerer-pro-pic" />
               <div className="answer-details">
                 <h1>{author.name}</h1>
               </div>

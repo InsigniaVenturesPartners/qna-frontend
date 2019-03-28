@@ -53,12 +53,12 @@ export const selectComments = ({ comments }, commentIds) => {
 //I filter here, since I might not have the query elsewhere
 export const asSortedArray = ({ searchQuestions, filters }) => {
   return(
-  Object.values(searchQuestions).sort((a,b)=>b.match_score - a.match_score)
+    Object.values(searchQuestions).sort((a,b)=>b.match_score - a.match_score)
   );
 }
 
 export const asSortedTopicArray = ({ searchTopics, filters }) => {
   return(
-  Object.values(searchTopics).sort((a,b)=>b.match_score - a.match_score)
+    Object.values(searchTopics).sort((a,b)=>b.match_score - a.match_score)
   );
 }

@@ -33,17 +33,13 @@ class FollowTopicButton extends React.Component {
 
 
   render() {
-    let followText = "Follow"
-    if(this.state.followed) {
-      followText = "Following Topic"
-    }
-    return(
+    let followText = this.state.followed ? "Following Topic" : "Follow";
 
+    return(
         <button className="follow-button" onClick={this.handleClick} disabled={this.state.disabled}>
           <div className="follow-text">{followText}</div>
           <div className="followers">{this.props.followerIds.length}</div>
         </button>
-
     );
   }
 }

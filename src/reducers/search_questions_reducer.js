@@ -17,7 +17,7 @@ const SearchQuestionsReducer = (state = defaultState, action) => {
         }
         return {};
       } else {
-        return action.questions;
+        return action.questions.data;
       }
     default:
       return state;

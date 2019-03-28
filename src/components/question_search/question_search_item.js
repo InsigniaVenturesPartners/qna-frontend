@@ -2,8 +2,6 @@ import React from 'react';
 import {Link} from 'react-router';
 import ReactHtmlParser from 'react-html-parser';
 
-
-
 const processWord = (word, keywords) => {
 
   let foundMatch = false;
@@ -13,7 +11,6 @@ const processWord = (word, keywords) => {
       if(loweredWord.substring(0,i) === keyword) {
         foundMatch = true;
       }
-
     });
     if(foundMatch) {
       break;
@@ -27,13 +24,12 @@ const processWord = (word, keywords) => {
   } else {
     return word
   }
-
 }
 
 const QuestionSearchItem = ({ question, handleChange, updateFilter, query}) => {
   if (Object.keys(question).length === 0) {
     return (
-      <img src="https://image.ibb.co/iYo1yw/Screen_Shot_2017_09_28_at_6_43_28_PM.png" alt={`loading-image`}  className="loading-image" />
+      <img src="https://image.ibb.co/iYo1yw/Screen_Shot_2017_09_28_at_6_43_28_PM.png" alt={`loading`}  className="loading-image" />
     );
   } else {
     const { body } = question;
@@ -41,8 +37,7 @@ const QuestionSearchItem = ({ question, handleChange, updateFilter, query}) => {
     const boldedBody = body.split(" ").map((word)=>processWord(word,keywords)).join(" ");
     return (
       <li className="question-list-item">
-        {/*<Link to={`/questions/${question.id}`}  onClick={()=>updateFilter("query", "")}>{ReactHtmlParser(boldedBody)}</Link>*/
-        }
+        <Link to={`/questions/${question.id}`}  onClick={()=>updateFilter("query", "")}>{ReactHtmlParser(boldedBody)}</Link>
         <i className="fa fa-angle-right" ></i>
       </li>
     );

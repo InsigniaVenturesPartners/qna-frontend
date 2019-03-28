@@ -3,10 +3,10 @@ import { selectAnswer } from '../../reducers/selectors';
 import AnswerDetail from './answer_detail';
 
 // Actions
-import { fetchAnswer, voteOnAnswer } from '../../actions/answer_actions';
+import { fetchAnswer } from '../../actions/answer_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  const id = parseInt(ownProps.params.id);
+  const id = parseInt(ownProps.params.id, 10);
   const answer = selectAnswer(state, id);
   return {
     id,
@@ -15,8 +15,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  requestAnswer: (id) => dispatch(fetchAnswer(id)),
-  voteOnAnswer: (id, type) => dispatch(voteOnAnswer(id, type))
+  requestAnswer: (id) => dispatch(fetchAnswer(id))
 });
 
 export default connect(

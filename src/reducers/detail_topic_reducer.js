@@ -1,15 +1,12 @@
 import merge from 'lodash/merge';
 
-import {RECEIVE_TOPICS, RECEIVE_TOPIC, UPDATE_TOPIC} from '../actions/topic_actions.js'
+import {RECEIVE_TOPIC, UPDATE_TOPIC} from '../actions/topic_actions.js'
 
 const defaultState = {};
 
-const TopicsReducer = (state = defaultState, action) => {
-
+const DetailTopicReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch (action.type) {
-    case RECEIVE_TOPICS:
-      return action.topics.data;
     case RECEIVE_TOPIC:
       return merge({},state,{[action.topic.data.id]: action.topic.data});
     case UPDATE_TOPIC:
@@ -21,4 +18,4 @@ const TopicsReducer = (state = defaultState, action) => {
   }
 };
 
-export default TopicsReducer
+export default DetailTopicReducer

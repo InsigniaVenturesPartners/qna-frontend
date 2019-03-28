@@ -6,11 +6,11 @@ import QuestionDetail from './question_detail';
 import { fetchQuestion, voteOnQuestion, followQuestion, unfollowQuestion } from '../../actions/question_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  const question_id = parseInt(ownProps.params.id);
-  const question = selectQuestion(state, question_id);
+  const questionId = parseInt(ownProps.params.id, 10);
+  const question = selectQuestion(state, questionId);
   const tags = question.tags;
   return {
-    question_id,
+    questionId,
     question,
     tags
   }
