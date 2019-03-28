@@ -71,7 +71,6 @@ class AnswerForm extends React.Component {
   render () {
     const { questionId, body, authorId, isDraft } = this.props
     const author = this.props.currentUser;
-    const editButton = authorId === author.id ? <QuestionEditContainer questionId={questionId} body={body}/> : null;
     const answerButtonText = this.state.isDraft ? "Edit Draft" : "Answer";
     const lastSavedDraft = this.state.isDraft ? <p className="draft-time-posted">(Last saved {this.state.timePostedAgo})</p>  : '';
 
@@ -83,7 +82,8 @@ class AnswerForm extends React.Component {
             <Button basic color="orange"  onClick={()=>this.setState({open: true})}>
               {answerButtonText}
             </Button>
-            {editButton}
+          { authorId === author.id &&
+              <QuestionEditContainer questionId={questionId} body={body}/> }
           </div>
           */}
           <div className="answer-form">
@@ -115,13 +115,12 @@ class AnswerForm extends React.Component {
     } else {
       return (
         <div className="answer-form-button">
-
           <Button basic color="orange" className="write-answer-button" onClick={this.openAnswerForm}>
             {answerButtonText}
           </Button>
 
-
-          {editButton}
+          { authorId === author.id &&
+              <QuestionEditContainer questionId={questionId} body={body}/> }
         </div>
 
       );
