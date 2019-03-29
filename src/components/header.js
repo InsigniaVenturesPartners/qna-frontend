@@ -1,18 +1,22 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import React from 'react'
 import Modal from 'react-modal'
 import { Link } from 'react-router'
 
-import Checkbox from 'muicss/lib/react/checkbox';
+import Checkbox from 'muicss/lib/react/checkbox'
+import { Button } from 'semantic-ui-react'
 
-import { createQuestion, fetchQuestions } from '../actions/question_actions';
+import { createQuestion, fetchQuestions } from '../actions/question_actions'
 import { logOut } from '../actions';
-import { allTopics, allQuestions } from '../reducers/selectors';
+import { allTopics, allQuestions } from '../reducers/selectors'
 
 import { customStyles, cancelStyles } from './create_question_form/create_question_form'
 import QuestionSearchContainer from './question_search/question_search_container'
 
-import '../static/css/nav_bar.css';
+import { faHome, faEdit, faTimes } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
+import '../static/css/header.css';
 
 class Header extends React.Component {
   constructor() {
@@ -98,37 +102,41 @@ class Header extends React.Component {
 
     return(
       <div className="nav-bar">
-        <ul className="nav-bar-items">
-          <li id="nav-home" className={"nav-link " + (this.props.path === "/" ? "highlighted" : "")} >
+        <div className="nav-bar-items">
+          <div id="nav-home" className={"nav-link " + (this.props.path === "/" ? "highlighted" : "")} >
             <Link to={`/`}>
-              <i className="fa fa-home"></i>
+              <FontAwesomeIcon icon={faHome} />
               Home
             </Link>
-          </li>
+          </div>
 
-          <li id="nav-answer" className={"nav-link " + (this.props.path === "/answer" ? "highlighted" : "")}>
+          <div id="nav-answer" className={"nav-link " + (this.props.path === "/answer" ? "highlighted" : "")}>
             <Link to={`/answer`}>
-              <i className="fa fa-pencil-square-o"></i>
-              Answer</Link>
-          </li>
+            <FontAwesomeIcon icon={faEdit} />
+              Answer
+            </Link>
+          </div>
 
-          <li id="nav-search">
+          <div className="nav-search">
             <QuestionSearchContainer />
-          </li>
+          </div>
 
-          <li id="nav-pro-pic">
+          <div id="nav-pro-pic">
             <Link to={`/profile`}>
               <img src={user.pro_pic_url} alt={`${user.name}'s`}  className="nav-pro-pic" />
             </Link>
+          </div>
+          <Button color='orange' type='submit'
+            onClick={(() => this.openModal("create"))}>
+            Ask Question
+          </Button>
 
-          </li>
-          <li id="nav-ask-question"><button onClick={()=>this.openModal("create")}>Ask Question</button></li>
+          <Button color='orange' type='submit'
+            onClick={this.handleSignOut}>
+            Sign Out
+          </Button>
 
-
-          <li id="nav-sign-out">
-            <button id="sign-out" onClick={this.handleSignOut}>Sign Out</button>
-            </li>
-        </ul>
+        </div>
         <Modal
           isOpen={this.state.createModalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -174,7 +182,7 @@ class Header extends React.Component {
           >
           <p>You asked: <Link onClick={()=>this.closeModal("success")} to={`/questions/${this.state.askedQuestion.id}`}>{this.state.askedQuestion.body}</Link>
           </p>
-            <i className="fa fa-times" onClick={()=>this.closeModal("success")}/>
+          <i className="fa fa-times" onClick={()=>this.closeModal("success")}/>
 
 
         </Modal>

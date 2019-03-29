@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Button } from 'semantic-ui-react'
 
 class FollowTopicButton extends React.Component {
   constructor(props) {
@@ -33,13 +33,15 @@ class FollowTopicButton extends React.Component {
 
 
   render() {
-    let followText = this.state.followed ? "Following Topic" : "Follow";
+    let followText = this.state.followed ? "Following" : "Follow";
 
     return(
-        <button className="follow-button" onClick={this.handleClick} disabled={this.state.disabled}>
+        <Button basic color='orange' type='submit' className="follow-button" onClick={this.handleClick} disabled={this.state.disabled}>
           <div className="follow-text">{followText}</div>
           <div className="followers">{this.props.followerIds.length}</div>
-        </button>
+        </Button>
+
+
     );
   }
 }

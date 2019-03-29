@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "antd": "^2.13.14",
+    "autolinker": "^3.0.5",
     "aws-sdk": "^2.378.0",
     "axios": "^0.16.2",
     "bootstrap-daterangepicker": "^3.0.3",

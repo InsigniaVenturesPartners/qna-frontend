@@ -3,6 +3,7 @@ import { API_URL } from './constant'
 
 export const fetchComments = (id, type) => {
   return sendRequest({
+    method: 'GET',
     url: API_URL.GET_COMMENTS,
     params: {
       id: id,
@@ -54,7 +55,7 @@ export const voteOnComment = (id, type) => {
   return sendRequest({
     method: 'POST',
     url: API_URL.VOTE_COMMENT,
-    params: {
+    data: {
       comment_id: id,
       type
     }
@@ -65,7 +66,7 @@ export const createComment = (commentableClass, commentableId, body) => {
   return sendRequest({
     method: 'POST',
     url: API_URL.CREATE_COMMENT,
-    params: {
+    data: {
       commentableClass,
       commentableId,
       body

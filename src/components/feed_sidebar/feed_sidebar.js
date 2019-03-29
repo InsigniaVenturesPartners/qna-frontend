@@ -1,6 +1,9 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router';
 
+import '../../static/css/sidebar.css';
+import '../../static/css/button.css';
+
 class FeedSidebar extends React.Component {
   componentWillMount() {
     this.props.requestTopics();
@@ -9,9 +12,10 @@ class FeedSidebar extends React.Component {
   render() {
     const {topics, location} = this.props;
     const pathname = location.pathname;
+    let itemList;
 
     if(pathname === "/" || pathname.startsWith("/topics")) {
-      const topicItems = topics.map( topic => (
+      itemList = topics.map( topic => (
           <li key={ "topic-" + topic.id }>
             <Link to={`/topics/${topic.id}`}>
               <div className="feed-sidebar-topic-pic">
@@ -23,19 +27,9 @@ class FeedSidebar extends React.Component {
             </Link>
           </li>
           ));
-
-      return(
-        <div className="feed-sidebar">
-          <div className="feed-sidebar-header">
-          </div>
-          <ul className="sidebar-topic-list">
-            {topicItems}
-          </ul>
-        </div>
-      );
     } else if(pathname.startsWith("/profile")) {
       const sideBarList = ["topics", "questions", "answers"];
-      const sideBarItems = sideBarList.map(sideBarItem => (
+      itemList = sideBarList.map(sideBarItem => (
             <li key={sideBarItem}>
               <Link to={`/profile/${sideBarItem}`}>
                 <div className="feed-sidebar-topic-label">
@@ -44,19 +38,23 @@ class FeedSidebar extends React.Component {
               </Link>
             </li>
           ));
-
-      return(
-        <div className="feed-sidebar">
-          <div className="feed-sidebar-header">
-          </div>
-          <ul className="sidebar-topic-list">
-            {sideBarItems}
-          </ul>
-        </div>
-      );
     } else {
+      itemList = null
+    }
+
+    if(pathname.startsWith("/answer")) {
       return null
     }
+
+    return(
+      <div className="feed-sidebar">
+        <div className="feed-sidebar-header">
+        </div>
+        <ul className="sidebar-topic-list">
+          {itemList}
+        </ul>
+      </div>
+    );
   }
 }
 
