@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import AnswerVoteButtonContainer from '../answer_vote_button/answer_vote_button_container';
 
 
+
 class AnswerDetail extends React.Component {
   componentWillMount() {
     this.props.requestAnswer(this.props.id);

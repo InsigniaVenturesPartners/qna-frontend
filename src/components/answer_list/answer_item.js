@@ -1,12 +1,10 @@
-import React from 'react';
-import ReactHtmlParser from 'react-html-parser';
+import React from 'react'
+import ReactHtmlParser from 'react-html-parser'
 
-import AnswerVoteButtonContainer from '../answer_vote_button/answer_vote_button_container';
+import AnswerVoteButtonContainer from '../answer_vote_button/answer_vote_button_container'
 
-import CommentListContainer from '../comment_list/comment_list_container';
-import CommentFormContainer from '../comment_form/comment_form_container';
-
-import '../../static/css/answer.css';
+import CommentListContainer from '../comment_list/comment_list_container'
+import CommentFormContainer from '../comment_form/comment_form_container'
 
 class AnswerItem extends React.Component {
   constructor(props) {

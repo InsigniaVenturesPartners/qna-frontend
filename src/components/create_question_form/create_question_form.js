@@ -166,7 +166,6 @@ class CreateQuestionForm extends React.Component {
         </div>
         </Modal>
 
-
         <Modal
             id="cancel-modal"
             className="cancel-modal"
@@ -179,7 +178,6 @@ class CreateQuestionForm extends React.Component {
           <p>You asked: <Link onClick={()=>this.closeModal("success")} to={`/questions/${this.state.askedQuestion.id}`}>{this.state.askedQuestion.body}</Link>
           </p>
             <i className="fa fa-times" onClick={()=>this.closeModal("success")}/>
-
 
         </Modal>
       </div>

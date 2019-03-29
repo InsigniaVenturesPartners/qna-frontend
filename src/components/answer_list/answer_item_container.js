@@ -1,7 +1,6 @@
-import { connect } from 'react-redux';
-import { selectAnswer } from '../../reducers/selectors';
-import AnswerItem from './answer_item';
-
+import { connect } from 'react-redux'
+import { selectAnswer } from '../../reducers/selectors'
+import AnswerItem from './answer_item'
 
 // Actions
 import { fetchAnswer, voteOnAnswer } from '../../actions/answer_actions';
