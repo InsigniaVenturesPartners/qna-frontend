@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Button } from 'semantic-ui-react'
 
 class AnswerVoteButton extends React.Component {
   constructor(props) {
@@ -52,10 +52,10 @@ class AnswerVoteButton extends React.Component {
 
     return (
       <div className="vote-buttons">
-        <button className="upvote-button" onClick={()=>this.handleClick("upvote")}>
+        <Button color='orange' basic className="upvote-button" onClick={()=>this.handleClick("upvote")}>
           <div className="upvote-text">{upvoteText}</div>
           <div className="upvoters">{this.props.upvoterIds.length}</div>
-        </button>
+        </Button>
 
         <button className="downvote-button" onClick={()=>this.handleClick("downvote")}>{downvoteText}</button>
       </div>
