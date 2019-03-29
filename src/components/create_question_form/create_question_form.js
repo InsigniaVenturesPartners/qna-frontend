@@ -4,6 +4,8 @@ import {Link} from 'react-router'
 
 import Checkbox from 'muicss/lib/react/checkbox';
 
+import '../../static/css/create_question_form.css'
+
 export const customStyles = {
     overlay : {
     position          : 'fixed',
