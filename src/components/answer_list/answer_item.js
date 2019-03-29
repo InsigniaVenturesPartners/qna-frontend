@@ -6,6 +6,8 @@ import AnswerVoteButtonContainer from '../answer_vote_button/answer_vote_button_
 import CommentListContainer from '../comment_list/comment_list_container'
 import CommentFormContainer from '../comment_form/comment_form_container'
 
+import '../../static/css/comment.css'
+
 class AnswerItem extends React.Component {
   constructor(props) {
     super(props)
