@@ -51,7 +51,7 @@ class AnswerItem extends React.Component {
       }
 
       return (
-        <li className="answer-item">
+        <div className="answer-item">
           <div className="answer-header">
             <img src={author.pro_pic_url} alt={`${author.name}'s picture`}  className="answerer-pro-pic" />
             <div className="answer-details">
@@ -65,7 +65,7 @@ class AnswerItem extends React.Component {
             <button className="comments-button" onClick={()=>this.setState({commentOpen: !this.state.commentOpen})}>Comments {commentIds.length}</button>
           </div>
           {this.comments(id, commentIds)}
-        </li>
+        </div>
       );
     }
   }

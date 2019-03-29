@@ -4,22 +4,25 @@
   background: white;
   margin-bottom: 20px;
 
-  .ui.header {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-
-    padding: 20px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-
-  }
 }
 
-.answer-list {
-  border-bottom: 1px solid #efefef;
-  padding-left: 20px;
-  padding-right: 16px;
+#answers-container h1 {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+
+  margin-top: 0em;
+  margin-bottom: 0em;
+}
+
+#answers-container .ui.header {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+
+  padding: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .answer-item {
@@ -27,8 +30,7 @@
   flex-direction: column;
   font-size: 18px;
   padding-top: 10px;
-  padding-bottom: 10px;
-  // border-bottom: 1px solid  #e2e2e2;
+  /*border-bottom: 1px solid  #e2e2e2;*/
   font-weight: 400;
 }
 
@@ -43,12 +45,12 @@
   flex-direction: row;
   align-items: center;
   height: 50px;
+}
 
-  img {
-    height: 42px;
-    width: 42px;
-    border-radius: 50%
-  }
+.answer-header img {
+  height: 42px;
+  width: 42px;
+  border-radius: 50%
 }
 
 .answer-details {
@@ -60,13 +62,18 @@
 
   font-family: 'q_serif',Georgia,Times,"Times New Roman","Hiragino Kaku Gothic Pro","Meiryo",serif;
   font-size: 16px;
-  h1 {
-    font-weight: normal;
-  }
-  h2 {
-    font-size: 13px;
-    font-weight: normal;
-  }
+}
+
+.answer-details h1 {
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.answer-details h2 {
+  font-size: 13px;
+  font-weight: normal;
+  margin-top: 0em;
 }
 
 .answer-body {
@@ -74,27 +81,28 @@
   font-size: 15px;
   line-height: 1.4;
   margin-bottom: 10px;
-  img {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 100%;
-    height: 100%;
-  }
+}
 
-  ul {
-    list-style-position: inside;
-  }
-  li {
-    list-style-type: circle;
-    list-style-position: inside;
-    margin-left: 15px;
-  }
+.answer-body img {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  height: 100%;
+}
 
-  ol>li {
-    list-style-type: decimal;
-    margin-top: 10px;
-  }
+.answer-body ul {
+  list-style-position: inside;
+}
 
+.answer-body li {
+  list-style-type: circle;
+  list-style-position: inside;
+  margin-left: 15px;
+}
+
+.answer-body ol>li {
+  list-style-type: decimal;
+  margin-top: 10px;
 }
 
 .answer-body a {

@@ -1,8 +1,10 @@
 import React from 'react'
-import { Header } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react'
 
 import QuestionItemContainer from '../question/question_item_container'
-import ProfilePageContainer from './profile_page_container';
+import ProfilePageContainer from './profile_page_container'
+
+import '../../static/css/answer.css'
 
 class ProfileAnswer extends React.Component {
   componentWillMount() {
@@ -26,13 +28,13 @@ class ProfileAnswer extends React.Component {
     return (
       <div>
         <ProfilePageContainer/>
-      <div id="answers-container">
-        <Header as='h1'>{headerText}</Header>
+        <div id="answers-container">
+          <Header as='h1'>{headerText}</Header>
 
-        <ul className="question-list">
-          {questionItems}
-        </ul>
-      </div>
+          <div className="question-list">
+            {questionItems}
+          </div>
+        </div>
       </div>
     );
   }
