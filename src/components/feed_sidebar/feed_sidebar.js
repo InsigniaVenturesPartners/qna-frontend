@@ -16,7 +16,7 @@ class FeedSidebar extends React.Component {
 
     if(pathname === "/" || pathname.startsWith("/topics")) {
       itemList = topics.map( topic => (
-          <li key={ "topic-" + topic.id }>
+          <div className="sidebar-item" key={ "topic-" + topic.id }>
             <Link to={`/topics/${topic.id}`}>
               <div className="feed-sidebar-topic-pic">
                 <img src={topic.pic_url} alt="topic-pic-url"/>
@@ -25,18 +25,18 @@ class FeedSidebar extends React.Component {
                 {topic.name}
               </div>
             </Link>
-          </li>
+          </div>
           ));
     } else if(pathname.startsWith("/profile")) {
       const sideBarList = ["topics", "questions", "answers"];
       itemList = sideBarList.map(sideBarItem => (
-            <li key={sideBarItem}>
+            <div className="sidebar-item" key={sideBarItem}>
               <Link to={`/profile/${sideBarItem}`}>
                 <div className="feed-sidebar-topic-label">
                   {sideBarItem.charAt(0).toUpperCase() + sideBarItem.slice(1)}
                 </div>
               </Link>
-            </li>
+            </div>
           ));
     } else {
       itemList = null
@@ -50,9 +50,9 @@ class FeedSidebar extends React.Component {
       <div className="feed-sidebar">
         <div className="feed-sidebar-header">
         </div>
-        <ul className="sidebar-topic-list">
+        <div className="sidebar-topic-list">
           {itemList}
-        </ul>
+        </div>
       </div>
     );
   }

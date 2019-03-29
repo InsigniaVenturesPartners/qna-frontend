@@ -30,7 +30,6 @@ class ProfileAnswer extends React.Component {
         <ProfilePageContainer/>
         <div id="answers-container">
           <Header as='h1'>{headerText}</Header>
-
           <div className="question-list">
             {questionItems}
           </div>
