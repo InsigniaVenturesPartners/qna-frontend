@@ -5,6 +5,7 @@ import QuestionItemContainer from '../question/question_item_container'
 import ProfilePageContainer from './profile_page_container'
 
 import '../../static/css/answer.css'
+import '../../static/css/question_item.css'
 
 class ProfileAnswer extends React.Component {
   componentWillMount() {

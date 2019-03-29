@@ -2,6 +2,8 @@ import React from 'react';
 
 import TopicDetailItem from './topic_detail_item'
 
+import '../../static/css/topic_detail.css'
+
 class TopicDetail extends React.Component {
   componentWillMount() {
     this.props.requestTopic(this.props.topicId);
@@ -29,9 +31,9 @@ class TopicDetail extends React.Component {
         <div id="topic-detail">
           <div className="topic-detail-header">
           </div>
-          <ul className="topic-detail-questions">
+          <div className="topic-detail-questions">
             <TopicDetailItem key={ "topic-" + topic.id } topic={topic}/>
-          </ul>
+          </div>
         </div>
       );
     }

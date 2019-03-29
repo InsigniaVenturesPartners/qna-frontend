@@ -2,8 +2,6 @@ import React from 'react'
 import AnswerItemContainer from '../answer_list/answer_item_container'
 import { Link } from 'react-router'
 
-import '../../static/css/question_item.css'
-
 class QuestionItem extends React.Component {
   componentWillMount() {
     this.props.requestQuestion(this.props.id);

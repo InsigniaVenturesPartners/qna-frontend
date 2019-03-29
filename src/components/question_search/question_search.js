@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-import QuestionSearchInput from './question_search_input';
-import QuestionSearchItem from './question_search_item';
+import QuestionSearchInput from './question_search_input'
+import QuestionSearchItem from './question_search_item'
 
-import '../../static/css/question_search.css';
+import '../../static/css/question_search.css'
 
 class QuestionSearch extends React.Component{
   constructor(props) {
@@ -26,9 +26,9 @@ class QuestionSearch extends React.Component{
           updateFilter={updateFilter}
         />
 
-        <ul className="question-search-list">
+        <div className="question-search-list">
            {QuestionItems}
-        </ul>
+        </div>
       </div>
     );
 

@@ -2,7 +2,6 @@
    overflow-y: hidden;
 }
 
-
 .ReactModal__Content--after-open.cancel-modal {
   position: absolute;
   top: 50%;
@@ -13,23 +12,21 @@
   align-items: center;
   height: auto;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  p {
-    margin-right: 30px;
-  }
-  i:hover {
-    cursor: pointer;
-  }
-  a {
-    font-weight: bold;
-    font-size: 15px;
-  }
-
-  a:hover {
-    text-decoration: none;
-    color: #3e78ad;
-  }
 }
-
+.ReactModal__Content--after-open.cancel-modal p {
+  margin-right: 30px;
+}
+.ReactModal__Content--after-open.cancel-modal i:hover {
+  cursor: pointer;
+}
+.ReactModal__Content--after-open.cancel-modal a {
+  font-weight: bold;
+  font-size: 15px;
+}
+.ReactModal__Content--after-open.cancel-modal a:hover {
+  text-decoration: none;
+  color: #3e78ad;
+}
 
 .ReactModal__Content--after-open {
   display: flex;

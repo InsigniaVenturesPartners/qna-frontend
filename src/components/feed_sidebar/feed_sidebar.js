@@ -1,8 +1,9 @@
-import React from 'react';
-import {Link, withRouter} from 'react-router';
+import React from 'react'
+import {Link, withRouter} from 'react-router'
+import { Container } from 'semantic-ui-react'
 
-import '../../static/css/sidebar.css';
-import '../../static/css/button.css';
+import '../../static/css/sidebar.css'
+import '../../static/css/button.css'
 
 class FeedSidebar extends React.Component {
   componentWillMount() {
@@ -47,6 +48,7 @@ class FeedSidebar extends React.Component {
     }
 
     return(
+      <Container>
       <div className="feed-sidebar">
         <div className="feed-sidebar-header">
         </div>
@@ -54,6 +56,7 @@ class FeedSidebar extends React.Component {
           {itemList}
         </div>
       </div>
+      </Container>
     );
   }
 }

@@ -28,9 +28,9 @@ class HomeItem extends React.Component {
 
     return (
       <div className="home-item">
-        <div id="answers-container">
-          {questionItems}
-        </div>
+
+        {questionItems}
+
       </div>
     );
   }

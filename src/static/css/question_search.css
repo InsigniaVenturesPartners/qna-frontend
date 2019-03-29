@@ -7,14 +7,12 @@
   width: 400px;
   box-shadow: 0 1px 7px rgba(0,0,0,0.1);
   border-radius: 3px;
-
-  a strong {
-    font-weight: bold;
-  }
+}
+.question-search-list a strong {
+  font-weight: bold;
 }
 
-//need li to be more specific than .navbar li
-li .question-list-item {
+.question-search-list-item {
   display: flex;
   flex-direction: row;
   align-items: space-between;
@@ -28,21 +26,21 @@ li .question-list-item {
   font-weight: 400;
   border-bottom: 1px solid #e2e2e2;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  a {
-    width: 100%;
-  }
-  a:hover {
-    text-decoration: none;
-  }
+}
+.question-search-list-item a {
+  width: 100%;
+}
+.question-search-list-item a:hover {
+  text-decoration: none;
 }
 
-li .fa-angle-right {
+.fa-angle-right {
   font-size: 20px;
   color: #e2e2e2;
   padding-left: 3px;
 }
 
-li .question-list-item:hover {
+.question-search-list-item:hover {
   background-color: #ececec;
   text-decoration: none;
   color: #2b6dad;
