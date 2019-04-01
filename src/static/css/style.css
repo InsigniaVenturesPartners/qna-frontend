@@ -193,13 +193,14 @@ td {
   font-family: "Source Sans Pro", Helvetica, "sans-serif";
   font-size: 2em;
   line-height: 1.4285em;
-  &.ribbon-main {
-    display: none;
-    @include respond-to(large-desktop) {
-      display: initial;
-    }
-  }
 }
+
+/*.ribbon-main {
+  display: none;
+  @include respond-to(large-desktop) {
+    display: initial;
+  }
+}*/
 
 .upvote-button:hover, .write-answer-button:hover, .submit-button:hover, .follow-button:hover, .edit-answer-button:hover {
   border: 1px solid #f2711c;

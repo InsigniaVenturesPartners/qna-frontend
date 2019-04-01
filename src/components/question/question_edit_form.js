@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import {Link} from 'react-router';
+import { Button, Container } from 'semantic-ui-react';
 
 import Checkbox from 'muicss/lib/react/checkbox';
 
@@ -112,9 +113,9 @@ class QuestionEditForm extends React.Component {
     return (
       <div>
 
-        <button className="edit-answer-button" onClick={()=>this.openModal("create")}>
-          <div className="edit-answer-text">Edit Question</div>
-        </button>
+        <Button basic color='orange' className='write-answer-button' onClick={()=>this.openModal("create")}>
+          <div>Edit Question</div>
+        </Button>
 
         <Modal
           isOpen={this.state.createModalIsOpen}

@@ -25,6 +25,18 @@ export const fetchAnswers = () => {
   })
 };
 
+export const editAnswer = (body, answer_id) => {
+  return sendRequest({
+    method: 'PATCH',
+    url: `${API_URL.UPDATE_ANSWER}/${answer_id}`,
+    data: {
+      answer: {
+        body
+      }
+    }
+  })
+};
+
 export const voteOnAnswer = (id, type) => {
   return sendRequest({
     method: 'POST',
