@@ -5,6 +5,8 @@ import QuestionListItem from '../question_list/question_list_item'
 import { Header } from 'semantic-ui-react';
 import ProfilePageContainer from './profile_page_container';
 
+import '../../static/css/question.css';
+
 class ProfileQuestion extends React.Component {
   componentWillMount() {
     this.props.requestQuestions();
@@ -25,9 +27,9 @@ class ProfileQuestion extends React.Component {
         <div id="questions-container">
           <Header as='h1'>{headerText}</Header>
 
-          <ul className="question-list">
+          <div className="question-list">
             {questionItems}
-          </ul>
+          </div>
         </div>
 
       </div>

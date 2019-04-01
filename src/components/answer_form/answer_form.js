@@ -1,17 +1,19 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
-import ReactQuill from 'react-quill'
+import RichTextEditor from 'react-rte'
+
 import Autolinker from 'autolinker'
 
 import QuestionEditContainer from '../question/question_edit_form_container';
 import { Button } from 'semantic-ui-react'
 
+import '../../static/css/answer_form.css'
+
 class AnswerForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { text: '', open: false, isDraft: props.isDraft, timePostedAgo: '' };
-    this.handleChange = this.handleChange.bind(this);
+    this.state = { text: '', open: false, isDraft: props.isDraft, timePostedAgo: '', value: RichTextEditor.createEmptyValue() };
     this.submitAnswer = this.submitAnswer.bind(this);
     this.successfulSubmit = this.successfulSubmit.bind(this);
     this.customLinkReplace = this.customLinkReplace.bind(this)
@@ -31,13 +33,16 @@ class AnswerForm extends React.Component {
     }
   }
 
-  handleChange(value) {
-   const newValue = Autolinker.link(value, {
-    stripPrefix: false,
-    stripTrailingSlash: false,
-    replaceFn: this.customLinkReplace.bind(this, value)
-   })
-   this.setState({ text: newValue, })
+  onChange = (value) => {
+    this.setState({value});
+
+    const textValue = value.toString('html')
+    const newValue = Autolinker.link(textValue, {
+        stripPrefix: false,
+        stripTrailingSlash: false,
+        replaceFn: this.customLinkReplace.bind(this, textValue)
+    })
+    this.setState({ text: textValue})
   }
 
   customLinkReplace (value, match) {
@@ -93,10 +98,16 @@ class AnswerForm extends React.Component {
                 <h1>{author.name}</h1>
               </div>
             </div>
-            <ReactQuill value={this.state.text}
+            <RichTextEditor
+              value={this.state.value}
+              onChange={this.onChange}
+            />
+
+          {/*  <ReactQuill value={this.state.text}
                         onChange={this.handleChange}
                         modules={modules}
-                        placeholder={"Write your answer"}/>
+                        placeholder={"Write your answer"}/> */}
+
 
             <div className="answer-form-footer">
               <Button color="orange" className="submit-button" onClick={()=>this.submitAnswer()}>

@@ -18,31 +18,31 @@
   @include respond-to(desktop) {
     flex-direction: column;
   }
+}
 
-  li {
-    display: inline;
-    font-size: 12px;
-    background: #ccecfa;
-    color: #666666;
-    margin-right: 0.5em;
+.sidebar-topic-list .sidebar-item {
+  display: inline;
+  font-size: 12px;
+  background: #ccecfa;
+  color: #666666;
+  margin-right: 0.5em;
 
-    @include respond-to(desktop) {
-      display: block;
-      margin-bottom: 10px;
-      margin-left: 5em;
-    }
+  @include respond-to(desktop) {
+    display: block;
+    margin-bottom: 10px;
+    margin-left: 5em;
+  }
+}
 
-    a {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
+.sidebar-topic-list .sidebar-item a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
-      padding-right: 0.5em;
-      &:hover {
-        text-decoration: none;
-        color: #2b6dad;
-      }
-    }
+  padding-right: 0.5em;
+  &:hover {
+    text-decoration: none;
+    color: #2b6dad;
   }
 }
 
@@ -97,12 +97,13 @@
 
 .feed-sidebar-topic-pic {
   width: 1.5rem;
-  img {
-    max-width: 100%;
-    @include respond-to(desktop) {
-      max-width: initial;
-      width: 2em;
-    }
+}
+
+.feed-sidebar-topic-pic img {
+  max-width: 100%;
+  @include respond-to(desktop) {
+    max-width: initial;
+    width: 2em;
   }
 }
 

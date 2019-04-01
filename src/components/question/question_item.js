@@ -1,6 +1,6 @@
-import React from 'react';
-import AnswerItemContainer from '../answer_list/answer_item_container';
-import { Link } from 'react-router';
+import React from 'react'
+import AnswerItemContainer from '../answer_list/answer_item_container'
+import { Link } from 'react-router'
 
 class QuestionItem extends React.Component {
   componentWillMount() {
@@ -22,19 +22,19 @@ class QuestionItem extends React.Component {
 
       if(answerItems.length === 0) {
         return (
-          <li className="question-item">
-            <Link to={`/questions/${id}`}  className="question-header">{body}</Link>
+          <div className="question-item">
+            <Link to={`/questions/${id}`} className="question-header">{body}</Link>
             <h1 className="no-answers-message">No answers written for this question yet</h1>
-          </li>
+          </div>
         )
       } else {
         return (
-          <li className="question-item">
+          <div className="question-item">
             <Link to={`/questions/${id}`} className="question-header">{body}</Link>
-            <ul className="answer-list">
+            <div className="answer-list">
               {answerItems[0]}
-            </ul>
-          </li>
+            </div>
+          </div>
         );
       }
     }

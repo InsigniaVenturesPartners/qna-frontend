@@ -4,7 +4,7 @@ import Modal from 'react-modal'
 import { Link } from 'react-router'
 
 import Checkbox from 'muicss/lib/react/checkbox'
-import { Button } from 'semantic-ui-react'
+import { Button, Container } from 'semantic-ui-react'
 
 import { createQuestion, fetchQuestions } from '../actions/question_actions'
 import { logOut } from '../actions';
@@ -16,7 +16,7 @@ import QuestionSearchContainer from './question_search/question_search_container
 import { faHome, faEdit, faTimes } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-import '../static/css/header.css';
+import '../static/css/header.css'
 
 class Header extends React.Component {
   constructor() {
@@ -101,6 +101,7 @@ class Header extends React.Component {
         ));
 
     return(
+      <Container>
       <div className="nav-bar">
         <div className="nav-bar-items">
           <div id="nav-home" className={"nav-link " + (this.props.path === "/" ? "highlighted" : "")} >
@@ -150,7 +151,6 @@ class Header extends React.Component {
             <span id="modal-username">{user.name} asks</span>
           </div>
 
-
           <input onChange={this.setQuestion} placeholder="What is your question?" value={this.state.question} autoFocus={true}/>
           <div className="topic-modal">
             <div className="topic-modal-header">
@@ -187,6 +187,7 @@ class Header extends React.Component {
 
         </Modal>
       </div>
+      </Container>
     );
   }
 }

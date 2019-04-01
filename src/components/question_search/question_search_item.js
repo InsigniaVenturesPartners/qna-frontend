@@ -1,6 +1,8 @@
-import React from 'react';
-import {Link} from 'react-router';
-import ReactHtmlParser from 'react-html-parser';
+import React from 'react'
+import {Link} from 'react-router'
+import ReactHtmlParser from 'react-html-parser'
+
+import '../../static/css/question_search.css'
 
 const processWord = (word, keywords) => {
 
@@ -36,10 +38,10 @@ const QuestionSearchItem = ({ question, handleChange, updateFilter, query}) => {
     const keywords = query.toLowerCase().split(" ");
     const boldedBody = body.split(" ").map((word)=>processWord(word,keywords)).join(" ");
     return (
-      <li className="question-list-item">
+      <div className="question-search-list-item">
         <Link to={`/questions/${question.id}`}  onClick={()=>updateFilter("query", "")}>{ReactHtmlParser(boldedBody)}</Link>
         <i className="fa fa-angle-right" ></i>
-      </li>
+      </div>
     );
   }
 };

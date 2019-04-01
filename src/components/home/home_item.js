@@ -2,6 +2,8 @@ import React from 'react'
 
 import QuestionItemContainer from '../question/question_item_container'
 
+import '../../static/css/answer.css';
+
 class HomeItem extends React.Component {
   render () {
     const { questions } = this.props;
@@ -25,12 +27,12 @@ class HomeItem extends React.Component {
       ));
 
     return (
-      <li className="topic-list-item">
-        <ul className="question-list">{questionItems}</ul>
-      </li>
+      <div className="home-item">
+
+        {questionItems}
+
+      </div>
     );
-
-
   }
 }
 

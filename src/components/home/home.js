@@ -3,6 +3,8 @@ import React from 'react';
 import HomeItem from './home_item'
 import CreateQuestionFormContainer from '../create_question_form/create_question_form_container';
 
+import '../../static/css/home.css';
+
 class Home extends React.Component {
   render() {
     const { questions } = this.props
@@ -10,12 +12,12 @@ class Home extends React.Component {
 
     return(
       <div>
-      <CreateQuestionFormContainer/>
-      <div id="topics-container">
-        <ul className="topic-list">
-          {homeItems}
-        </ul>
-      </div>
+        <CreateQuestionFormContainer/>
+        <div id="home-container">
+          <div className="item-list">
+            {homeItems}
+          </div>
+        </div>
       </div>
     );
   }

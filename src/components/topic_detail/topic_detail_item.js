@@ -3,6 +3,8 @@ import React from 'react';
 import QuestionItemContainer from '../question/question_item_container';
 import FollowTopicButtonContainer from '../follow_topic_button/follow_topic_button_container'
 
+import '../../static/css/topic_detail.css'
+
 class TopicDetailItem extends React.Component {
   render () {
     const { topic } = this.props;
@@ -30,7 +32,7 @@ class TopicDetailItem extends React.Component {
           <FollowTopicButtonContainer id={id} followerIds={followerIds} followed={followed}/>
         </div>
 
-        <ul className="question-list">{questionItems}</ul>
+        <div className="question-list">{questionItems}</div>
       </div>
     );
 
