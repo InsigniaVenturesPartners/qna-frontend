@@ -37,11 +37,11 @@ class AnswerForm extends React.Component {
     this.setState({value});
 
     const textValue = value.toString('html')
-    const newValue = Autolinker.link(textValue, {
-        stripPrefix: false,
-        stripTrailingSlash: false,
-        replaceFn: this.customLinkReplace.bind(this, textValue)
-    })
+    // const newValue = Autolinker.link(textValue, {
+    //     stripPrefix: false,
+    //     stripTrailingSlash: false,
+    //     replaceFn: this.customLinkReplace.bind(this, textValue)
+    // })
     this.setState({ text: textValue})
   }
 
@@ -82,7 +82,7 @@ class AnswerForm extends React.Component {
     if (this.state.open) {
       return (
         <div className="answer-form-container">
-          {/* TODO
+     
           <div className="answer-form-button">
             <Button basic color="orange"  onClick={()=>this.setState({open: true})}>
               {answerButtonText}
@@ -90,7 +90,7 @@ class AnswerForm extends React.Component {
           { authorId === author.id &&
               <QuestionEditContainer questionId={questionId} body={body}/> }
           </div>
-          */}
+    
           <div className="answer-form">
             <div className="answer-header">
               <img src={author.pro_pic_url} alt={`${author.name}'s picture`}  className="answerer-pro-pic" />

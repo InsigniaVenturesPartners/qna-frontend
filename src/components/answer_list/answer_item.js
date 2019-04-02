@@ -5,6 +5,8 @@ import AnswerVoteButtonContainer from '../answer_vote_button/answer_vote_button_
 
 import CommentListContainer from '../comment_list/comment_list_container'
 import CommentFormContainer from '../comment_form/comment_form_container'
+import AnswerEditFormContainer from '../answer_form/answer_edit_form_container'
+import { Button } from 'semantic-ui-react'
 
 import '../../static/css/answer.css'
 import '../../static/css/comment.css'
@@ -12,7 +14,7 @@ import '../../static/css/comment.css'
 class AnswerItem extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {commentOpen: false};
+    this.state = {commentOpen: false, editOpen: false};
     this.comments = this.comments.bind(this)
   }
 
@@ -26,6 +28,14 @@ class AnswerItem extends React.Component {
     }
   }
 
+  openEditForm = () => {
+    this.setState({editOpen: true});
+  }
+
+  closeEditForm = () => {
+    this.setState({editOpen: false});
+  }
+
   comments(id, commentIds) {
     if(this.state.commentOpen) {
       return (<div className="comments">
@@ -37,7 +47,7 @@ class AnswerItem extends React.Component {
   }
 
   render () {
-    const { answer, voteOnAnswer } = this.props;
+    const { answer, voteOnAnswer, user } = this.props;
 
     if (Object.keys(answer).length === 0) {
       return(<img src="https://image.ibb.co/iYo1yw/Screen_Shot_2017_09_28_at_6_43_28_PM.png" alt={`loading-image`}  className="loading-image" />);
@@ -48,8 +58,17 @@ class AnswerItem extends React.Component {
       if(downvoted) {
         answerBody = <div><h2></h2>You downvoted this answer.<h3>Downvoting low-quality content improves Quera for everyone.</h3></div>
       } else {
-        answerBody = ReactHtmlParser(body)
+        if(this.state.editOpen) {
+          answerBody = <AnswerEditFormContainer answerId={id} body={body} closeEditForm={this.closeEditForm}/>
+        } else {
+          answerBody = ReactHtmlParser(body)
+        }
       }
+
+      const editButton = answer.author.id === user.id ?
+        <Button basic color="orange" className="edit-answer-button" onClick={this.openEditForm.bind(this)}>
+          <div>Edit Answer</div>
+        </Button> : null;
 
       return (
         <div className="answer-item">
@@ -64,6 +83,8 @@ class AnswerItem extends React.Component {
           <div className="answer-buttons">
             <AnswerVoteButtonContainer id={id} upvoterIds={upvoterIds} upvoted={upvoted} downvoted={downvoted}/>
             <button className="comments-button" onClick={()=>this.setState({commentOpen: !this.state.commentOpen})}>Comments {commentIds.length}</button>
+
+            {editButton}
           </div>
           {this.comments(id, commentIds)}
         </div>
