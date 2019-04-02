@@ -103,7 +103,7 @@ class QuestionEditForm extends React.Component {
 
   handleSuccessfulSubmit(question) {
     this.closeModal("create");
-    this.setState({asked_question: question, question: question})
+    this.setState({asked_question: question.data, question: question})
     this.openModal("success")
   }
 

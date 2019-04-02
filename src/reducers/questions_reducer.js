@@ -1,8 +1,8 @@
-import merge from 'lodash/merge';
+import merge from 'lodash/merge'
 
 import {RECEIVE_QUESTIONS, RECEIVE_QUESTION, UPDATE_QUESTION} from '../actions/question_actions.js'
 
-const defaultState = {};
+const defaultState = {}
 
 const QuestionsReducer = (state = defaultState, action) => {
   Object.freeze(state);
