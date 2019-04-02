@@ -18,7 +18,7 @@ class ReadMore extends React.Component {
 
     if (children.length > charLimit) {
       return (<span className="short-text">
-        {ReactHtmlParser(children).slice(0, 2)}
+        {ReactHtmlParser(children).slice(0, 1)}
         <span
           className="readMoreText"
           style={{ color: '#007bff', cursor: 'pointer' }}
