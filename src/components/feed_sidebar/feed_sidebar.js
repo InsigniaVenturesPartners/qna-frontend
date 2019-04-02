@@ -39,13 +39,21 @@ class FeedSidebar extends React.Component {
               </Link>
             </div>
           ));
+    } else if(pathname.startsWith("/answer")) {
+      const sideBarList = [["Questions for You", "questions"], ["Drafts", "drafts"]];
+      itemList = sideBarList.map(sideBarItem => (
+            <div className="sidebar-item" key={sideBarItem}>
+              <Link to={`/answer/${sideBarItem[1]}`}>
+                <div className="feed-sidebar-topic-label">
+                  {sideBarItem[0]}
+                </div>
+              </Link>
+            </div>
+          ));
     } else {
       itemList = null
     }
 
-    if(pathname.startsWith("/answer")) {
-      return null
-    }
 
     return(
       <Container>
