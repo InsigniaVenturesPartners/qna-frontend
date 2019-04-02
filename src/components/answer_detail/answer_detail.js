@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 import AnswerVoteButtonContainer from '../answer_vote_button/answer_vote_button_container';
 
-
+import '../../static/css/answer_detail.css'
 
 class AnswerDetail extends React.Component {
   componentWillMount() {
