@@ -20,18 +20,16 @@ class AnswerForm extends React.Component {
     this.openAnswerForm = this.openAnswerForm.bind(this)
   }
 
-  componentWillMount() {
-
-  }
-
   getDraft() {
     if(this.props.isDraft) {
+      let {value} = this.state;
       this.props.fetchQuestionDraft(this.props.questionId).then(response => {
-        const draft = response.draft
-        this.setState({ text: draft.body, timePostedAgo: draft.time_posted_ago })
+        const draft = response.draft.data
+        this.setState({ text: draft.body, timePostedAgo: draft.time_posted_ago, value: value.setContentFromString(draft.body, 'html' ) })
       });
     }
   }
+
 
   onChange = (value) => {
     this.setState({value});
@@ -113,10 +111,10 @@ class AnswerForm extends React.Component {
               <Button color="orange" className="submit-button" onClick={()=>this.submitAnswer()}>
                 Submit
               </Button>
-              {/* TODO
-                <button id="answer-save-draft" className="draft-link-button" onClick={()=>this.submitDraft()}>Save Draft</button>
 
-              */}
+              <button id="answer-save-draft" className="draft-link-button" onClick={()=>this.submitDraft()}>
+                Save Draft
+              </button>
               {lastSavedDraft}
             </div>
           </div>
