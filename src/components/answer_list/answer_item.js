@@ -11,7 +11,7 @@ import { Button } from 'semantic-ui-react'
 import '../../static/css/answer.css'
 import '../../static/css/comment.css'
 
-import ReadMore from '../../util/react_more'
+import ReadMore from '../../util/read_more'
 
 class AnswerItem extends React.Component {
   constructor(props) {
