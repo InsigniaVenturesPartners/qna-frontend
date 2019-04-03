@@ -38,7 +38,7 @@ export const createQuestion = (body, topics) => {
 
 export const editQuestion = (body, question_id) => {
   return sendRequest({
-    method: 'PATCH',
+    method: 'PUT',
     url: `${API_URL.UPDATE_QUESTION}/${question_id}`,
     data: {
       question: {

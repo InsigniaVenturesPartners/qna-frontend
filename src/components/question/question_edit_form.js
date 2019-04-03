@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom'
 import Modal from 'react-modal'
 import { Link } from 'react-router'
 import { Button } from 'semantic-ui-react'
-
-
-import Checkbox from 'muicss/lib/react/checkbox';
+import Checkbox from 'muicss/lib/react/checkbox'
 
 export const customStyles = {
     overlay : {
@@ -104,7 +102,7 @@ class QuestionEditForm extends React.Component {
 
   handleSuccessfulSubmit(question) {
     this.closeModal("create");
-    this.setState({asked_question: question, question: question})
+    this.setState({asked_question: question.data, question: question})
     this.openModal("success")
   }
 

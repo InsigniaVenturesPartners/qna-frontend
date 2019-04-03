@@ -89,20 +89,20 @@ export function loggedIn () {
 
                 dispatch({ type: USER_LOGIN_SUCCESS, payload: response })
 
-                // let user = response.data
-                // if (!user.has_offline_access) {
-                //     return gapi.auth2.getAuthInstance().grantOfflineAccess({ prompt: 'consent' })
-                //         .then((auth) => {
-                //             const url = API_URL.GOOGLE_USER_AUTH
-                //             return sendRequest({
-                //                 method: 'post',
-                //                 data: {
-                //                     code: auth.code
-                //                 },
-                //                 url
-                //             })
-                //         })
-                // }
+                let user = response.data
+                if (!user.has_offline_access) {
+                    return gapi.auth2.getAuthInstance().grantOfflineAccess({ prompt: 'consent' })
+                        .then((auth) => {
+                            const url = API_URL.GOOGLE_USER_AUTH
+                            return sendRequest({
+                                method: 'post',
+                                data: {
+                                    code: auth.code
+                                },
+                                url
+                            })
+                        })
+                }
             })
             .catch(function (err) {
                 console.log(err)

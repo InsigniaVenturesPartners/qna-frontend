@@ -11,6 +11,8 @@ import { Button } from 'semantic-ui-react'
 import '../../static/css/answer.css'
 import '../../static/css/comment.css'
 
+import ReadMore from '../../util/react_more'
+
 class AnswerItem extends React.Component {
   constructor(props) {
     super(props)
@@ -61,7 +63,15 @@ class AnswerItem extends React.Component {
         if(this.state.editOpen) {
           answerBody = <AnswerEditFormContainer answerId={id} body={body} closeEditForm={this.closeEditForm}/>
         } else {
-          answerBody = ReactHtmlParser(body)
+          answerBody = <ReadMore
+                className="read-more-content"
+                charLimit={250}
+                readMoreText=" Read more"
+                readLessText=" Read less"
+            >
+                {body}
+            </ReadMore>
+
         }
       }
 

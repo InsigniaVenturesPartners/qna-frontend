@@ -27,7 +27,7 @@ export const fetchAnswers = () => {
 
 export const editAnswer = (body, answer_id) => {
   return sendRequest({
-    method: 'PATCH',
+    method: 'PUT',
     url: `${API_URL.UPDATE_ANSWER}/${answer_id}`,
     data: {
       answer: {

@@ -33,7 +33,11 @@ ReactDOM.render(
                 </Route>
                 <Route path='/' component={App}>
                   <IndexRoute component={HomeContainer} />
-                  <Route path="/answer" component={QuestionListContainer} />
+                  <Route path="/answer">
+                    <IndexRoute component={QuestionListContainer} />
+                    <Route path="questions" component={QuestionListContainer} />
+                    <Route path="drafts" component={ProfileAnswerContainer} />
+                  </Route>
 
                   <Route path="topics/:id" component={TopicDetailContainer} />
                   <Route path="questions/:id" component={QuestionDetailContainer} />

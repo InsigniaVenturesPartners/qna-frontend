@@ -29,7 +29,7 @@ class QuestionListItem extends React.Component {
           <Link to={`/questions/${question.id}`}>{body}</Link>
 
           <h3>Last asked {time_posted_ago} · <Link to={`/questions/${question.id}`} >{num_answers}</Link></h3>
-          <AnswerFormContainer questionId={id} body={body} authorId={question.author.id} />
+          <AnswerFormContainer questionId={id} body={body} authorId={question.author.id} isDraft={question.is_draft} />
         </div>
       );
     }
