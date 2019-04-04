@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactHtmlParser from 'react-html-parser'
+import { convertNodeToElement } from 'react-html-parser'
 
 class ReadMore extends React.Component {
   constructor(props) {
@@ -14,11 +15,13 @@ class ReadMore extends React.Component {
   getReadMoreContent() {
     const { charLimit } = this.state;
     const { children, readMoreText, readLessText } = this.props;
-    const a = ReactHtmlParser(children)
 
     if (children.length > charLimit) {
+      const childNode = ReactHtmlParser(children)[0].props.children[0]
+      const firstChild = typeof childNode === "string" ? childNode : childNode.props.children[0];
+      const parsedBody = firstChild.length < charLimit ? ReactHtmlParser(children)[0] : firstChild.substr(0, charLimit) + "..."
       return (<span className="short-text">
-        {ReactHtmlParser(children).slice(0, 1)}
+        {parsedBody}
         <span
           className="readMoreText"
           style={{ color: '#007bff', cursor: 'pointer' }}
@@ -33,8 +36,10 @@ class ReadMore extends React.Component {
         {ReactHtmlParser(children)}
       </span>);
     }
+
     return (<span className="short-text">
       {ReactHtmlParser(children)}
+      {/*
       <span
         className="readMoreText"
         style={{ color: '#007bff', cursor: 'pointer' }}
@@ -43,6 +48,7 @@ class ReadMore extends React.Component {
       >
         {readLessText}
       </span>
+      */}
     </span>);
   };
 

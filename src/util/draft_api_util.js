@@ -1,10 +1,17 @@
 import { sendRequest } from './request_util'
 import { API_URL } from './constant'
 
-export const fetchQuestionDraft = (question_id) => {
+export const fetchDrafts = () => {
   return sendRequest({
     method: 'GET',
     url: API_URL.GET_DRAFTS,
+  })
+};
+
+export const fetchQuestionDraft = (question_id) => {
+  return sendRequest({
+    method: 'GET',
+    url: `${API_URL.GET_DRAFTS}/me`,
     params: {
       question_id
     }

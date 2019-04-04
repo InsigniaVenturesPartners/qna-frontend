@@ -1,10 +1,11 @@
-.draft-question-item {
+.question-item {
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 17px;
   background: white;
   font-family: 'q_serif',Georgia,Times,"Times New Roman","Hiragino Kaku Gothic Pro","Meiryo",serif;
   line-height: 1.3;
+  margin: 0.5em 0;
   font-weight: bold;
   font-size: 18px;
   word-wrap: break-word;
@@ -12,11 +13,11 @@
   border-bottom: 1px solid #e2e2e2;
 }
 
-.draft-question-item .question-header {
+.question-item .question-header {
   padding-top: 0.5em;
 }
 
-.draft-question-item a {
+.question-item a {
   display: inline-block;
   font-family: 'q_serif',Georgia,Times,"Times New Roman","Hiragino Kaku Gothic Pro","Meiryo",serif;
   font-weight: bold;

@@ -8,19 +8,19 @@ class QuestionItem extends React.Component {
   }
 
   render () {
-    const { question } = this.props;
+    const { question, answerId, draftId } = this.props;
+
     if (Object.keys(question).length === 0) {
 
       return(<img src="https://image.ibb.co/iYo1yw/Screen_Shot_2017_09_28_at_6_43_28_PM.png" alt={`loading`}  className="loading-image" />);
     } else {
 
-      const { id, body, answerIds} = question;
+      const { id, body, draftId, answerIds} = question;
 
-      const answerItems = answerIds.map( id => (
-        <AnswerItemContainer key={ "answer-" + id } id={id}/>
-      ));
+      const answerItemId = answerId === undefined ? answerIds[0] : answerId;
+      const answerItem = <AnswerItemContainer key={ "answer-" + answerItemId } id={answerItemId}/>
 
-      if(answerItems.length === 0) {
+      if(answerIds.length === 0) {
         return (
           <div className="question-item">
             <Link to={`/questions/${id}`} className="question-header">{body}</Link>
@@ -32,10 +32,10 @@ class QuestionItem extends React.Component {
           <div className="question-item">
             <Link to={`/questions/${id}`} className="question-header">{body}</Link>
             <div className="answer-list">
-              {answerItems[0]}
+              {answerItem}
             </div>
           </div>
-        );
+        )
       }
     }
   }

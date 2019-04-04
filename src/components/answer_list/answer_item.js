@@ -66,8 +66,8 @@ class AnswerItem extends React.Component {
           answerBody = <ReadMore
                 className="read-more-content"
                 charLimit={250}
-                readMoreText=" Read more"
-                readLessText=" Read less"
+                readMoreText=" (more)"
+                readLessText="Read less"
             >
                 {body}
             </ReadMore>

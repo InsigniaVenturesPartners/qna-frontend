@@ -2,6 +2,7 @@ import * as APIUtil from '../util/profile_api_util'
 
 export const RECEIVE_PROFILE_QUESTIONS = 'RECEIVE_PROFILE_QUESTIONS'
 export const RECEIVE_PROFILE_ANSWERS = 'RECEIVE_PROFILE_ANSWERS'
+export const RECEIVE_PROFILE_ANSWER = 'RECEIVE_PROFILE_ANSWER'
 export const UPDATE_QUESTION = 'UPDATE_QUESTION'
 
 export const receiveProfileQuestions = questions => ({

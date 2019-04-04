@@ -1,11 +1,11 @@
-import { connect } from 'react-redux';
-import AnswerForm from './answer_form';
+import { connect } from 'react-redux'
+import AnswerForm from './answer_form'
 
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router'
 
 // Actions
-import { createAnswer } from '../../actions/answer_actions';
-import { saveDraft, fetchQuestionDraft } from '../../actions/draft_actions';
+import { createAnswer } from '../../actions/answer_actions'
+import { saveDraft, fetchQuestionDraft } from '../../actions/draft_actions'
 
 const mapStateToProps = (state, ownProps) => ({
   questionId: ownProps.questionId,

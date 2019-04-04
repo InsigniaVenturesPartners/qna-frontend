@@ -6,6 +6,7 @@ import AnswerFormContainer from '../answer_form/answer_form_container';
 
 import QuestionButtonsContainer from '../question_buttons/question_buttons_container';
 
+import '../../static/css/question_detail.css'
 
 class QuestionDetailItem extends React.Component {
   render () {
@@ -31,12 +32,12 @@ class QuestionDetailItem extends React.Component {
       return (
         <div className="question-detail-item">
           <h2 className="question-header">{body}</h2>
-          <ul className="tags">
+          <div className="tags">
             {tagItems}
-          </ul>
+          </div>
             <QuestionButtonsContainer id={id} followerIds={followerIds} followed={followed} downvoted={downvoted}/>
 
-          <ul className="answer-list">{answerItems}</ul>
+          <div className="answer-list">{answerItems}</div>
         </div>
       )
     }

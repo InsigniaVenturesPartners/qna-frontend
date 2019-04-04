@@ -1,37 +1,39 @@
 import React from 'react'
+import { Link } from 'react-router'
 import { Header } from 'semantic-ui-react'
 
-import QuestionItemContainer from '../question/question_item_container'
+import DraftItemContainer from './draft_item_container'
 
 import '../../static/css/answer.css'
-import '../../static/css/question_item.css'
+import '../../static/css/draft_list.css'
 
 class DraftList extends React.Component {
   componentWillMount() {
-    this.props.requestAnswers();
+    this.props.requestDrafts()
   }
 
   render () {
-    const { answers } = this.props;
+    const { drafts } = this.props;
 
-    const questionItems = answers.map(answer => (
-      <QuestionItemContainer
-        key={ "question-" + answer.question.id }
-        id={answer.question.id}
-        answerId={answer.id}
-        />
+    const questionItems = drafts.map(draft => (
+      <div className="draft-question-list" key={"draft-question-" + draft.question.id}>
+        <div className="draft-question-item">
+          <Link to={`/questions/${draft.question.id}`} className="question-header">{draft.question.body}</Link>
+          <div className="answer-list">
+            <DraftItemContainer id={draft.id}/>
+          </div>
+        </div>
+      </div>
     ))
 
-    const singleOrPluralText = answers.length <= 1 ? "Answer" : `Answers`
-    const headerText = `${answers.length} ${singleOrPluralText}`
+    const singleOrPluralText = drafts.length <= 1 ? "Draft" : `Drafts`
+    const headerText = `${drafts.length} ${singleOrPluralText}`
 
     return (
       <div>
         <div id="answers-container">
           <Header as='h1'>{headerText}</Header>
-          <div className="question-list">
-            {questionItems}
-          </div>
+          {questionItems}
         </div>
       </div>
     );
