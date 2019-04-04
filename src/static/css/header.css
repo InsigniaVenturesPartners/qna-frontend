@@ -38,26 +38,25 @@
   align-items: center;
   height: 100%;
   margin: 0px;
-
-  @include respond-to(desktop) {
-    justify-content: center;
-  }
-
-  li {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: 4px;
-  }
-  i {
-    padding-right: 5px;
-    font-size: 30px;
-  }
-  .fa-home {
-    padding-bottom: 4px;
-  }
 }
+
+.nav-bar-items @include respond-to(desktop) {
+  justify-content: center;
+}
+
+.nav-bar-items li {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 4px;
+}
+
+.nav-bar-items i {
+  padding-right: 5px;
+  font-size: 30px;
+}
+
 
 .nav-link:hover {
   background-color: #f3f3f3;
