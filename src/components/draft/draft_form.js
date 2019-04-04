@@ -7,11 +7,7 @@ import { Button } from 'semantic-ui-react'
 class DraftForm extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = { text: props.body, open: false, value: this.props.body ?
-    //     RichTextEditor.createValueFromString(this.props.body, 'markdown') :
-    //     RichTextEditor.createEmptyValue() };
-
-     this.state = { text: props.body, open: false, value: RichTextEditor.createEmptyValue()};
+    this.state = { text: props.body, open: false, value: RichTextEditor.createEmptyValue()};
 
     this.submitAnswer = this.submitAnswer.bind(this);
     this.successfulSubmit = this.successfulSubmit.bind(this);
@@ -54,15 +50,15 @@ class DraftForm extends React.Component {
   }
 
   submitAnswer() {
-    this.props.submitAnswer(this.state.text, this.props.draft)
-    browserHistory.push(`/profile/answers`);
+    this.props.submitAnswer(this.state.text, this.props.questionId).then(
+      browserHistory.push(`/profile/answers`)
+    )
   }
 
   saveDraft = () => {
     this.props.saveDraft(this.state.text, this.props.questionId).then(
       this.successfulSubmit
     );
-    // this.setState({open: false, isDraft: true})
   }
 
   render () {

@@ -30,11 +30,9 @@ class DraftList extends React.Component {
     const headerText = `${drafts.length} ${singleOrPluralText}`
 
     return (
-      <div>
-        <div id="answers-container">
-          <Header as='h1'>{headerText}</Header>
-          {questionItems}
-        </div>
+      <div id="answers-container">
+        <Header as='h1'>{headerText}</Header>
+        {questionItems}
       </div>
     );
   }

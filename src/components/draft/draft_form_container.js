@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  submitAnswer: (body, draft) => dispatch(submitDraftAsAnswer(body, draft)),
+  submitAnswer: (body, questionId) => dispatch(submitDraftAsAnswer(body, questionId)),
   saveDraft: (body, questionId) => dispatch(saveDraft(body, questionId)),
 });
 

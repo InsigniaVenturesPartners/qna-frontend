@@ -12,6 +12,10 @@ class ProfileAnswer extends React.Component {
     this.props.requestAnswers();
   }
 
+  componentWillReceiveProps() {
+    this.props.requestAnswers();
+  }
+
   render () {
     const { answers } = this.props;
 

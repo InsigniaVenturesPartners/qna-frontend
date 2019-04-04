@@ -16,7 +16,7 @@ const ProfileReducer = (state = defaultState, action) => {
       oldState.questions[action.question.data.id] = action.question.data;
       return oldState;
     case RECEIVE_ANSWER_FROM_DRAFT :
-      merge({},state,{[action.answer.data.id]: action.answer.data});
+      merge({},state,{answers: {[action.answer.data.id]: action.answer.data}});
     default:
       return state;
   }

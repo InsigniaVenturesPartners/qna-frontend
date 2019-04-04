@@ -1,11 +1,11 @@
 import * as APIUtil from '../util/answer_api_util'
 
 
-export const RECEIVE_ANSWERS = 'RECEIVE_ANSWERS';
-export const RECEIVE_ANSWER = 'RECEIVE_ANSWER';
-export const RECEIVE_ANSWER_FROM_DRAFT = 'RECEIVE_ANSWER_FROM_DRAFT';
-export const UPDATE_ANSWER = 'UPDATE_ANSWER';
-export const REMOVE_DRAFT = 'REMOVE_DRAFT';
+export const RECEIVE_ANSWERS = 'RECEIVE_ANSWERS'
+export const RECEIVE_ANSWER = 'RECEIVE_ANSWER'
+export const RECEIVE_ANSWER_FROM_DRAFT = 'RECEIVE_ANSWER_FROM_DRAFT'
+export const UPDATE_ANSWER = 'UPDATE_ANSWER'
+export const REMOVE_DRAFT = 'REMOVE_DRAFT'
 
 export const receiveAnswers = answers => ({
   type: RECEIVE_ANSWERS,
@@ -17,14 +17,19 @@ export const receiveAnswer = answer => ({
   answer
 });
 
+export const receiveProfileAnswer = answer => ({
+  type: RECEIVE_ANSWER,
+  answer
+});
+
 export const receiveAnswerFromDraft = answer => ({
   type: RECEIVE_ANSWER_FROM_DRAFT,
   answer
 });
 
-export const removeDraft = draftId => ({
+export const removeDraft = questionId => ({
   type: REMOVE_DRAFT,
-  draftId
+  questionId
 });
 
 export const updateAnswer = answer => ({
@@ -71,12 +76,9 @@ export const createAnswer = (body, questionId) => dispatch => (
   ))
 );
 
-export const submitDraftAsAnswer = (body, draft) => dispatch => {
-  debugger
-  APIUtil.createAnswer(body, draft.question.id).then(
-    answer=>{
-      dispatch(receiveAnswerFromDraft(answer))
-      dispatch(removeDraft(draft.id))
-  })
-};
+export const submitDraftAsAnswer = (body, questionId) => dispatch => (
+  APIUtil.createAnswer(body, questionId).then(
+    answer=>(dispatch(receiveAnswerFromDraft(answer))
+  ))
+);
 

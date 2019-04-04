@@ -6,6 +6,7 @@ import { withRouter } from 'react-router'
 // Actions
 import { createAnswer } from '../../actions/answer_actions'
 import { saveDraft, fetchQuestionDraft } from '../../actions/draft_actions'
+import { submitDraftAsAnswer } from '../../actions/answer_actions'
 
 const mapStateToProps = (state, ownProps) => ({
   questionId: ownProps.questionId,
@@ -14,6 +15,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   createAnswer: (body, question_id) => dispatch(createAnswer(body, question_id)),
+  submitAnswer: (body, questionId) => dispatch(submitDraftAsAnswer(body, questionId)),
   saveDraft: (body, questionId) => dispatch(saveDraft(body, questionId)),
   fetchQuestionDraft: (questionId) => dispatch(fetchQuestionDraft(questionId))
 });
