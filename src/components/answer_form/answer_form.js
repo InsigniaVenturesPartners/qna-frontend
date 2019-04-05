@@ -61,9 +61,15 @@ class AnswerForm extends React.Component {
   }
 
   submitAnswer() {
-    this.props.createAnswer(this.state.text, this.props.questionId).then(
-      this.successfulSubmit
-    );
+    if(this.state.isDraft) {
+      this.props.submitAnswer(this.state.text, this.props.questionId).then(
+        this.successfulSubmit
+      )
+    } else {
+      this.props.createAnswer(this.state.text, this.props.questionId).then(
+        this.successfulSubmit
+      )
+    }
   }
 
   submitDraft() {
@@ -80,7 +86,7 @@ class AnswerForm extends React.Component {
     if (this.state.open) {
       return (
         <div className="answer-form-container">
-     
+
           <div className="answer-form-button">
             <Button basic color="orange"  onClick={()=>this.setState({open: true})}>
               {answerButtonText}
@@ -88,7 +94,7 @@ class AnswerForm extends React.Component {
           { authorId === author.id &&
               <QuestionEditContainer questionId={questionId} body={body}/> }
           </div>
-    
+
           <div className="answer-form">
             <div className="answer-header">
               <img src={author.pro_pic_url} alt={`${author.name}'s picture`}  className="answerer-pro-pic" />

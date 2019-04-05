@@ -10,7 +10,6 @@ import '../static/css/style.css'
 const App = (props) => {
     return (
         <div className="app-container">
-          <div className="ribbon ribbon-main">BETA</div>
 
           <Header path={props.currentURL}/>
           <FeedSidebarContainer/>

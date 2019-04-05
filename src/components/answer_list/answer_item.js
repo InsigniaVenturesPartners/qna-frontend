@@ -11,7 +11,7 @@ import { Button } from 'semantic-ui-react'
 import '../../static/css/answer.css'
 import '../../static/css/comment.css'
 
-import ReadMore from '../../util/react_more'
+import ReadMore from '../../util/read_more'
 
 class AnswerItem extends React.Component {
   constructor(props) {
@@ -66,8 +66,8 @@ class AnswerItem extends React.Component {
           answerBody = <ReadMore
                 className="read-more-content"
                 charLimit={250}
-                readMoreText=" Read more"
-                readLessText=" Read less"
+                readMoreText=" (more)"
+                readLessText="Read less"
             >
                 {body}
             </ReadMore>

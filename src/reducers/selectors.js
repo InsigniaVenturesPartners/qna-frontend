@@ -16,6 +16,20 @@ export const allQuestions = ({ questions }) => {
    return returnQuestions;
 };
 
+export const allTopQuestions = ({ topQuestions }) => {
+  const returnQuestions = Object.values(topQuestions) || [];
+
+  if(returnQuestions.length > 0) {
+    return returnQuestions.sort(function(a, b) {
+      const answerCount1 =  a.answerIds.length;
+      const answerCount2 =  b.answerIds.length;
+        return answerCount2 - answerCount1;
+    });
+  }
+
+  return returnQuestions;
+};
+
 export const allProfileQuestions = ({ profile }) => {
   if(!profile.hasOwnProperty("questions")) return []
   const returnQuestions = Object.values(profile.questions) || [];
@@ -25,6 +39,11 @@ export const allProfileQuestions = ({ profile }) => {
 export const allAnswers = ({ answers }) => {
    const returnAnswers = Object.values(answers) || [];
    return returnAnswers;
+};
+
+export const allDrafts = ({ drafts }) => {
+   const returnDrafts = Object.values(drafts) || [];
+   return returnDrafts;
 };
 
 export const allProfileAnswers = ({ profile }) => {
@@ -41,6 +60,11 @@ export const selectQuestion = ({ questions }, id) => {
 export const selectAnswer = ({ answers }, id) => {
    const answer = answers[id] || {};
    return answer
+};
+
+export const selectDraft = ({ drafts }, id) => {
+   const draft = drafts[id] || {};
+   return draft
 };
 
 export const selectComments = ({ comments }, commentIds) => {

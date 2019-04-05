@@ -4,6 +4,7 @@
 
 .app-container{
   /*max-width: 960px;*/
+  min-width: 700px;
 }
 
 /* Borrowed from Markdown.css: http://kevinburke.bitbucket.org/markdowncss/markdown.css */

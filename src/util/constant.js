@@ -29,7 +29,7 @@ export const API_URL = {
     CREATE_COMMENT: `${ROOT_API}/api/v1/comments`,
     VOTE_COMMENT: `${ROOT_API}/api/v1/comments/vote`,
 
-    GET_DRAFTS: `${ROOT_API}/api/v1/drafts/me`,
+    GET_DRAFTS: `${ROOT_API}/api/v1/drafts`,
     CREATE_DRAFT: `${ROOT_API}/api/v1/drafts`,
 
     GET_PROFILE_ANSWERS: `${ROOT_API}/api/v1/profile/answers`,

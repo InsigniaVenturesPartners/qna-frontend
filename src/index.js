@@ -18,6 +18,7 @@ import AnswerDetailContainer from './components/answer_detail/answer_detail_cont
 import TopicDetailContainer from './components/topic_detail/topic_detail_container'
 import QuestionListContainer from './components/question_list/question_list_container'
 import QuestionDetailContainer from './components/question_detail/question_detail_container'
+import DraftListContainer from './components/draft/draft_list_container'
 import ProfileTopicContainer from './components/profile/profile_topic_container'
 import ProfileQuestionContainer from './components/profile/profile_question_container'
 import ProfileAnswerContainer from './components/profile/profile_answer_container'
@@ -36,7 +37,7 @@ ReactDOM.render(
                   <Route path="/answer">
                     <IndexRoute component={QuestionListContainer} />
                     <Route path="questions" component={QuestionListContainer} />
-                    <Route path="drafts" component={ProfileAnswerContainer} />
+                    <Route path="drafts" component={DraftListContainer} />
                   </Route>
 
                   <Route path="topics/:id" component={TopicDetailContainer} />
