@@ -112,7 +112,7 @@ class QuestionEditForm extends React.Component {
     return (
       <div>
 
-        <Button basic color='orange' className='write-answer-button' onClick={()=>this.openModal("create")}>
+        <Button compact size="small" basic color='orange' className='write-answer-button' onClick={()=>this.openModal("create")}>
           <div>Edit Question</div>
         </Button>
 

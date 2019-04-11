@@ -52,7 +52,7 @@ class AnswerItem extends React.Component {
 
 
       const editButton = draft.author.id === user.id ?
-        <Button basic color="orange" className="edit-answer-button" onClick={this.openEditForm.bind(this)}>
+        <Button compact size="small" basic color="orange" className="edit-answer-button" onClick={this.openEditForm.bind(this)}>
           <div>Edit Draft</div>
         </Button> : null;
 

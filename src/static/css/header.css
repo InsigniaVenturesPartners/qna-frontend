@@ -1,86 +1,81 @@
 .nav-bar-mobile-wrapper {
+  margin-top: 0em;
+  top: 0;
   width: 100%;
   position: fixed;
-  z-index: $navbar-z-index;
-}
+  z-index: 2; }
 
 .nav-bar {
+  top: 0;
   background: white;
   width: 100%;
   border-bottom: 1px solid #ddd;
   height: 52px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; }
 
-  &.mobile-only {
-    @include respond-to(desktop) {
-      display: none;
-    }
-  }
+@media (min-width: 615px) {
+  .nav-bar.mobile-only {
+    display: none; } }
 
-  &.desktop-only {
-    position: fixed;
-    z-index: $navbar-z-index;
-    display: none;
-    @include respond-to(desktop) {
-      display: initial;
-    }
-  }
-}
+.nav-bar.desktop-only {
+  position: fixed;
+  z-index: 2;
+  display: none; }
+
+@media (min-width: 615px) {
+  .nav-bar.desktop-only {
+    display: initial; } }
 
 .nav-bar-items {
   background: white;
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  margin: 0px;
-}
+  margin: 0px; }
 
-.nav-bar-items @include respond-to(desktop) {
-  justify-content: center;
-}
+@media (min-width: 615px) {
+  .nav-bar-items {
+    justify-content: center; 
+    width: 100%;} }
 
 .nav-bar-items li {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-left: 4px;
-}
+  padding-left: 4px; }
 
 .nav-bar-items i {
   padding-right: 5px;
-  font-size: 30px;
-}
+  font-size: 30px; }
 
+.nav-bar-items .fa-home {
+  padding-bottom: 4px; }
 
 .nav-link:hover {
-  background-color: #f3f3f3;
-}
+  background-color: #f3f3f3; }
 
 .nav-pro-pic {
   height: 26px;
   width: 26px;
-  border-radius: 50%;
+  border-radius: 50%; 
 }
 
 #nav-logo {
   text-align: center;
   max-width: 80px;
-  color: $primary-color;
+  color: #f29648;
   font-size: 25px;
   font-weight: bold;
-  font-family: "Palatino", sans-serif;
-}
+  font-family: "Palatino", sans-serif; }
 
 #nav-logo a:hover {
-  text-decoration: none;
-}
-
+  text-decoration: none; }
 
 .nav-link {
   max-width: 90px;
@@ -90,71 +85,75 @@
   font-weight: 500;
   line-height: 50px;
   text-decoration: none;
-  padding-right: 5px;
-  a {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  a:hover {
-    text-decoration: none;
-  }
-}
+  padding-right: 5px; }
+
+.nav-link a {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+
+.nav-link a:hover {
+  text-decoration: none; }
 
 .nav-link.highlighted {
   color: #AB3830;
-  border-bottom: 2px solid $primary-color;
-}
+  border-bottom: 2px solid #f29648; }
 
 .nav-link.highlighted:hover {
-  background: white;
-}
+  background: white; }
 
 .nav-link a {
-  color: #f2711c;
-}
+  color: #f29648; }
 
 li#nav-search {
   margin: 0 0.5em;
   justify-content: flex-start;
-  max-width: 404px;
-}
+  max-width: 404px; }
 
-#nav-ask-question, #nav-sign-out {
+#nav-sign-out {
   max-width: 110px;
-  button, form input {
+}
+#nav-sign-out button {
     font-size: 14px;
     font-weight: 500;
     height: 28px;
-    background-color: $primary-color;
+    background-color: #f29648;
     color: white;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;;
     border-radius: 3px;
     display: block;
-    border: 1px solid $border-primary-color;
+    border: 1px solid #e4883a;
     box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2);
     text-decoration: none;
     cursor: pointer;
-  }
+}
+#nav-sign-out form input {
+   font-size: 14px;
+    font-weight: 500;
+    height: 28px;
+    background-color: #f29648;
+    color: white;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;;
+    border-radius: 3px;
+    display: block;
+    border: 1px solid #e4883a;
+    box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2);
+    text-decoration: none;
+    cursor: pointer;
 }
 
-#nav-pro-pic {
+#nav-pro-pic-container {
   max-width: 30px;
   max-height: 30px;
-  padding-right:15px;
-  padding-left: 15px;
+  padding-right: 15px;
+  padding-left: 15px; 
+  margin-right: 1.8em;
 }
 
 #nav-sign-out {
   max-width: 70px;
-  padding: 0 0.5em;
-}
+  padding: 0 0.5em; }
 
-
-//
 @media (min-width: 1075px) {
   .question-search-bar {
-    max-width: 400px;
-  }
-
-}
+    max-width: 400px; } }

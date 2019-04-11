@@ -52,7 +52,7 @@ class AnswerVoteButton extends React.Component {
 
     return (
       <div className="vote-buttons">
-        <Button color='orange' basic className="upvote-button" onClick={()=>this.handleClick("upvote")}>
+        <Button compact size="small" color='orange' basic className="upvote-button" onClick={()=>this.handleClick("upvote")}>
           <div className="upvote-text">{upvoteText}</div>
           <div className="upvoters">{this.props.upvoterIds.length}</div>
         </Button>

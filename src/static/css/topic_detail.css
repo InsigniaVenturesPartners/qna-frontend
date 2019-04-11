@@ -17,6 +17,11 @@
   font-weight: bold;
 }
 
+@media (max-width: 615px) {
+  .no-topic-questions {
+    padding-left: 1.5em;
+} }
+
 .topic-detail-item .no-answers-message {
   padding-left: 20px;
 }

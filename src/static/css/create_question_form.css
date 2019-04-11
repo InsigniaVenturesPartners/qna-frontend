@@ -103,14 +103,13 @@
 .ReactModal__Content--after-open .question-form-topic-list .mui-checkbox {
   padding-top: 0.4em;
   padding-right: 1em;
-
-  label {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 16px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  }
+}
+.ReactModal__Content--after-open .question-form-topic-list .mui-checkbox label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 16px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .ReactModal__Content--after-open .mui-checkbox label input {
   margin: 0px 0px 3px 0px;

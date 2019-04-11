@@ -76,8 +76,8 @@ class AnswerItem extends React.Component {
       }
 
       const editButton = answer.author.id === user.id ?
-        <Button basic color="orange" className="edit-answer-button" onClick={this.openEditForm.bind(this)}>
-          <div>Edit Answer</div>
+        <Button compact size="small" basic color="orange" className="edit-answer-button" onClick={this.openEditForm.bind(this)}>
+          <div>Edit</div>
         </Button> : null;
 
       return (
@@ -92,7 +92,7 @@ class AnswerItem extends React.Component {
           <div className="answer-body">{answerBody}</div>
           <div className="answer-buttons">
             <AnswerVoteButtonContainer id={id} upvoterIds={upvoterIds} upvoted={upvoted} downvoted={downvoted}/>
-            <button className="comments-button" onClick={()=>this.setState({commentOpen: !this.state.commentOpen})}>Comments {commentIds.length}</button>
+            <button compact size="small" className="comments-button" onClick={()=>this.setState({commentOpen: !this.state.commentOpen})}>Comments {commentIds.length}</button>
 
             {editButton}
           </div>

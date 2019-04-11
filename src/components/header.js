@@ -101,9 +101,9 @@ class Header extends React.Component {
         ));
 
     return(
-      <Container>
-      <div className="nav-bar">
-        <div className="nav-bar-items">
+      <div>
+      <div className="nav-bar desktop-only">
+        <div className="nav-bar-items ">
           <div id="nav-home" className={"nav-link " + (this.props.path === "/" ? "highlighted" : "")} >
             <Link to={`/`}>
               <FontAwesomeIcon icon={faHome} />
@@ -122,7 +122,7 @@ class Header extends React.Component {
             <QuestionSearchContainer />
           </div>
 
-          <div id="nav-pro-pic">
+          <div id="nav-pro-pic-container">
             <Link to={`/profile`}>
               <img src={user.pro_pic_url} alt={`${user.name}'s`}  className="nav-pro-pic" />
             </Link>
@@ -136,6 +136,7 @@ class Header extends React.Component {
             onClick={this.handleSignOut}>
             Sign Out
           </Button>
+
 
         </div>
         <Modal
@@ -187,7 +188,56 @@ class Header extends React.Component {
 
         </Modal>
       </div>
-      </Container>
+
+      <div className="nav-bar-mobile-wrapper">
+          <div className="nav-bar mobile-only">
+            <div className="nav-bar-items ">
+              <div id="nav-home" className={"nav-link " + (this.props.path === "/" ? "highlighted" : "")} >
+                <Link to={`/`}>
+                  <FontAwesomeIcon icon={faHome} />
+                  Home
+                </Link>
+              </div>
+
+
+              <div id="nav-answer" className={"nav-link " + (this.props.path === "/answer" ? "highlighted" : "")}>
+                <Link to={`/answer`}>
+                <FontAwesomeIcon icon={faEdit} />
+                  Answer
+                </Link>
+              </div>
+
+
+              <Button compact size="small" color='orange' type='submit' className="ask-question-button"
+                onClick={(() => this.openModal("create"))}>
+                Ask Question
+              </Button>
+            </div>
+          </div>
+
+          <div className="nav-bar mobile-only">
+            <div className="nav-bar-items">
+              <div className="nav-search">
+                <QuestionSearchContainer />
+              </div>
+
+              <div id="nav-pro-pic-container">
+                <Link to={`/profile`}>
+                  <img src={user.pro_pic_url} alt={`${user.name}'s`}  className="nav-pro-pic" />
+                </Link>
+              </div>
+
+              
+              <Button compact size="small" color='orange' type='submit'
+                onClick={this.handleSignOut}>
+                Sign Out
+              </Button>
+    
+
+            </div>
+          </div>
+        </div>
+        </div>
     );
   }
 }

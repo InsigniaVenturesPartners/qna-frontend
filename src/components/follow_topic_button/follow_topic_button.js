@@ -36,7 +36,7 @@ class FollowTopicButton extends React.Component {
     let followText = this.state.followed ? "Following" : "Follow";
 
     return(
-        <Button basic color='orange' type='submit' className="follow-button" onClick={this.handleClick} disabled={this.state.disabled}>
+        <Button compact size="small" basic color='orange' type='submit' className="follow-button" onClick={this.handleClick} disabled={this.state.disabled}>
           <div className="follow-text">{followText}</div>
           <div className="followers">{this.props.followerIds.length}</div>
         </Button>
