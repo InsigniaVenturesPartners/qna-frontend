@@ -13,7 +13,6 @@ import { sendRequest } from '../util/request_util'
 export function configAndInitialize () {
   return function (dispatch) {
     if(sessionStorage.getItem('access_token')) {
-
       const script = document.createElement('script')
       script.src = 'https://apis.google.com/js/api.js'
 
@@ -30,10 +29,13 @@ export function configAndInitialize () {
               'https://www.googleapis.com/auth/gmail.readonly',
               'https://www.googleapis.com/auth/contacts.readonly',
             ].join(' '),
-            'hosted_domain': 'insignia.vc',
             'ux_mode': 'redirect',
             'redirect_uri': ENV.WEB_ROOT_URL
           }).then((googleAuth) => {
+            if (googleAuth.isSignedIn.get() === false) {
+              logIn()
+              return
+            }
             loggedIn()(dispatch)
           })
             .catch((error) => {
@@ -44,6 +46,10 @@ export function configAndInitialize () {
       document.body.appendChild(script)
     }
   }
+}
+
+export function logIn() {
+  gapi.auth2.getAuthInstance().signIn()
 }
 
 export function logOut () {
@@ -86,28 +92,13 @@ export function loggedIn () {
                   logOut ()
                   return
                 }
-
                 dispatch({ type: USER_LOGIN_SUCCESS, payload: response })
-
-                let user = response.data
-                if (!user.has_offline_access) {
-                    return gapi.auth2.getAuthInstance().grantOfflineAccess({ prompt: 'consent' })
-                        .then((auth) => {
-                            const url = API_URL.GOOGLE_USER_AUTH
-                            return sendRequest({
-                                method: 'post',
-                                data: {
-                                    code: auth.code
-                                },
-                                url
-                            })
-                        })
-                }
             })
             .catch(function (err) {
                 console.log(err)
                 dispatch({ type: USER_LOGIN_ERROR, payload: {} })
             })
+          
         }
     }
 }
