@@ -88,7 +88,7 @@ class AnswerForm extends React.Component {
         <div className="answer-form-container">
 
           <div className="answer-form-button">
-            <Button basic color="orange"  onClick={()=>this.setState({open: true})}>
+            <Button compact size="small" basic color="orange"  onClick={()=>this.setState({open: true})}>
               {answerButtonText}
             </Button>
           { authorId === author.id &&
@@ -114,11 +114,11 @@ class AnswerForm extends React.Component {
 
 
             <div className="answer-form-footer">
-              <Button color="orange" className="submit-button" onClick={()=>this.submitAnswer()}>
+              <Button compact size="small" color="orange" className="submit-button" onClick={()=>this.submitAnswer()}>
                 Submit
               </Button>
 
-              <button id="answer-save-draft" className="draft-link-button" onClick={()=>this.submitDraft()}>
+              <button compact size="small" id="answer-save-draft" className="draft-link-button" onClick={()=>this.submitDraft()}>
                 Save Draft
               </button>
               {lastSavedDraft}
@@ -130,7 +130,7 @@ class AnswerForm extends React.Component {
     } else {
       return (
         <div className="answer-form-button">
-          <Button basic color="orange" className="write-answer-button" onClick={this.openAnswerForm}>
+          <Button compact size="small" basic color="orange" className="write-answer-button" onClick={this.openAnswerForm}>
             {answerButtonText}
           </Button>
 

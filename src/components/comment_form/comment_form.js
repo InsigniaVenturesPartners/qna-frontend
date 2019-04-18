@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'semantic-ui-react'
 
 class CommentForm extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class CommentForm extends React.Component {
       return (
         <div className="comment-form">
           <input type="text" onChange={this.handleChange} value={this.state.text} placeholder="Add a comment..."></input>
-          <button className="submit-button" onClick={()=>this.submitComment()}>Comment</button>
+          <Button compact size='small' baisc color="orange" onClick={()=>this.submitComment()}>Comment</Button>
         </div>
       );
   }

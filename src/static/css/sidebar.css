@@ -12,13 +12,15 @@
   flex-direction: row;
 
   margin-right: 30px;
+  margin-bottom: 0.5em;
   word-wrap: break-word;
   font-size: 14px;
-
-  @include respond-to(desktop) {
-    flex-direction: column;
-  }
+  align-items: left;
 }
+
+/*@media (min-width: 992px) {
+  .sidebar-topic-list {
+    flex-direction: column;} }*/
 
 .sidebar-topic-list .sidebar-item {
   display: inline;
@@ -26,13 +28,14 @@
   background: #ccecfa;
   color: #666666;
   margin-right: 0.5em;
+}
 
-  @include respond-to(desktop) {
+@media (min-width: 615px) {
+  .sidebar-topic-list .sidebar-item {
     display: block;
     margin-bottom: 10px;
-    margin-left: 5em;
-  }
-}
+    /*margin-left: 5em;*/
+} }
 
 .sidebar-topic-list .sidebar-item a {
   display: flex;
@@ -40,26 +43,30 @@
   align-items: center;
 
   padding-right: 0.5em;
-  &:hover {
-    text-decoration: none;
-    color: #2b6dad;
-  }
+}
+
+.sidebar-topic-list .sidebar-item a:hover {
+  text-decoration: none;
+  color: #2b6dad;
 }
 
 .feed-sidebar {
-  margin: 0.5em 0;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  display: flex;
+  /*display: flex;*/
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
   overflow: auto;
   overflow-y: hidden;
-
-  @include respond-to(desktop) {
-    flex-direction: column;
-  }
+  margin-top: 8em;
 }
+
+@media (min-width: 615px) {
+  .feed-sidebar {
+    flex-direction: column;
+    margin: 0.5em 0;
+    } }
+
 
 .feed-sidebar-header {
   font-weight: 500;

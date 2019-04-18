@@ -70,7 +70,7 @@ class DraftForm extends React.Component {
               onChange={this.onChange}
             />
           <div className="answer-form-footer">
-            <Button color="orange" className="submit-button" onClick={()=>this.submitAnswer()}>
+            <Button compact size="small" color="orange" className="submit-button" onClick={()=>this.submitAnswer()}>
               Submit
             </Button>
             <button id="answer-save-draft" className="draft-link-button" onClick={()=>this.saveDraft()}>
