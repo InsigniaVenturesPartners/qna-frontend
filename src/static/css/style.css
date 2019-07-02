@@ -2,14 +2,15 @@
   text-align: center; }
 
 .app-container {
-  margin-top: 5.5em;
+  margin-top: 5em;
 }
 
 /* Borrowed from Markdown.css: http://kevinburke.bitbucket.org/markdowncss/markdown.css */
 body {
   font-family: Georgia, Palatino, serif;
   color: #444444;
-  line-height: 1; }
+  line-height: 1;
+}
 
 h1, h2, h3, h4 {
   color: #111111;
@@ -172,7 +173,9 @@ td {
   position: relative;
   height: 100%;
   width: 100%;
-  padding: 0; }
+  padding: 0;
+  overflow-x: hidden;
+}
 
 .login-container {
   margin-top: 0em !important;
@@ -180,12 +183,19 @@ td {
   height: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(//s3-ap-southeast-1.amazonaws.com/qna-resources/assets/bg-1.jpg);
   background-repeat: no-repeat;
-  background-size: cover; }
+  background-size: cover;
+
+}
+
+/*@media (min-width: 615px) {
+  .nav-bar.mobile-only {
+    display: none;*/
+
 
 .login-form h1 {
   text-align: center;
   color: #ffffff;
-  font-size: 5em;
+  font-size: 4em;
   font-weight: bold;
   font-family: "Source Sans Pro", Helvetica, "sans-serif";
   margin-bottom: 0;
@@ -226,7 +236,8 @@ td {
   text-align: center;
   font-family: "Source Sans Pro", Helvetica, "sans-serif";
   font-size: 2em;
-  line-height: 1.4285em; }
+  line-height: 1.4285em;
+}
 
 /*.ribbon-main {
   display: none;

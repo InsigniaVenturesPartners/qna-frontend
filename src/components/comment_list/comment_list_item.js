@@ -15,7 +15,7 @@ class CommentListItem extends React.Component {
       const { body, time_posted_ago, upvoted, downvoted, up_voter_ids, author} = comment;
 
       return (
-        <li className="comment-list-item">
+        <div className="comment-list-item">
           <div className="comment-header">
             <img src={author.pro_pic_url} alt={`${author.name}'s picture`}  className="commenter-pro-pic" />
             <div className="comment-details">
@@ -24,7 +24,7 @@ class CommentListItem extends React.Component {
             </div>
           </div>
           <div className="comment-body">{body}</div>
-        </li>
+        </div>
       );
 
     }
